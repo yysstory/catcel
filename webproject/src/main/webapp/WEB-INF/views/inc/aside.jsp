@@ -33,10 +33,10 @@
           <ul class="sidebar-menu">
           
             <li class="header">쇼핑몰</li>
-          
+            <li><a href="#"><i class='fa fa-link'></i> <span>Today</span></a></li>
             <!-- Optionally, you can add icons to the links -->
             <li class="treeview">
-              <a href="#"><i class='fa fa-link'></i> <span>주문 등록</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <a href="#"><i class='fa fa-link'></i> <span>주문등록</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="#">쇼핑몰추가+</a></li>
                 <li><a href="#">스토어팜</a></li>
@@ -44,7 +44,7 @@
                 <li><a href="#">11st</a></li>
               </ul>
             </li>
-            <li class="active"><a href="#"><i class='fa fa-link'></i> <span>Link</span></a></li>
+            <li class="active"><a href="#"><i class='fa fa-link'></i> <span></span></a></li>
             <li><a href="#"><i class='fa fa-link'></i> <span>Another Link</span></a></li>
 
           </ul><!-- /.sidebar-menu -->

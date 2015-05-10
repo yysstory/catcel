@@ -54,7 +54,11 @@
       <jsp:include page="inc/commonjs.jsp"></jsp:include>
      <!-- 추가적인 자바스크립트 플러그인 추가 및 자바스크립트 코드 작성 -->
      
+     <script type="text/javascript">
      
+
+
+     </script>
      
      <!--/여기까지 -->
   </body>

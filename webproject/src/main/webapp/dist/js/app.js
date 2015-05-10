@@ -519,6 +519,9 @@ function _init() {
     }
   };
 
+  
+  
+  
   /* BoxWidget
    * =========
    * BoxWidget is a plugin to handle collapsing and
@@ -704,3 +707,6 @@ function _init() {
     });
   };
 }(jQuery));
+
+
+

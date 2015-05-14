@@ -11,4 +11,9 @@ public class IndexController {
 	public String goMain(){
 		return "index";
 	}
+	
+	@RequestMapping("/addshop.htm")
+	public String goAddShop(){
+		return "addshop";
+	}
 }

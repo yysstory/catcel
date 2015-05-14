@@ -7,7 +7,7 @@
 <!--개별 css 추가  -->
 <style type="text/css">
 .select-cell {
-	width: 120px;
+	width: 150px;
 	float: left;
 }
 </style>
@@ -34,40 +34,7 @@
 				<!-- 페이지 내용 작성-->
 				<div id="select-set">
 
-					<div class="select-cell">
-						<div>결제일</div>
-						<div>
-							<select class="form-control" name="A">
-								<option value="">선택</option>
-							</select>
-						</div>
-					</div>
-					<div class="select-cell">
-						<div>결제일</div>
-						<div>
-							<select class="form-control" name="B">
-								<option value="">선택</option>
-							</select>
-						</div>
-					</div>
-					<div class="select-cell">
-						<div>결제일</div>
-						<div>
-							<select class="form-control">
-								<option value="">선택</option>
 
-							</select>
-						</div>
-					</div>
-					<div class="select-cell">
-						<div>결제일</div>
-						<div>
-							<select class="form-control">
-								<option value="">선택</option>
-
-							</select>
-						</div>
-					</div>
 				</div>
 
 				<!--/여기까지 -->
@@ -80,34 +47,43 @@
 	<!-- 추가적인 자바스크립트 플러그인 추가 및 자바스크립트 코드 작성 -->
 
 	<script type="text/javascript">
-		var arrList = [ "A", "B", "C", "D", "E", "F", "G", "H", "I" ];
 
-		var calList = [ {
-			"value" : "orcu-name-cal",
+	
+ 		var calList = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","AA","AB","AC","AD","AE","AF"];
+
+		var nameList = [ {
+			"name" : "orcu-name-cal",
 			"html" : "구매자명"
 		},{
-			"value" : "orcu-id-cal",
+			"name" : "orcu-id-cal",
 			"html" : "구매자 ID"
 		},{
-			"value" : "orcu-phonenumber-cal",
+			"name" : "orcu-phonenumber-cal",
 			"html" : "구매자 연락처"
 		},{
-			"value" : "order-number-cal",
+			"name" : "order-number-cal",
 			"html" : "쇼핑몰 주문번호"
+		},{
+			"name" : "order-number",
+			"html" : "쇼핑몰 주문번호2"
 		}];
 
+		
 		$(function() {
-			addList(calList);
+			addSelectDiv(nameList);
+			addOption(calList);
+			
+			$(".form-control").on("change",function() {
+				showHideOption();
+			})
 		})
 
-		$(".form-control").change(function() {
-			showHideOption();
-		})
+		
 
 		function showHideOption() {
 			var tempArray = new Array();
 			$("select option:selected").each(function() {
-				tempArray.push($(this).html());
+				tempArray.push($(this).val());
 			});
 
 			console.log(tempArray);
@@ -117,7 +93,7 @@
 					var imsiVal = $(this);
 					imsiVal.show();
 					$.each(tempArray, function(index, value) {
-						if (imsiVal.val() == value) {
+						if (imsiVal.val() === value) {
 							imsiVal.hide();
 						}
 					});
@@ -126,14 +102,35 @@
 
 		}
 
-		function addList(arr) {
+		function addSelectDiv(arr) {
 			for (var i = 0; i < arr.length; i++) {
-				$("<option>").appendTo(".form-control").html(arr[i].html)
-						.val(arr[i].value);
+				$("<div>").appendTo("#select-set").addClass("select-cell").append($("<div>")
+						.html(arr[i].html)).append($("<div>").append($("<select>").addClass("form-control").attr("name",arr[i].name).append($("<option>").html("선택"))));
+				
+	
 			}
 		}
+		
+		function addOption(arr){
+			for (var i = 0; i < arr.length; i++) {
+				$("<option>").appendTo(".form-control").html(arr[i]).val(arr[i]);
+			}
+			
+		}
+		
 	</script>
 
+
+<!-- 	<div id="select-set">
+
+					<div class="select-cell">
+						<div>결제일</div>
+						<div>
+							<select class="form-control" name="A">
+								<option value="">선택</option>
+							</select>
+						</div>
+					</div> -->
 
 	<!--/여기까지 -->
 </body>

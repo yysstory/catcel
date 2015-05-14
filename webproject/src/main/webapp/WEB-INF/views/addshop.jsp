@@ -7,7 +7,7 @@
 <!--개별 css 추가  -->
 <style type="text/css">
 .select-cell {
-	width: 100px;
+	width: 120px;
 	float: left;
 }
 </style>
@@ -37,7 +37,16 @@
 					<div class="select-cell">
 						<div>결제일</div>
 						<div>
-							<select class="form-control">
+							<select class="form-control" name="A">
+								<option value="">선택</option>
+							</select>
+						</div>
+					</div>
+					<div class="select-cell">
+						<div>결제일</div>
+						<div>
+							<select class="form-control" name="B">
+								<option value="">선택</option>
 							</select>
 						</div>
 					</div>
@@ -45,6 +54,8 @@
 						<div>결제일</div>
 						<div>
 							<select class="form-control">
+								<option value="">선택</option>
+
 							</select>
 						</div>
 					</div>
@@ -52,44 +63,12 @@
 						<div>결제일</div>
 						<div>
 							<select class="form-control">
-							</select>
-						</div>
-					</div>
-					<div class="select-cell">
-						<div>결제일</div>
-						<div>
-							<select class="form-control">
-							</select>
-						</div>
-					</div>
-					<div class="select-cell">
-						<div>결제일</div>
-						<div>
-							<select class="form-control">
-							</select>
-						</div>
-					</div>
-					<div class="select-cell">
-						<div>결제일</div>
-						<div>
-							<select class="form-control">
-							</select>
-						</div>
-					</div>
-					<div class="select-cell">
-						<div>결제일</div>
-						<div>
-							<select class="form-control">
+								<option value="">선택</option>
+
 							</select>
 						</div>
 					</div>
 				</div>
-
-
-
-
-
-
 
 				<!--/여기까지 -->
 			</section>
@@ -100,6 +79,60 @@
 	<jsp:include page="inc/commonjs.jsp"></jsp:include>
 	<!-- 추가적인 자바스크립트 플러그인 추가 및 자바스크립트 코드 작성 -->
 
+	<script type="text/javascript">
+		var arrList = [ "A", "B", "C", "D", "E", "F", "G", "H", "I" ];
+
+		var calList = [ {
+			"value" : "orcu-name-cal",
+			"html" : "구매자명"
+		},{
+			"value" : "orcu-id-cal",
+			"html" : "구매자 ID"
+		},{
+			"value" : "orcu-phonenumber-cal",
+			"html" : "구매자 연락처"
+		},{
+			"value" : "order-number-cal",
+			"html" : "쇼핑몰 주문번호"
+		}];
+
+		$(function() {
+			addList(calList);
+		})
+
+		$(".form-control").change(function() {
+			showHideOption();
+		})
+
+		function showHideOption() {
+			var tempArray = new Array();
+			$("select option:selected").each(function() {
+				tempArray.push($(this).html());
+			});
+
+			console.log(tempArray);
+
+			$("select").each(function() {
+				$(this).children("option").each(function() {
+					var imsiVal = $(this);
+					imsiVal.show();
+					$.each(tempArray, function(index, value) {
+						if (imsiVal.val() == value) {
+							imsiVal.hide();
+						}
+					});
+				});
+			});
+
+		}
+
+		function addList(arr) {
+			for (var i = 0; i < arr.length; i++) {
+				$("<option>").appendTo(".form-control").html(arr[i].html)
+						.val(arr[i].value);
+			}
+		}
+	</script>
 
 
 	<!--/여기까지 -->

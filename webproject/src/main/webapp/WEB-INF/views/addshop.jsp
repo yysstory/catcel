@@ -11,6 +11,13 @@
 	float: left;
 	padding-top: 20px;
 }
+
+#btn-group{
+	padding-top: 35px;
+	padding-left: 15px;
+	
+}
+
 </style>
 
 
@@ -35,17 +42,42 @@
 
 				<form action="" method="post">
 					<div class="col-lg-12">
-						<div class="form-group col-lg-2" id="mall_name_div">
-							<label for="mall_name">쇼핑몰 이름</label> <input id="mall_name"
+						<div class="form-group col-lg-2">
+							<label for="MALL_NAME">쇼핑몰 이름</label> <input id="MALL_NAME"
 								class="form-control" />
 						</div>
+
+
+						<div class="form-group col-lg-2" id="">
+							<label for="MALL_COMMITSSION_CAL">수수료</label> <input
+								id="MALL_COMMITSSION_CAL" class="form-control" />
+						</div>
+
+
+
+						<div class="form-group col-lg-2" id="">
+							<label for="DATA_START_CAL">데이터 시작 행</label> <input
+								id="DATA_START_CAL" class="form-control" />
+						</div>
 					</div>
+
+
+
 					<!-- 페이지 내용 작성-->
 					<div class="col-lg-12">
 						<div id="select-set" class="col-lg-12">
 							<!-- 셀렉트 상자 들어가는 공간 -->
 						</div>
 					</div>
+
+					<div class="col-lg-12">
+
+						<div id="btn-group">
+							<button type="submit" class="btn btn-primary">저장</button>
+							<button type="reset" class="btn btn-warning">취소</button>
+						</div>
+					</div>
+
 
 				</form>
 

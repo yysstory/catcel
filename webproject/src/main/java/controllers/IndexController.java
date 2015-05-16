@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexController {
 
-	@RequestMapping("/index.htm")
+	@RequestMapping("/index")
 	public String goMain(){
 		return "index";
 	}
 	
-	@RequestMapping("/addshop.htm")
+	@RequestMapping("/addshop")
 	public String goAddShop(){
 		return "addshop";
 	}

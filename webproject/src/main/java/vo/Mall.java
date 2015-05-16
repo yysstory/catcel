@@ -22,6 +22,7 @@ public class Mall implements Serializable{
 	String deliveryMethodCal;
 	String shoppingChargeCal;
 	String deliveryMessageCal;
+	String shippingDateCal;
 	String buyDateCal;
 	String productNumberCal;
 	String productNameCal;
@@ -38,6 +39,36 @@ public class Mall implements Serializable{
 	
 	
 	
+	@Override
+	public String toString() {
+		return "Mall [mallNo=" + mallNo + ", mallName=" + mallName
+				+ ", mallCommitssionCal=" + mallCommitssionCal
+				+ ", dataStartCal=" + dataStartCal + ", mallRegistDate="
+				+ mallRegistDate + ", orcuNameCal=" + orcuNameCal
+				+ ", orcuIdCal=" + orcuIdCal + ", orcuPhoneNumberCal="
+				+ orcuPhoneNumberCal + ", orderNumberCal=" + orderNumberCal
+				+ ", orderCodeCal=" + orderCodeCal + ", paymentDateCal="
+				+ paymentDateCal + ", paymentMethodCal=" + paymentMethodCal
+				+ ", deliveryMethodCal=" + deliveryMethodCal
+				+ ", shoppingChargeCal=" + shoppingChargeCal
+				+ ", deliveryMessageCal=" + deliveryMessageCal
+				+ ", shippingDateCal=" + shippingDateCal + ", buyDateCal="
+				+ buyDateCal + ", productNumberCal=" + productNumberCal
+				+ ", productNameCal=" + productNameCal + ", productOptionCal="
+				+ productOptionCal + ", productAddCal=" + productAddCal
+				+ ", productPriceCal=" + productPriceCal + ", productQtyCal="
+				+ productQtyCal + ", recuNameCal=" + recuNameCal
+				+ ", recuPhoneNumberCal=" + recuPhoneNumberCal
+				+ ", recuHomeNumberCal=" + recuHomeNumberCal
+				+ ", recuZipCodeCal=" + recuZipCodeCal + ", recuAddressCal="
+				+ recuAddressCal + ", userNo=" + userNo + "]";
+	}
+	public String getShippingDateCal() {
+		return shippingDateCal;
+	}
+	public void setShippingDateCal(String shippingDateCal) {
+		this.shippingDateCal = shippingDateCal;
+	}
 	public int getMallNo() {
 		return mallNo;
 	}

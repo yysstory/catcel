@@ -40,24 +40,24 @@
 
 			<section class="content">
 
-				<form action="" method="post">
+				<form action="" method="post" id="submit-form">
 					<div class="col-lg-12">
 						<div class="form-group col-lg-2">
 							<label for="MALL_NAME">쇼핑몰 이름</label> <input id="MALL_NAME"
-								class="form-control" />
+								class="form-control" name="mallName" />
 						</div>
 
 
 						<div class="form-group col-lg-2" id="">
 							<label for="MALL_COMMITSSION_CAL">수수료</label> <input
-								id="MALL_COMMITSSION_CAL" class="form-control" />
+								id="MALL_COMMITSSION_CAL" class="form-control" name="mallCommitssionCal" />
 						</div>
 
 
 
 						<div class="form-group col-lg-2" id="">
 							<label for="DATA_START_CAL">데이터 시작 행</label> <input
-								id="DATA_START_CAL" class="form-control" />
+								id="DATA_START_CAL" class="form-control" name="dataStartCal"/>
 						</div>
 					</div>
 
@@ -73,7 +73,7 @@
 					<div class="col-lg-12">
 
 						<div id="btn-group">
-							<button type="submit" class="btn btn-primary">저장</button>
+							<button type="button" id="submit-btn" class="btn btn-primary">저장</button>
 							<button type="reset" class="btn btn-warning">취소</button>
 						</div>
 					</div>
@@ -97,73 +97,73 @@
 				"X", "Y", "Z", "AA", "AB", "AC", "AD", "AE", "AF" ];
 
 		var nameList = [ {
-			"name" : "ORCU_NAME_CAL",
+			"name" : "orcuNameCal",
 			"html" : "구매자명"
 		}, {
-			"name" : "ORCU_ID_CAL",
+			"name" : "orcuIdCal",
 			"html" : "구매자ID"
 		}, {
-			"name" : "ORCU_PHONENUMBER_CAL",
+			"name" : "orcuPhoneNumberCal",
 			"html" : "구매자 연락처"
 		}, {
-			"name" : "ORDER_NUMBER_CAL",
+			"name" : "orderNumberCal",
 			"html" : "쇼핑몰 주문번호"
 		}, {
-			"name" : "ORDER_CODE_CAL",
+			"name" : "orderCodeCal",
 			"html" : "쇼핑몰 주문코드"
 		}, {
-			"name" : "PAYMENT_DATE_CAL",
+			"name" : "paymentDateCal",
 			"html" : "결제일"
 		}, {
-			"name" : "PAYMENT_METHOD_CAL",
+			"name" : "paymentMethodCal",
 			"html" : "결제수단"
 		}, {
-			"name" : "DELIVERY_METHOD_CAL",
+			"name" : "deliveryMethodCal",
 			"html" : "배송수단"
 		}, {
-			"name" : "SHOPPING_CHARGE_CAL",
+			"name" : "shoppingChargeCal",
 			"html" : "배송비"
 		}, {
-			"name" : "DELIVERY_MESSAGE_CAL",
+			"name" : "deliveryMessageCal",
 			"html" : "배송메세지"
 		}, {
-			"name" : "BUY_DATE_CAL",
+			"name" : "buyDateCal",
 			"html" : "구매일"
 		}, {
-			"name" : "SHIPPING_DATE_CAL",
+			"name" : "shippingDateCal",
 			"html" : "발송일"
 		}, {
-			"name" : "PRODUCT_NUMBER_CAL",
+			"name" : "productNumberCal",
 			"html" : "상품넘버"
 		}, {
-			"name" : "PRODUCT_NAME_CAL",
+			"name" : "productNameCal",
 			"html" : "상품명"
 		}, {
-			"name" : "PRODUCT_OPTION_CAL",
+			"name" : "productOptionCal",
 			"html" : "옵션"
 		}, {
-			"name" : "PRODUCT_ADD_CAL",
+			"name" : "productAddCal",
 			"html" : "추가구성"
 		}, {
-			"name" : "PRODUCT_PRICE_CAL",
+			"name" : "productPriceCal",
 			"html" : "가격"
 		}, {
-			"name" : "PRODUCT_QTY_CAL",
+			"name" : "productQtyCal",
 			"html" : "수량"
 		}, {
-			"name" : "RECU_NAME_CAL",
+			"name" : "recuNameCal",
 			"html" : "수취인명"
 		}, {
-			"name" : "RECU_PHONENUMBER_CAL",
+			"name" : "recuPhoneNumberCal",
 			"html" : "수취인핸드폰"
 		}, {
-			"name" : "RECU_HOMENUMBER_CAL",
+			"name" : "recuHomeNumberCal",
 			"html" : "수취인집전화"
 		}, {
-			"name" : "RECU_ZIPCODE_CAL",
+			"name" : "recuZipCodeCal",
 			"html" : "우편번호"
 		}, {
-			"name" : "RECU_ADDRESS_CAL",
+			"name" : "recuAddressCal",
 			"html" : "주소"
 		} ];
 
@@ -174,6 +174,18 @@
 			$(".form-control").on("change", function() {
 				showHideOption();
 			})
+			
+			$("#submit-btn").on("click",function(){
+				
+				$("select").each(function() {
+					$(this).children("option").each(function() {
+						$(this).removeAttr("disabled");	
+					});
+				});
+				
+				$("#submit-form").submit();
+			})
+			
 		})
 
 		function showHideOption() {

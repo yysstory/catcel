@@ -32,44 +32,49 @@ public class IndexController {
 		String mallName = request.getParameter("mall");
 		/*model.addAttribute("mall", mallDao.selectMall(mallName));
 		*/
+		System.out.println(mallName);
 		Mall mall = mallDao.selectMall(mallName);
 		String arrCal [] = new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K",
 				"L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W",
 				"X", "Y", "Z", "AA", "AB", "AC", "AD", "AE", "AF"}; 
 		
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("몰번호",Integer.toString(mall.getMallNo()));
-		map.put("몰이름",mall.getMallName());
-		map.put("수수료",Integer.toString(mall.getMallCommitssionCal()));
-		map.put("데이터 시작행",Integer.toString(mall.getDataStartCal()));
-		map.put("등록일",mall.getMallRegistDate());
-		map.put("구매자명",mall.getOrcuNameCal());
-		map.put("구매자ID",mall.getOrcuIdCal());
-		map.put("구매자 연락처",mall.getOrcuPhoneNumberCal());
-		map.put("쇼핑몰 주문번호",mall.getOrderNumberCal());
-		map.put("쇼핑몰 주문코드",mall.getOrderCodeCal());
-		map.put("결제일",mall.getPaymentDateCal());
-		map.put("결제수단",mall.getPaymentMethodCal());
-		map.put("배송수단",mall.getDeliveryMethodCal());
-		map.put("배송비",mall.getShoppingChargeCal());
-		map.put("배송메세지",mall.getDeliveryMessageCal());
-		map.put("발송일",mall.getShippingDateCal());
-		map.put("구매일",mall.getBuyDateCal());
-		map.put("상품넘버",mall.getProductNumberCal());
-		map.put("상품명",mall.getProductNameCal());
-		map.put("옵션",mall.getProductOptionCal());
-		map.put("추가구성",mall.getProductAddCal());
-		map.put("상품가격",mall.getProductPriceCal());
-		map.put("수량",mall.getProductQtyCal());
-		map.put("수취인명",mall.getRecuNameCal());
-		map.put("수취인핸드폰",mall.getRecuPhoneNumberCal());
-		map.put("수취인집전화",mall.getRecuHomeNumberCal());
-		map.put("우편번호",mall.getRecuZipCodeCal());
-		map.put("주소",mall.getRecuAddressCal());
-		map.put("회원번호",Integer.toString(mall.getUserNo()));
+			System.out.println(mall.getMallName());
 
 		
-		
+/*		HashMap<String, String> mallMap = new HashMap<String, String>();
+		mallMap.put("몰번호",Integer.toString(mall.getMallNo()));
+		mallMap.put("몰이름",mall.getMallName());
+		mallMap.put("수수료",Integer.toString(mall.getMallCommitssionCal()));
+		mallMap.put("데이터 시작행",Integer.toString(mall.getDataStartCal()));
+		mallMap.put("등록일",mall.getMallRegistDate());
+		mallMap.put("구매자명",mall.getOrcuNameCal());
+		mallMap.put("구매자ID",mall.getOrcuIdCal());
+		mallMap.put("구매자 연락처",mall.getOrcuPhoneNumberCal());
+		mallMap.put("쇼핑몰 주문번호",mall.getOrderNumberCal());
+		mallMap.put("쇼핑몰 주문코드",mall.getOrderCodeCal());
+		mallMap.put("결제일",mall.getPaymentDateCal());
+		mallMap.put("결제수단",mall.getPaymentMethodCal());
+		mallMap.put("배송수단",mall.getDeliveryMethodCal());
+		mallMap.put("배송비",mall.getShoppingChargeCal());
+		mallMap.put("배송메세지",mall.getDeliveryMessageCal());
+		mallMap.put("발송일",mall.getShippingDateCal());
+		mallMap.put("구매일",mall.getBuyDateCal());
+		mallMap.put("상품넘버",mall.getProductNumberCal());
+		mallMap.put("상품명",mall.getProductNameCal());
+		mallMap.put("옵션",mall.getProductOptionCal());
+		mallMap.put("추가구성",mall.getProductAddCal());
+		mallMap.put("상품가격",mall.getProductPriceCal());
+		mallMap.put("수량",mall.getProductQtyCal());
+		mallMap.put("수취인명",mall.getRecuNameCal());
+		mallMap.put("수취인핸드폰",mall.getRecuPhoneNumberCal());
+		mallMap.put("수취인집전화",mall.getRecuHomeNumberCal());
+		mallMap.put("우편번호",mall.getRecuZipCodeCal());
+		mallMap.put("주소",mall.getRecuAddressCal());
+		mallMap.put("회원번호",Integer.toString(mall.getUserNo()));
+
+		model.addAttribute("mallMap", mallMap);
+		model.addAttribute("arrCal", arrCal);
+		*/
 		return "adddata";
 	}
 	

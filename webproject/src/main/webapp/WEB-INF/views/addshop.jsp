@@ -220,7 +220,7 @@
 												.attr("name", arr[i].name)
 												.append(
 														$("<option>")
-																.html("선택"))));
+																.html(""))));
 
 			}
 		}

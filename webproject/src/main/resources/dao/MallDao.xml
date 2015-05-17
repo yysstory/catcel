@@ -4,12 +4,67 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.MallDao">
 
-
-
 	<insert id="insertMall" parameterType="Mall">
-		INSERT INTO MALL (MALL_NAME,MALL_COMMITSSION_CAL,DATA_START_CAL,ORCU_NAME_CAL) 
-		VALUES (#{mallName},#{mallCommitssionCal},#{dataStartCal},#{orcuNameCal})
+		INSERT INTO MALL(
+			MALL_NAME,
+			MALL_COMMITSSION_CAL,
+			DATA_START_CAL,
+			MALL_REGIST_DATE,
+			ORCU_NAME_CAL,
+			ORCU_ID_CAL,
+			ORCU_PHONENUMBER_CAL,
+			ORDER_NUMBER_CAL,
+			ORDER_CODE_CAL,
+			PAYMENT_DATE_CAL,
+			PAYMENT_METHOD_CAL,
+			DELIVERY_METHOD_CAL,
+			SHOPPING_CHARGE_CAL,
+			DELIVERY_MESSAGE_CAL,
+			BUY_DATE_CAL,
+			SHIPPING_DATE_CAL,
+			PRODUCT_NUMBER_CAL,
+			PRODUCT_NAME_CAL,
+			PRODUCT_OPTION_CAL,
+			PRODUCT_ADD_CAL,
+			PRODUCT_PRICE_CAL,
+			PRODUCT_QTY_CAL,
+			RECU_NAME_CAL,
+			RECU_PHONENUMBER_CAL,
+			RECU_HOMENUMBER_CAL,
+			RECU_ZIPCODE_CAL,
+			RECU_ADDRESS_CAL,
+			USER_NO
+		)
+		VALUES (
+			#{mallName},
+			#{mallCommitssionCal},
+			#{dataStartCal},
+		 	#{mallRegistDate},
+			#{orcuNameCal},
+			#{orcuIdCal},
+			#{orcuPhoneNumberCal},
+			#{orderNumberCal},
+			#{orderCodeCal},
+			#{paymentDateCal},
+			#{paymentMethodCal},
+			#{deliveryMethodCal},
+			#{shoppingChargeCal},
+			#{deliveryMessageCal},
+			#{buyDateCal},
+			#{shippingDateCal},
+			#{productNumberCal},
+			#{productNameCal},
+			#{productOptionCal},
+			#{productAddCal},
+			#{productPriceCal},
+			#{productQtyCal},
+			#{recuNameCal},
+			#{recuPhoneNumberCal},
+			#{recuHomeNumberCal},
+			#{recuZipCodeCal},
+			#{recuAddressCal},
+			#{userNo}
+			)
 	</insert>
-
 
 </mapper>

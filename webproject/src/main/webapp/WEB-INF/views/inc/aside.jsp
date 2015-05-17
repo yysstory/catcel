@@ -39,9 +39,9 @@
               <a href="#"><i class='fa fa-link'></i> <span>주문등록</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
                 <li class="active"><a href="addshop.htm">쇼핑몰추가+</a></li>
-                <li><a href="#">스토어팜</a></li>
-                <li><a href="#">인터파크</a></li>
-                <li><a href="#">11st</a></li>
+                <li><a href="adddata.htm?mall=스토어팜">스토어팜</a></li>
+                <li><a href="adddata.htm">인터파크</a></li>
+                <li><a href="adddata.htm">11st</a></li>
               </ul>
             </li>
             <li ><a href="#"><i class='fa fa-link'></i> <span></span></a></li>

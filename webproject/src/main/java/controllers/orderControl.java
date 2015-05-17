@@ -1,7 +1,5 @@
 package controllers;
 
-import java.util.HashMap;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,7 @@ import dao.MallDao;
 
 
 @Controller
-public class IndexController {
+public class orderControl {
 
 	@Autowired
 	MallDao mallDao;

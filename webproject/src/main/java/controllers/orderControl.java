@@ -41,7 +41,43 @@ public class orderControl {
 		
 		
 		HashMap<String, String> mallMap = new HashMap<String, String>();
+		
+		
 		mallMap.put("몰번호",Integer.toString(mall.getMallNo()));
+		mallMap.put("몰이름",mall.getMallName());
+		mallMap.put("수수료",Integer.toString(mall.getMallCommitssionCal()));
+		mallMap.put("데이터 시작행",Integer.toString(mall.getDataStartCal()));
+		mallMap.put("회원번호",Integer.toString(mall.getUserNo()));
+
+		mallMap.put(mall.getMallRegistDate(),"등록일");
+		mallMap.put(mall.getOrcuNameCal(),"구매자명");
+		mallMap.put(mall.getOrcuIdCal(),"구매자ID");
+		mallMap.put(mall.getOrcuPhoneNumberCal(),"구매자 연락처");
+		mallMap.put(mall.getOrderNumberCal(),"쇼핑몰 주문번호");
+		mallMap.put(mall.getOrderCodeCal(),"쇼핑몰 주문코드");
+		mallMap.put(mall.getPaymentDateCal(),"결제일");
+		mallMap.put(mall.getPaymentMethodCal(),"결제수단");
+		mallMap.put(mall.getDeliveryMethodCal(),"배송수단");
+		mallMap.put(mall.getShoppingChargeCal(),"배송비");
+		mallMap.put(mall.getDeliveryMessageCal(),"배송메세지");
+		mallMap.put(mall.getShippingDateCal(),"발송일");
+		mallMap.put(mall.getBuyDateCal(),"구매일");
+		mallMap.put(mall.getProductNumberCal(),"상품넘버");
+		mallMap.put(mall.getProductNameCal(),"상품명");
+		mallMap.put(mall.getProductOptionCal(),"옵션");
+		mallMap.put(mall.getProductAddCal(),"추가구성");
+		mallMap.put(mall.getProductPriceCal(),"상품가격");
+		mallMap.put(mall.getProductQtyCal(),"수량");
+		mallMap.put(mall.getRecuNameCal(),"수취인명");
+		mallMap.put(mall.getRecuPhoneNumberCal(),"수취인핸드폰");
+		mallMap.put(mall.getRecuHomeNumberCal(),"수취인집전화");
+		mallMap.put(mall.getRecuZipCodeCal(),"우편번호");
+		mallMap.put(mall.getRecuAddressCal(),"주소");
+		
+		
+		
+		
+/*		mallMap.put("몰번호",Integer.toString(mall.getMallNo()));
 		mallMap.put("몰이름",mall.getMallName());
 		mallMap.put("수수료",Integer.toString(mall.getMallCommitssionCal()));
 		mallMap.put("데이터 시작행",Integer.toString(mall.getDataStartCal()));
@@ -70,7 +106,7 @@ public class orderControl {
 		mallMap.put("우편번호",mall.getRecuZipCodeCal());
 		mallMap.put("주소",mall.getRecuAddressCal());
 		mallMap.put("회원번호",Integer.toString(mall.getUserNo()));
-
+*/
 		
 		System.out.println(mall.toString());
 		model.addAttribute("mallMap", mallMap);

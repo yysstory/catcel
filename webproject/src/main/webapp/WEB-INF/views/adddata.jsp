@@ -59,42 +59,38 @@
 								<table class="table table-hover">
 									<tbody>
 										<tr>
-
-
-											<th id="A"></th>
-											<th id="B"></th>
-											<th id="C"></th>
-											<th id="D"></th>
-											<th id="E"></th>
-											<th id="F"></th>
-											<th id="G"></th>
-											<th id="H"></th>
-											<th id="I">ID</th>
-											<th id="J">ID</th>
-											<th id="K">ID</th>
-											<th id="L">ID</th>
-											<th id="M">ID</th>
-											<th id="N">ID</th>
-											<th id="O">ID</th>
-											<th id="P">ID</th>
-											<th id="Q">ID</th>
-											<th id="R">ID</th>
-											<th id="S">ID</th>
-											<th id="T">ID</th>
-											<th id="U">ID</th>
-											<th id="V">ID</th>
-											<th id="W">ID</th>
-											<th id="X">ID</th>
-											<th id="Y">ID</th>
-											<th id="Z">ID</th>
-											<th id="AA">ID</th>
-											<th id="AB">ID</th>
-											<th id="AC">ID</th>
-											<th id="AD">ID</th>
-											<th id="AE">ID</th>
-											<th id="AF">ID</th>
-
-
+											<th id="A">${mallMap.A}</th>
+											<th id="B">${mallMap.B}</th>
+											<th id="C">${mallMap.C}</th>
+											<th id="D">${mallMap.D}</th>
+											<th id="E">${mallMap.E}</th>
+											<th id="F">${mallMap.F}</th>
+											<th id="G">${mallMap.G}</th>
+											<th id="H">${mallMap.H}</th>
+											<th id="I">${mallMap.I}</th>
+											<th id="J">${mallMap.J}</th>
+											<th id="K">${mallMap.K}</th>
+											<th id="L">${mallMap.L}</th>
+											<th id="M">${mallMap.M}</th>
+											<th id="N">${mallMap.N}</th>
+											<th id="O">${mallMap.O}</th>
+											<th id="P">${mallMap.P}</th>
+											<th id="Q">${mallMap.Q}</th>
+											<th id="R">${mallMap.R}</th>
+											<th id="S">${mallMap.S}</th>
+											<th id="T">${mallMap.T}</th>
+											<th id="U">${mallMap.U}</th>
+											<th id="V">${mallMap.V}</th>
+											<th id="W">${mallMap.W}</th>
+											<th id="X">${mallMap.X}</th>
+											<th id="Y">${mallMap.Y}</th>
+											<th id="Z">${mallMap.Z}</th>
+											<th id="AA">${mallMap.AA}</th>
+											<th id="AB">${mallMap.AB}</th>
+											<th id="AC">${mallMap.AC}</th>
+											<th id="AD">${mallMap.AD}</th>
+											<th id="AE">${mallMap.AE}</th>
+											<th id="AF">${mallMap.AF}</th>
 
 										</tr>
 										<tr>

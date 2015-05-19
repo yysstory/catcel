@@ -4,10 +4,44 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.MallDao">
 
-	<select id="selectMall" resultType="vo.Mall">
-		SELECT * 
-		FROM MALL 
-		WHERE MALL_NAME = "스토어팜"
+	<resultMap type="Mall" id="mallMap">
+		<id column="MALL_NO" property="mallNo" />
+		<result column="PAYMENT_DATE_CAL" property="paymentDateCal" />
+		<result column="RECU_HOMENUMBER_CAL" property="recuHomeNumberCal" />
+		<result column="SHIPPING_DATE_CAL" property="shippingDateCal" />
+		<result column="RECU_ADDRESS_CAL" property="recuAddressCal" />
+		<result column="DELIVERY_METHOD_CAL" property="deliveryMethodCal" />
+		<result column="RECU_ZIPCODE_CAL" property="recuZipCodeCal" />
+		<result column="SHOPPING_CHARGE_CAL" property="shoppingChargeCal" />
+		<result column="ORDER_NUMBER_CAL" property="orderNumberCal" />
+		<result column="DATA_START_CAL" property="dataStartCal" />
+		<result column="ORCU_NAME_CAL" property="orcuNameCal" />
+		<result column="PRODUCT_ADD_CAL" property="productAddCal" />
+		<result column="RECU_NAME_CAL" property="recuNameCal" />
+		<result column="PAYMENT_METHOD_CAL" property="paymentMethodCal" />
+		<result column="PRODUCT_PRICE_CAL" property="productPriceCal" />
+		<result column="ORDER_CODE_CAL" property="orderCodeCal" />
+		<result column="BUY_DATE_CAL" property="buyDateCal" />
+		<result column="MALL_NAME" property="mallName" />
+		<result column="PRODUCT_OPTION_CAL" property="productOptionCal" />
+		<result column="ORCU_ID_CAL" property="orcuIdCal" />
+		<result column="ORCU_PHONENUMBER_CAL" property="orcuPhoneNumberCal" />
+		<result column="RECU_PHONENUMBER_CAL" property="recuPhoneNumberCal" />
+		<result column="DELIVERY_MESSAGE_CAL" property="deliveryMessageCal" />
+		<result column="USER_NO" property="userNo" />
+		<result column="MALL_REGIST_DATE" property="mallRegistDate" />
+		<result column="PRODUCT_NUMBER_CAL" property="productNumberCal" />
+		<result column="PRODUCT_NAME_CAL" property="productNameCal" />
+		<result column="MALL_COMMITSSION_CAL" property="mallCommitssionCal" />
+		<result column="PRODUCT_QTY_CAL" property="productQtyCal" />
+	</resultMap>
+
+
+	<select id="selectMall" resultMap="mallMap">
+		SELECT *
+		FROM MALL
+		WHERE
+		MALL_NAME = "스토어팜"
 	</select>
 
 

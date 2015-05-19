@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +38,9 @@ public class orderControl {
 				"L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W",
 				"X", "Y", "Z", "AA", "AB", "AC", "AD", "AE", "AF"}; 
 		
-			System.out.println(mall.getMallName());
-
 		
-/*		HashMap<String, String> mallMap = new HashMap<String, String>();
+		
+		HashMap<String, String> mallMap = new HashMap<String, String>();
 		mallMap.put("몰번호",Integer.toString(mall.getMallNo()));
 		mallMap.put("몰이름",mall.getMallName());
 		mallMap.put("수수료",Integer.toString(mall.getMallCommitssionCal()));
@@ -70,9 +71,11 @@ public class orderControl {
 		mallMap.put("주소",mall.getRecuAddressCal());
 		mallMap.put("회원번호",Integer.toString(mall.getUserNo()));
 
+		
+		System.out.println(mall.toString());
 		model.addAttribute("mallMap", mallMap);
 		model.addAttribute("arrCal", arrCal);
-		*/
+		
 		return "adddata";
 	}
 	

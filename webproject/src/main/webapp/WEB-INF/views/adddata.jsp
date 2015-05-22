@@ -7,8 +7,16 @@
 <head>
 <jsp:include page="inc/commoncss.jsp"></jsp:include>
 <!--개별 css 추가  -->
+<style type="text/css">
+table {
+	white-space: nowrap;
+}
 
-
+#tableDiv {
+	overflow: scroll;
+	max-height: 600px;
+}
+</style>
 
 <!-- /여기까지 -->
 </head>
@@ -19,6 +27,9 @@
 		<jsp:include page="inc/aside.jsp"></jsp:include>
 
 		<!-- Content Wrapper. Contains page content -->
+
+
+
 		<div class="content-wrapper">
 			<!-- 페이지 제목 (큰글씨) -->
 			<section class="content-header">
@@ -43,19 +54,13 @@
 								<h3 class="box-title">테이블이름과 내용이 맞는지 확인하세요.</h3>
 								<div class="box-tools">
 									<div class="input-group">
-										<input type="text" name="table_search"
-											class="form-control input-sm pull-right"
-											style="width: 150px;" placeholder="Search">
-										<div class="input-group-btn">
-											<button class="btn btn-sm btn-default">
-												<i class="fa fa-search"></i>
-											</button>
-										</div>
+										<input type="file" id="xlf" name="xlfile"><br />
+
 									</div>
 								</div>
 							</div>
 							<!-- /.box-header -->
-							<div class="box-body table-responsive no-padding">
+							<div class="box-body table-responsive no-padding" id="tableDiv">
 								<table class="table table-hover">
 									<tbody>
 										<tr>
@@ -91,26 +96,6 @@
 											<th id="AD">${mallMap.AD}</th>
 											<th id="AE">${mallMap.AE}</th>
 											<th id="AF">${mallMap.AF}</th>
-
-										</tr>
-										<tr>
-											<td>1</td>
-											<td>2</td>
-											<td>3</td>
-											<td>4</td>
-											<td>5</td>
-											<td>1</td>
-											<td>2</td>
-											<td>3</td>
-											<td>4</td>
-											<td>5</td>
-											<td>1</td>
-											<td>2</td>
-											<td>3</td>
-											<td>4</td>
-											<td>5</td>
-											<td>1</td>
-											<td>5</td>
 										</tr>
 									</tbody>
 								</table>
@@ -121,23 +106,90 @@
 					</div>
 				</div>
 
-
-
-
-
-
-
+				<div class="col-lg-12" id="btn-group">
+					<button type="button" id="submit-btn" class="btn btn-primary">저장</button>
+					<button type="reset" class="btn btn-warning">취소</button>
+				</div>
 
 
 
 				<!--/여기까지 -->
 			</section>
+
+
+
 		</div>
+
+
 		<!-- /.content-wrapper -->
 		<jsp:include page="inc/footer.jsp"></jsp:include>
 	</div>
 	<jsp:include page="inc/commonjs.jsp"></jsp:include>
+	<script src="plugins/xlsx/shim.js"></script>
+	<script src="plugins/xlsx/jszip.js"></script>
+	<script src="plugins/xlsx/xlsx.js"></script>
+	<script src="plugins/xlsx/ods.js"></script>
 	<!-- 추가적인 자바스크립트 플러그인 추가 및 자바스크립트 코드 작성 -->
+
+	<script type="text/javascript">
+		var xlf = document.getElementById('xlf');
+		if (xlf.addEventListener)
+			xlf.addEventListener('change', handleFile, false);
+
+		var workbook;
+		function handleFile(e) {
+			var files = e.target.files;
+			var i, f;
+			for (i = 0, f = files[i]; i != files.length; ++i) {
+				var reader = new FileReader();
+				var name = f.name;
+				reader.onload = function(e) {
+					var data = e.target.result;
+
+					 workbook = XLSX.read(data, {
+						type : 'binary'
+					});
+
+				
+		 			var worksheet = workbook.Sheets[workbook.SheetNames[0]];
+
+		 			console.log(worksheet["A13"]);
+		 			console.log(typeof worksheet["A13"].w);
+		 			worksheet["A13"].w="oo";
+		 			console.log(worksheet["A13"]);
+		 			
+		 			console.log(worksheet["B13"]);
+		 			console.log(worksheet["C13"]);
+		 			console.log(typeof worksheet["C13"].w);
+
+		 			
+		 			console.log(worksheet["D13"]);
+		 			console.log(worksheet["E13"]);
+		 			console.log(worksheet["F13"]);
+		 			console.log(worksheet["G13"]);
+		 			console.log(worksheet["H13"]);
+		 			console.log(worksheet["I13"]);
+		 			console.log(worksheet["J13"]);
+		 			console.log(worksheet["K13"]);
+		 			console.log(worksheet["L13"]);
+		 			console.log(worksheet["M13"]);
+		 			console.log(worksheet["N13"]);
+		 			console.log(worksheet["O13"]);
+					 
+					
+
+					
+					
+					
+					
+				};
+				reader.readAsBinaryString(f);
+			}
+		}
+	</script>
+
+
+
 
 
 

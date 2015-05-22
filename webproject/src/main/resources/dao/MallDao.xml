@@ -41,7 +41,7 @@
 		SELECT *
 		FROM MALL
 		WHERE
-		MALL_NAME = "스토어팜"
+		MALL_NAME = #{value}
 	</select>
 
 

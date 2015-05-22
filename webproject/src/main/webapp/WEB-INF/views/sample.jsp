@@ -16,6 +16,9 @@
 	  <jsp:include page="inc/header.jsp"></jsp:include>
 	  <jsp:include page="inc/aside.jsp"></jsp:include>
 
+
+
+
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- 페이지 제목 (큰글씨) -->

@@ -71,7 +71,6 @@
 					</div>
 
 					<div class="col-lg-12">
-
 						<div id="btn-group">
 							<button type="button" id="submit-btn" class="btn btn-primary">저장</button>
 							<button type="reset" class="btn btn-warning">취소</button>

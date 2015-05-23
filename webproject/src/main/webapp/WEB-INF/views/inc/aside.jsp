@@ -29,6 +29,9 @@
           </form>
           <!-- /.search form -->
 
+
+
+
           <!-- Sidebar Menu -->
           <ul class="sidebar-menu">
           
@@ -44,6 +47,16 @@
                 <li><a href="adddata.htm">11st</a></li>
               </ul>
             </li>
+            
+            <li class="treeview active">
+              <a href="#"><i class="fa fa-laptop"></i>
+                <span>통계</span><i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu menu-open" style="display: block;">
+                <li class=""><a href="orderStat.htm"><i class="fa fa-circle-o"></i> 주문통계</a></li>
+                <li><a href="sellStat.htm"><i class="fa fa-circle-o"></i> 매출통계</a></li>
+              </ul>
+            </li>
+            
             <li ><a href="#"><i class='fa fa-link'></i> <span></span></a></li>
             <li><a href="#"><i class='fa fa-link'></i> <span>Another Link</span></a></li>
 

@@ -10,6 +10,7 @@
 <style type="text/css">
 table {
 	white-space: nowrap;
+	table-layout: fixed;
 }
 
 #tableDiv {
@@ -61,7 +62,7 @@ table {
 							</div>
 							<!-- /.box-header -->
 							<div class="box-body table-responsive no-padding" id="tableDiv">
-								<table class="table table-hover">
+								<table class="table table-hover" id="dataTable">
 									<tbody>
 										<tr>
 											<th id="A">${mallMap.A}</th>
@@ -132,6 +133,27 @@ table {
 	<!-- 추가적인 자바스크립트 플러그인 추가 및 자바스크립트 코드 작성 -->
 
 	<script type="text/javascript">
+		var columnList = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
+				"K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",
+				"W", "X", "Y", "Z", "AA", "AB", "AC", "AD", "AE", "AF" ];
+
+		//aa33 , a33 이런식으로 들어오는 정보를 처리 
+		function sheetInfoF(sheetInfo) {
+			var lastRow;
+			var typeSheetInfo1 = parseInt(sheetInfo.substring(1));
+			var typeSheetInfo2 = parseInt(sheetInfo.substring(2));
+
+			if (!isNaN(typeSheetInfo1)) {
+				lastRow = typeSheetInfo1;
+			} else if (!isNaN(typeSheetInfo2)) {
+				lastRow = typeSheetInfo2;
+			} else {
+				alret("알수없는 오류입니다. 관리자에게 문의하세요.");
+			}
+			return lastRow;
+
+		}
+
 		var xlf = document.getElementById('xlf');
 		if (xlf.addEventListener)
 			xlf.addEventListener('change', handleFile, false);
@@ -146,42 +168,29 @@ table {
 				reader.onload = function(e) {
 					var data = e.target.result;
 
-					 workbook = XLSX.read(data, {
+					workbook = XLSX.read(data, {
 						type : 'binary'
 					});
 
-				
-		 			var worksheet = workbook.Sheets[workbook.SheetNames[0]];
+					var worksheet = workbook.Sheets[workbook.SheetNames[0]];
 
-		 			console.log(worksheet["A13"]);
-		 			console.log(typeof worksheet["A13"].w);
-		 			worksheet["A13"].w="oo";
-		 			console.log(worksheet["A13"]);
-		 			
-		 			console.log(worksheet["B13"]);
-		 			console.log(worksheet["C13"]);
-		 			console.log(typeof worksheet["C13"].w);
+					//워크시트 열 + 
+					var sheetInfo = worksheet["!ref"].split(":")[1];
 
-		 			
-		 			console.log(worksheet["D13"]);
-		 			console.log(worksheet["E13"]);
-		 			console.log(worksheet["F13"]);
-		 			console.log(worksheet["G13"]);
-		 			console.log(worksheet["H13"]);
-		 			console.log(worksheet["I13"]);
-		 			console.log(worksheet["J13"]);
-		 			console.log(worksheet["K13"]);
-		 			console.log(worksheet["L13"]);
-		 			console.log(worksheet["M13"]);
-		 			console.log(worksheet["N13"]);
-		 			console.log(worksheet["O13"]);
-					 
-					
+					for (var i = 1; i < sheetInfoF(sheetInfo)+1; i++) {
+						var tableTr = $("<tr>").appendTo("#dataTable");
+						for (column in columnList) {
+							try{
+								$("<td>").html(worksheet[columnList[column]+i].w).appendTo(tableTr);	
+							}catch(e){
+								$("<td>").html("").appendTo(tableTr);
+							}
+								
+						}
+					}
 
 					
-					
-					
-					
+
 				};
 				reader.readAsBinaryString(f);
 			}

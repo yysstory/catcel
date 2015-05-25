@@ -2,18 +2,18 @@ package vo;
 
 public class User {
 	
-	int userNo;
-	String userEmail;
-	String userName;
-	String userPwd;
-	String userPno;
-	String userHno;
-	String userAdd;
-	String userProfilePhoto;
-	String userReg;
-	String userRating;
-	String userPoint;
-	String userRegChar;
+	private 	int userNo;
+	private 	String userEmail;
+	private 	String userName;
+	private 	String userPwd;
+	private 	String userPno;
+	private 	String userHno;
+	private 	String userAdd;
+	private 	String userProfilePhoto;
+	private 	String userReg;
+	private 	String userRating;
+	private 	String userPoint;
+	private 	String userRegChar;
 	
 	
 	public int getUserNo() {

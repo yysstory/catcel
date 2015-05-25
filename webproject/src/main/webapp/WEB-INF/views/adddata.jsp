@@ -65,7 +65,7 @@ table {
 								<table class="table table-hover" id="dataTable">
 									<tbody>
 										<tr>
-											<th id="A">${mallMap.A}</th>
+											<th id="A" data-override="">${mallMap.A}</th>
 											<th id="B">${mallMap.B}</th>
 											<th id="C">${mallMap.C}</th>
 											<th id="D">${mallMap.D}</th>
@@ -98,6 +98,7 @@ table {
 											<th id="AE">${mallMap.AE}</th>
 											<th id="AF">${mallMap.AF}</th>
 										</tr>
+						
 									</tbody>
 								</table>
 							</div>
@@ -130,13 +131,36 @@ table {
 	<script src="plugins/xlsx/jszip.js"></script>
 	<script src="plugins/xlsx/xlsx.js"></script>
 	<script src="plugins/xlsx/ods.js"></script>
+	<script src="plugins/tabletojson/jquery.tabletojson.js"></script>
 	<!-- 추가적인 자바스크립트 플러그인 추가 및 자바스크립트 코드 작성 -->
 
 	<script type="text/javascript">
-		var columnList = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
+		
+
+	$('#submit-btn').on('click', function() {
+		  var tableJson = $('#dataTable').tableToJSON();
+		  
+		  $.ajax({
+	            type: 'post',
+	            url: 'adddata.htm',
+	            data: JSON.stringify(tableJson),
+	            contentType: "application/json; charset=utf-8",
+	            traditional: true,
+	            dataType : 'json',
+	            success: function (data) {
+	                console.log("성공 : "+data)
+	            }
+	        });
+		  
+		});
+	
+	
+	
+	var columnList = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
 				"K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",
 				"W", "X", "Y", "Z", "AA", "AB", "AC", "AD", "AE", "AF" ];
-
+	
+		
 		//aa33 , a33 이런식으로 들어오는 정보를 처리 
 		function sheetInfoF(sheetInfo) {
 			var lastRow;

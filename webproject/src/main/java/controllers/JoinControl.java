@@ -5,14 +5,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import dao.MallDao;
+import vo.User;
+import dao.UserDao;
 
 
 @Controller
-public class statsControl {
+public class JoinControl {
 
 	@Autowired
-	MallDao mallDao;
+	UserDao userDao;
 	/*
 	@RequestMapping("/index")
 	public String goMain(){
@@ -58,14 +59,20 @@ public class statsControl {
 	}
 	*/
 	
-	@RequestMapping(value="/orderStat",method=RequestMethod.GET)
-	public String orderStat(){
-		return "orderStat";
+	@RequestMapping(value="/join",method=RequestMethod.GET)
+	public String join(){
+		return "join";
 	}
 	
-	@RequestMapping(value="/sellStat",method=RequestMethod.GET)
-	public String sellStat(){
-		return "sellStat";
+	@RequestMapping(value="/join",method=RequestMethod.POST)
+	public String join(User user){
+		userDao.insertUser(user);
+		
+		return "redirect:index";
 	}
 	
+	@RequestMapping(value="/login",method=RequestMethod.GET)
+	public String login(){
+		return "login";
+	}
 }

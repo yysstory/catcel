@@ -74,6 +74,7 @@ public class orderControl {
 		mallMap.put(mall.getRecuHomeNumberCal(),"수취인집전화");
 		mallMap.put(mall.getRecuZipCodeCal(),"우편번호");
 		mallMap.put(mall.getRecuAddressCal(),"주소");
+		mallMap.put(mall.getOrderTotalAmountCal(), "주문총액");
 		
 
 		System.out.println(mall.toString());

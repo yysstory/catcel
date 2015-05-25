@@ -10,12 +10,12 @@
 <style type="text/css">
 table {
 	white-space: nowrap;
-	table-layout: fixed;
 }
 
 #tableDiv {
 	overflow: scroll;
 	max-height: 600px;
+	min-height: 300px;
 }
 </style>
 
@@ -154,15 +154,36 @@ table {
 
 		}
 
+		function addTd(startNumber, sheetInfo, worksheet) {
+			for (var i = startNumber; i < sheetInfoF(sheetInfo) + 1; i++) {
+				var tableTr = $("<tr>").appendTo("#dataTable").addClass(
+						"dataTr");
+				for (column in columnList) {
+					try {
+						$("<td>").html(worksheet[columnList[column] + i].w)
+								.appendTo(tableTr);
+					} catch (e) {
+						$("<td>").html("").appendTo(tableTr);
+					}
+				}
+			}
+		}
+
 		var xlf = document.getElementById('xlf');
-		if (xlf.addEventListener)
+		
+
+		if (xlf.addEventListener) {
 			xlf.addEventListener('change', handleFile, false);
+		}
+
 
 		var workbook;
+
 		function handleFile(e) {
+			$(".dataTr").remove();
 			var files = e.target.files;
 			var i, f;
-			for (i = 0, f = files[i]; i != files.length; ++i) {
+				for (i = 0, f = files[i]; i != files.length; ++i) {
 				var reader = new FileReader();
 				var name = f.name;
 				reader.onload = function(e) {
@@ -171,29 +192,17 @@ table {
 					workbook = XLSX.read(data, {
 						type : 'binary'
 					});
-
 					var worksheet = workbook.Sheets[workbook.SheetNames[0]];
-
-					//워크시트 열 + 
+					console.time("소요시간");
 					var sheetInfo = worksheet["!ref"].split(":")[1];
-
-					for (var i = 1; i < sheetInfoF(sheetInfo)+1; i++) {
-						var tableTr = $("<tr>").appendTo("#dataTable");
-						for (column in columnList) {
-							try{
-								$("<td>").html(worksheet[columnList[column]+i].w).appendTo(tableTr);	
-							}catch(e){
-								$("<td>").html("").appendTo(tableTr);
-							}
-								
-						}
-					}
-
-					
+					addTd(2, sheetInfo, worksheet);
+					console.timeEnd("소요시간");
 
 				};
 				reader.readAsBinaryString(f);
 			}
+
+			
 		}
 	</script>
 

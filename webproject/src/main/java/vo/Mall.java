@@ -35,7 +35,12 @@ public class Mall implements Serializable{
 	String recuHomeNumberCal;
 	String recuZipCodeCal;
 	String recuAddressCal;
+	String orderTotalAmountCal;
 	int userNo;
+	
+	
+	
+
 	
 	
 	
@@ -61,8 +66,24 @@ public class Mall implements Serializable{
 				+ ", recuPhoneNumberCal=" + recuPhoneNumberCal
 				+ ", recuHomeNumberCal=" + recuHomeNumberCal
 				+ ", recuZipCodeCal=" + recuZipCodeCal + ", recuAddressCal="
-				+ recuAddressCal + ", userNo=" + userNo + "]";
+				+ recuAddressCal + ", orderTotalAmountCal="
+				+ orderTotalAmountCal + ", userNo=" + userNo + "]";
 	}
+
+
+
+	public String getOrderTotalAmountCal() {
+		return orderTotalAmountCal;
+	}
+
+
+
+	public void setOrderTotalAmountCal(String orderTotalAmountCal) {
+		this.orderTotalAmountCal = orderTotalAmountCal;
+	}
+
+
+
 	public String getShippingDateCal() {
 		return shippingDateCal;
 	}

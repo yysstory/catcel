@@ -65,40 +65,40 @@ table {
 								<table class="table table-hover" id="dataTable">
 									<tbody>
 										<tr>
-											<th id="A" data-override="">${mallMap.A}</th>
-											<th id="B">${mallMap.B}</th>
-											<th id="C">${mallMap.C}</th>
-											<th id="D">${mallMap.D}</th>
-											<th id="E">${mallMap.E}</th>
-											<th id="F">${mallMap.F}</th>
-											<th id="G">${mallMap.G}</th>
-											<th id="H">${mallMap.H}</th>
-											<th id="I">${mallMap.I}</th>
-											<th id="J">${mallMap.J}</th>
-											<th id="K">${mallMap.K}</th>
-											<th id="L">${mallMap.L}</th>
-											<th id="M">${mallMap.M}</th>
-											<th id="N">${mallMap.N}</th>
-											<th id="O">${mallMap.O}</th>
-											<th id="P">${mallMap.P}</th>
-											<th id="Q">${mallMap.Q}</th>
-											<th id="R">${mallMap.R}</th>
-											<th id="S">${mallMap.S}</th>
-											<th id="T">${mallMap.T}</th>
-											<th id="U">${mallMap.U}</th>
-											<th id="V">${mallMap.V}</th>
-											<th id="W">${mallMap.W}</th>
-											<th id="X">${mallMap.X}</th>
-											<th id="Y">${mallMap.Y}</th>
-											<th id="Z">${mallMap.Z}</th>
-											<th id="AA">${mallMap.AA}</th>
-											<th id="AB">${mallMap.AB}</th>
-											<th id="AC">${mallMap.AC}</th>
-											<th id="AD">${mallMap.AD}</th>
-											<th id="AE">${mallMap.AE}</th>
-											<th id="AF">${mallMap.AF}</th>
+											<th id="A" data-override="${mallMap.a}">${mallMap.A}</th>
+											<th id="B" data-override="${mallMap.b}">${mallMap.B}</th>
+											<th id="C" data-override="${mallMap.c}">${mallMap.C}</th>
+											<th id="D" data-override="${mallMap.d}">${mallMap.D}</th>
+											<th id="E" data-override="${mallMap.e}">${mallMap.E}</th>
+											<th id="F" data-override="${mallMap.f}">${mallMap.F}</th>
+											<th id="G" data-override="${mallMap.g}">${mallMap.G}</th>
+											<th id="H" data-override="${mallMap.h}">${mallMap.H}</th>
+											<th id="I" data-override="${mallMap.i}">${mallMap.I}</th>
+											<th id="J" data-override="${mallMap.j}">${mallMap.J}</th>
+											<th id="K" data-override="${mallMap.k}">${mallMap.K}</th>
+											<th id="L" data-override="${mallMap.l}">${mallMap.L}</th>
+											<th id="M" data-override="${mallMap.m}">${mallMap.M}</th>
+											<th id="N" data-override="${mallMap.n}">${mallMap.N}</th>
+											<th id="O" data-override="${mallMap.o}">${mallMap.O}</th>
+											<th id="P" data-override="${mallMap.p}">${mallMap.P}</th>
+											<th id="Q" data-override="${mallMap.q}">${mallMap.Q}</th>
+											<th id="R" data-override="${mallMap.r}">${mallMap.R}</th>
+											<th id="S" data-override="${mallMap.s}">${mallMap.S}</th>
+											<th id="T" data-override="${mallMap.t}">${mallMap.T}</th>
+											<th id="U" data-override="${mallMap.u}">${mallMap.U}</th>
+											<th id="V" data-override="${mallMap.v}">${mallMap.V}</th>
+											<th id="W" data-override="${mallMap.w}">${mallMap.W}</th>
+											<th id="X" data-override="${mallMap.x}">${mallMap.X}</th>
+											<th id="Y" data-override="${mallMap.y}">${mallMap.Y}</th>
+											<th id="Z" data-override="${mallMap.z}">${mallMap.Z}</th>
+											<th id="AA" data-override="${mallMap.aa}">${mallMap.AA}</th>
+											<th id="AB" data-override="${mallMap.ab}">${mallMap.AB}</th>
+											<th id="AC" data-override="${mallMap.ac}">${mallMap.AC}</th>
+											<th id="AD" data-override="${mallMap.ad}">${mallMap.AD}</th>
+											<th id="AE" data-override="${mallMap.ae}">${mallMap.AE}</th>
+											<th id="AF" data-override="${mallMap.af}">${mallMap.AF}</th>
 										</tr>
-						
+
 									</tbody>
 								</table>
 							</div>
@@ -135,32 +135,31 @@ table {
 	<!-- 추가적인 자바스크립트 플러그인 추가 및 자바스크립트 코드 작성 -->
 
 	<script type="text/javascript">
-		
+		$('#submit-btn').on('click', function() {
+			var tableJson = $('#dataTable').tableToJSON();
+			//console.log(JSON.stringify(tableJson));
+			//var data='{"orderJsons":' + JSON.stringify(tableJson)+'}';
+			//var data=JSON.stringify(tableJson);
 
-	$('#submit-btn').on('click', function() {
-		  var tableJson = $('#dataTable').tableToJSON();
-		  
-		  $.ajax({
-	            type: 'post',
-	            url: 'adddata.htm',
-	            data: JSON.stringify(tableJson),
-	            contentType: "application/json; charset=utf-8",
-	            traditional: true,
-	            dataType : 'json',
-	            success: function (data) {
-	                console.log("성공 : "+data)
-	            }
-	        });
-		  
+			
+		 $.ajax({
+				type : 'post',
+				url : '/webproject/adddata.json',
+  			 data: JSON.stringify(tableJson), 
+		 		dataType : 'json',
+				contentType: 'application/json',
+				success : function(data) {
+					console.log(data);
+					
+				}
+			});
+
 		});
-	
-	
-	
-	var columnList = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
+
+		var columnList = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
 				"K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",
 				"W", "X", "Y", "Z", "AA", "AB", "AC", "AD", "AE", "AF" ];
-	
-		
+
 		//aa33 , a33 이런식으로 들어오는 정보를 처리 
 		function sheetInfoF(sheetInfo) {
 			var lastRow;
@@ -194,12 +193,10 @@ table {
 		}
 
 		var xlf = document.getElementById('xlf');
-		
 
 		if (xlf.addEventListener) {
 			xlf.addEventListener('change', handleFile, false);
 		}
-
 
 		var workbook;
 
@@ -207,7 +204,7 @@ table {
 			$(".dataTr").remove();
 			var files = e.target.files;
 			var i, f;
-				for (i = 0, f = files[i]; i != files.length; ++i) {
+			for (i = 0, f = files[i]; i != files.length; ++i) {
 				var reader = new FileReader();
 				var name = f.name;
 				reader.onload = function(e) {
@@ -226,7 +223,6 @@ table {
 				reader.readAsBinaryString(f);
 			}
 
-			
 		}
 	</script>
 

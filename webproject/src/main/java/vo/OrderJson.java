@@ -4,7 +4,9 @@ import java.io.Serializable;
 
 public class OrderJson implements Serializable{
 
-	
+
+
+
 	/**
 	 * 
 	 */
@@ -199,9 +201,6 @@ public class OrderJson implements Serializable{
 	public void setProductQty(String productQty) {
 		this.productQty = productQty;
 	}
-	
-	
-	
 	@Override
 	public String toString() {
 		return "OrderJson [orcuName=" + orcuName + ", orcuId=" + orcuId
@@ -223,6 +222,8 @@ public class OrderJson implements Serializable{
 				+ productQty + "]";
 	}
 	
+	
+
 	
 
 	

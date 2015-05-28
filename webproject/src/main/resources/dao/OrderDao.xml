@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.MallDao">
+
+	<resultMap type="Mall" id="mallMap">
+		<id column="MALL_NO" property="mallNo" />
+		<result column="PAYMENT_DATE_CAL" property="paymentDateCal" />
+		<result column="RECU_HOMENUMBER_CAL" property="recuHomeNumberCal" />
+		<result column="SHIPPING_DATE_CAL" property="shippingDateCal" />
+		<result column="RECU_ADDRESS_CAL" property="recuAddressCal" />
+		<result column="DELIVERY_METHOD_CAL" property="deliveryMethodCal" />
+		<result column="RECU_ZIPCODE_CAL" property="recuZipCodeCal" />
+		<result column="SHOPPING_CHARGE_CAL" property="shoppingChargeCal" />
+		<result column="ORDER_NUMBER_CAL" property="orderNumberCal" />
+		<result column="DATA_START_CAL" property="dataStartCal" />
+		<result column="ORCU_NAME_CAL" property="orcuNameCal" />
+		<result column="PRODUCT_ADD_CAL" property="productAddCal" />
+		<result column="RECU_NAME_CAL" property="recuNameCal" />
+		<result column="PAYMENT_METHOD_CAL" property="paymentMethodCal" />
+		<result column="PRODUCT_PRICE_CAL" property="productPriceCal" />
+		<result column="ORDER_CODE_CAL" property="orderCodeCal" />
+		<result column="BUY_DATE_CAL" property="buyDateCal" />
+		<result column="MALL_NAME" property="mallName" />
+		<result column="PRODUCT_OPTION_CAL" property="productOptionCal" />
+		<result column="ORCU_ID_CAL" property="orcuIdCal" />
+		<result column="ORCU_PHONENUMBER_CAL" property="orcuPhoneNumberCal" />
+		<result column="RECU_PHONENUMBER_CAL" property="recuPhoneNumberCal" />
+		<result column="DELIVERY_MESSAGE_CAL" property="deliveryMessageCal" />
+		<result column="USER_NO" property="userNo" />
+		<result column="MALL_REGIST_DATE" property="mallRegistDate" />
+		<result column="PRODUCT_NUMBER_CAL" property="productNumberCal" />
+		<result column="PRODUCT_NAME_CAL" property="productNameCal" />
+		<result column="MALL_COMMITSSION_CAL" property="mallCommitssionCal" />
+		<result column="PRODUCT_QTY_CAL" property="productQtyCal" />
+		<result column="ORDER_TOTAL_AMOUNT_CAL" property="orderTotalAmountCal" />
+		
+	</resultMap>
+
+
+	<select id="selectMall" resultMap="mallMap">
+		SELECT *
+		FROM MALL
+		WHERE
+		MALL_NAME = #{value}
+	</select>
+
+
+
+	<insert id="insertMall" parameterType="Mall">
+		INSERT INTO MALL(
+		MALL_NAME,
+		MALL_COMMITSSION_CAL,
+		DATA_START_CAL,
+		MALL_REGIST_DATE,
+		ORCU_NAME_CAL,
+		ORCU_ID_CAL,
+		ORCU_PHONENUMBER_CAL,
+		ORDER_NUMBER_CAL,
+		ORDER_CODE_CAL,
+		PAYMENT_DATE_CAL,
+		PAYMENT_METHOD_CAL,
+		DELIVERY_METHOD_CAL,
+		SHOPPING_CHARGE_CAL,
+		DELIVERY_MESSAGE_CAL,
+		BUY_DATE_CAL,
+		SHIPPING_DATE_CAL,
+		PRODUCT_NUMBER_CAL,
+		PRODUCT_NAME_CAL,
+		PRODUCT_OPTION_CAL,
+		PRODUCT_ADD_CAL,
+		PRODUCT_PRICE_CAL,
+		PRODUCT_QTY_CAL,
+		RECU_NAME_CAL,
+		RECU_PHONENUMBER_CAL,
+		RECU_HOMENUMBER_CAL,
+		RECU_ZIPCODE_CAL,
+		RECU_ADDRESS_CAL,
+		USER_NO,
+		ORDER_TOTAL_AMOUNT_CAL
+		)
+		VALUES (
+		#{mallName},
+		#{mallCommitssionCal},
+		#{dataStartCal},
+		#{mallRegistDate},
+		#{orcuNameCal},
+		#{orcuIdCal},
+		#{orcuPhoneNumberCal},
+		#{orderNumberCal},
+		#{orderCodeCal},
+		#{paymentDateCal},
+		#{paymentMethodCal},
+		#{deliveryMethodCal},
+		#{shoppingChargeCal},
+		#{deliveryMessageCal},
+		#{buyDateCal},
+		#{shippingDateCal},
+		#{productNumberCal},
+		#{productNameCal},
+		#{productOptionCal},
+		#{productAddCal},
+		#{productPriceCal},
+		#{productQtyCal},
+		#{recuNameCal},
+		#{recuPhoneNumberCal},
+		#{recuHomeNumberCal},
+		#{recuZipCodeCal},
+		#{recuAddressCal},
+		#{userNo},
+		#{orderTotalAmountCal}
+		)
+	</insert>
+
+</mapper>

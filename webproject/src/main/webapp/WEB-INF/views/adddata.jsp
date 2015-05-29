@@ -150,7 +150,6 @@ table {
 				contentType: 'application/json',
 				success : function(data) {
 					console.log(data);
-					
 				}
 			});
 

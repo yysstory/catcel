@@ -1,6 +1,7 @@
 package dao;
 
-import vo.OrderJson;
+import vo.OrderRaw;
+
 
 
 public interface OrderDao {
@@ -9,6 +10,6 @@ public interface OrderDao {
 	public Mall selectMall(String mallName);
 */
 	
-	public void insertOrderJson(OrderJson[] orderJson);
+	public void insertOrderJson(OrderRaw[] OrderRaws);
 	
 }

@@ -137,17 +137,14 @@ table {
 	<script type="text/javascript">
 		$('#submit-btn').on('click', function() {
 			var tableJson = $('#dataTable').tableToJSON();
-			//console.log(JSON.stringify(tableJson));
-			//var data='{"orderJsons":' + JSON.stringify(tableJson)+'}';
-			//var data=JSON.stringify(tableJson);
-
-			
-		 $.ajax({
+		
+			$.ajax({
 				type : 'post',
 				url : '/webproject/adddata.json',
-  			 data: JSON.stringify(tableJson), 
-		 		dataType : 'json',
-				contentType: 'application/json',
+		//		data : JSON.stringify(tableJson),
+				data : JSON.stringify(tableJson),
+				dataType : 'json',
+				contentType: "application/json; charset=utf-8",
 				success : function(data) {
 					console.log(data);
 				}

@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import vo.Mall;
-import vo.OrderJson;
+import vo.OrderRaw;
 import dao.MallDao;
 
 @Controller
-public class orderControl {
+public class OrderControl {
 
 	@Autowired
 	MallDao mallDao;
@@ -122,10 +122,9 @@ public class orderControl {
 	}
 
 	@RequestMapping(value = "/adddata", method = RequestMethod.POST)
-	public Object goAddData(@RequestBody OrderJson[] OrderJsons)  {
-		System.out.println(OrderJsons.length);
-		for (OrderJson OrderJson : OrderJsons){
-			System.out.println(OrderJson.toString());
+	public Object goAddData(@RequestBody OrderRaw[] orderRaws)  {
+	for (OrderRaw orderRaw : orderRaws){
+			System.out.println(orderRaw.toString());
 		}
 		HashMap<String, String> resultMap = new HashMap<>();
 		resultMap.put("success", "ok");

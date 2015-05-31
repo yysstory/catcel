@@ -9,7 +9,7 @@ import dao.MallDao;
 
 
 @Controller
-public class statsControl {
+public class StatsControl {
 
 	@Autowired
 	MallDao mallDao;

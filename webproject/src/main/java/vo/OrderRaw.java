@@ -2,49 +2,60 @@ package vo;
 
 import java.io.Serializable;
 
-public class OrderJson implements Serializable{
-
-
-
+public class OrderRaw implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	
-	private 	String orcuName;
-	private 	String orcuId;
-	private 	String orcuPhoneNumber;
-	private 	String orcuMemo;
-	
-	private 	String orderNumber;
-	private 	String paymentDate;
-	private 	String paymentMethod;
-	private 	String deliveryMethod;
-	private 	String mallName;
-	private 	String shoppingCharge;
-	private 	String deliveryMessage;
-	private 	String shippingDate;
-	private 	String buyDate;
-	private 	String uploadDate;
-	private 	String orderTotalAmount;
 
-	private 	String recuName;
-	private 	String recuPhoneNumber;
-	private 	String recuHomeNumber;
-	private 	String recuZipCode;
-	private 	String recuAddress;
+	private String mallName;
+	private String mallRegistDate;
+
+	private String orcuName;
+	private String orcuId;
+	private String orcuPhoneNumber;
+	private String orcuMemo;
+
+	private String orderNumber;
+	private String paymentDate;
+	private String paymentMethod;
+	private String deliveryMethod;
+	private String shoppingCharge;
+	private String deliveryMessage;
+	private String shippingDate;
+	private String buyDate;
+	private String uploadDate;
+	private String orderTotalAmount;
+
+	private String recuName;
+	private String recuPhoneNumber;
+	private String recuHomeNumber;
+	private String recuZipCode;
+	private String recuAddress;
+
+	private String productNumber;
+	private String productName;
+	private String productOption;
+	private String productAdd;
+	private String productPrice;
+	private String productQty;
+	private String userNo;
 	
-	private 	String productNumber;
-	private 	String productName;
-	private 	String productOption;
-	private 	String productAdd;
-	private 	String productPrice;
-	private 	String productQty;
 	
 	
-	
+	public String getMallName() {
+		return mallName;
+	}
+	public void setMallName(String mallName) {
+		this.mallName = mallName;
+	}
+	public String getMallRegistDate() {
+		return mallRegistDate;
+	}
+	public void setMallRegistDate(String mallRegistDate) {
+		this.mallRegistDate = mallRegistDate;
+	}
 	public String getOrcuName() {
 		return orcuName;
 	}
@@ -92,12 +103,6 @@ public class OrderJson implements Serializable{
 	}
 	public void setDeliveryMethod(String deliveryMethod) {
 		this.deliveryMethod = deliveryMethod;
-	}
-	public String getMallName() {
-		return mallName;
-	}
-	public void setMallName(String mallName) {
-		this.mallName = mallName;
 	}
 	public String getShoppingCharge() {
 		return shoppingCharge;
@@ -201,35 +206,39 @@ public class OrderJson implements Serializable{
 	public void setProductQty(String productQty) {
 		this.productQty = productQty;
 	}
+	public String getUserNo() {
+		return userNo;
+	}
+	public void setUserNo(String userNo) {
+		this.userNo = userNo;
+	}
 	@Override
 	public String toString() {
-		return "OrderJson [orcuName=" + orcuName + ", orcuId=" + orcuId
-				+ ", orcuPhoneNumber=" + orcuPhoneNumber + ", orcuMemo="
-				+ orcuMemo + ", orderNumber=" + orderNumber + ", paymentDate="
-				+ paymentDate + ", paymentMethod=" + paymentMethod
-				+ ", deliveryMethod=" + deliveryMethod + ", mallName="
-				+ mallName + ", shoppingCharge=" + shoppingCharge
-				+ ", deliveryMessage=" + deliveryMessage + ", shippingDate="
-				+ shippingDate + ", buyDate=" + buyDate + ", uploadDate="
-				+ uploadDate + ", orderTotalAmount=" + orderTotalAmount
-				+ ", recuName=" + recuName + ", recuPhoneNumber="
-				+ recuPhoneNumber + ", recuHomeNumber=" + recuHomeNumber
-				+ ", recuZipCode=" + recuZipCode + ", recuAddress="
-				+ recuAddress + ", productNumber=" + productNumber
-				+ ", productName=" + productName + ", productOption="
-				+ productOption + ", productAdd=" + productAdd
-				+ ", productPrice=" + productPrice + ", productQty="
-				+ productQty + "]";
+		return "OrderRaw [mallName=" + mallName + ", mallRegistDate="
+				+ mallRegistDate + ", orcuName=" + orcuName + ", orcuId="
+				+ orcuId + ", orcuPhoneNumber=" + orcuPhoneNumber
+				+ ", orcuMemo=" + orcuMemo + ", orderNumber=" + orderNumber
+				+ ", paymentDate=" + paymentDate + ", paymentMethod="
+				+ paymentMethod + ", deliveryMethod=" + deliveryMethod
+				+ ", shoppingCharge=" + shoppingCharge + ", deliveryMessage="
+				+ deliveryMessage + ", shippingDate=" + shippingDate
+				+ ", buyDate=" + buyDate + ", uploadDate=" + uploadDate
+				+ ", orderTotalAmount=" + orderTotalAmount + ", recuName="
+				+ recuName + ", recuPhoneNumber=" + recuPhoneNumber
+				+ ", recuHomeNumber=" + recuHomeNumber + ", recuZipCode="
+				+ recuZipCode + ", recuAddress=" + recuAddress
+				+ ", productNumber=" + productNumber + ", productName="
+				+ productName + ", productOption=" + productOption
+				+ ", productAdd=" + productAdd + ", productPrice="
+				+ productPrice + ", productQty=" + productQty + ", userNo="
+				+ userNo + "]";
 	}
 	
 	
-
 	
-
 	
 
-	
-	
-	
+
+
 
 }

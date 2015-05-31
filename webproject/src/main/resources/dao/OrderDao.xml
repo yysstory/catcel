@@ -3,13 +3,13 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.OrderDao">
-
+<!-- 
 	<insert id="insertOrderJson" parameterType="String []">
 
 		INSERT INTO ORDER_RAW (
-<!-- 		MALL_NAME,
+		MALL_NAME,
 		MALL_COMMITSSION_CAL,
-		MALL_REGIST_DATE, -->
+		MALL_REGIST_DATE,
 		ORDER_NUMBER,
 		PAYMENT_DATE,
 		PAYMENT_METHOD,
@@ -48,7 +48,7 @@
 			)
 		</foreach>
 
-	</insert>
+	</insert> -->
 
 
 </mapper>

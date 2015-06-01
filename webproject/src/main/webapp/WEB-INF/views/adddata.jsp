@@ -138,6 +138,21 @@ table {
 		$('#submit-btn').on('click', function() {
 			var tableJson = $('#dataTable').tableToJSON();
 		
+			
+		/* 	   $.ajax({
+			        type : 'post',
+			        url : '/webproject/adddata.json',
+			        data : {'name':'용식'},
+			        dataType : 'json',
+			        success : function(data) {
+			          console.log(data.success);
+			           console.log(data.age);
+			           $("h1").html(data.age);
+			        }
+			        
+			      }); */
+			
+			
 			$.ajax({
 				type : 'post',
 				url : '/webproject/adddata.json',

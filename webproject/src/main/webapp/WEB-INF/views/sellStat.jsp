@@ -180,16 +180,16 @@
                   ];
 	     
      
-      $.ajax({
-    	  method: "POST",
-    	  url: "some.htm",
-    	  data: { name: "John", location: "Boston" }
-    	})
-    	  .sucess(function( msg ) {
-
-    	    alert( "Data Saved: " + msg );
-
-    	  });
+		      $.ajax({
+		    	  method: "POST",
+		    	  url: "some.htm",
+		    	  data: { name: "John", location: "Boston" }
+		    	})
+	    	  .sucess(function( msg ) {
+	
+	    	    alert( "Data Saved: " + msg );
+	
+	    	  });
 
 
       

@@ -122,6 +122,22 @@ public class OrderControl {
 		return "adddata";
 	}
 
+/*	@RequestMapping(value = "/adddata", method = RequestMethod.POST)
+	public Object goAddData(String name)  {
+	
+		System.out.println(name);
+		int age = 23;
+		Mall mall = mallDao.selectMall("스토어팜");
+		
+		String strAge = Integer.toString(age);
+		HashMap<String, String> resultMap = new HashMap<>();
+		resultMap.put("success", "ok");
+		resultMap.put("age", strAge);
+		
+		return resultMap;
+	}
+	*/
+	
 	@RequestMapping(value = "/adddata", method = RequestMethod.POST)
 	public Object goAddData(@RequestBody OrderRaw[] orderRaws)  {
 	for (OrderRaw orderRaw : orderRaws){

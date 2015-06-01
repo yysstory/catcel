@@ -34,6 +34,8 @@
 		<result column="PRODUCT_NAME_CAL" property="productNameCal" />
 		<result column="MALL_COMMITSSION_CAL" property="mallCommitssionCal" />
 		<result column="PRODUCT_QTY_CAL" property="productQtyCal" />
+		<result column="ORDER_TOTAL_AMOUNT_CAL" property="orderTotalAmountCal" />
+		
 	</resultMap>
 
 
@@ -75,7 +77,8 @@
 		RECU_HOMENUMBER_CAL,
 		RECU_ZIPCODE_CAL,
 		RECU_ADDRESS_CAL,
-		USER_NO
+		USER_NO,
+		ORDER_TOTAL_AMOUNT_CAL
 		)
 		VALUES (
 		#{mallName},
@@ -105,7 +108,8 @@
 		#{recuHomeNumberCal},
 		#{recuZipCodeCal},
 		#{recuAddressCal},
-		#{userNo}
+		#{userNo},
+		#{orderTotalAmountCal}
 		)
 	</insert>
 

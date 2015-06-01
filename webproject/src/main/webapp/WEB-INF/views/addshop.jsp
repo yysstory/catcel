@@ -149,6 +149,9 @@
 		}, {
 			"name" : "productQtyCal",
 			"html" : "수량"
+		},{
+			"name" : "orderTotalAmountCal",
+			"html" : "총액"
 		}, {
 			"name" : "recuNameCal",
 			"html" : "수취인명"

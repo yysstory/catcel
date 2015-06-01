@@ -7,35 +7,40 @@ public class Mall implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 
-	int mallNo;
-	String mallName;
-	int mallCommitssionCal;
-	int dataStartCal;
-	String mallRegistDate;
-	String orcuNameCal;
-	String orcuIdCal;
-	String orcuPhoneNumberCal;
-	String orderNumberCal;
-	String orderCodeCal;
-	String paymentDateCal;
-	String paymentMethodCal;
-	String deliveryMethodCal;
-	String shoppingChargeCal;
-	String deliveryMessageCal;
-	String shippingDateCal;
-	String buyDateCal;
-	String productNumberCal;
-	String productNameCal;
-	String productOptionCal;
-	String productAddCal;
-	String productPriceCal;
-	String productQtyCal;
-	String recuNameCal;
-	String recuPhoneNumberCal;
-	String recuHomeNumberCal;
-	String recuZipCodeCal;
-	String recuAddressCal;
-	int userNo;
+	private int mallNo;
+	private String mallName;
+	private int mallCommitssionCal;
+	private int dataStartCal;
+	private String mallRegistDate;
+	private String orcuNameCal;
+	private String orcuIdCal;
+	private String orcuPhoneNumberCal;
+	private String orderNumberCal;
+	private String orderCodeCal;
+	private String paymentDateCal;
+	private String paymentMethodCal;
+	private String deliveryMethodCal;
+	private String shoppingChargeCal;
+	private String deliveryMessageCal;
+	private String shippingDateCal;
+	private String buyDateCal;
+	private String productNumberCal;
+	private String productNameCal;
+	private String productOptionCal;
+	private String productAddCal;
+	private String productPriceCal;
+	private String productQtyCal;
+	private String recuNameCal;
+	private String recuPhoneNumberCal;
+	private String recuHomeNumberCal;
+	private String recuZipCodeCal;
+	private String recuAddressCal;
+	private String orderTotalAmountCal;
+	private int userNo;
+	
+	
+	
+
 	
 	
 	
@@ -61,8 +66,24 @@ public class Mall implements Serializable{
 				+ ", recuPhoneNumberCal=" + recuPhoneNumberCal
 				+ ", recuHomeNumberCal=" + recuHomeNumberCal
 				+ ", recuZipCodeCal=" + recuZipCodeCal + ", recuAddressCal="
-				+ recuAddressCal + ", userNo=" + userNo + "]";
+				+ recuAddressCal + ", orderTotalAmountCal="
+				+ orderTotalAmountCal + ", userNo=" + userNo + "]";
 	}
+
+
+
+	public String getOrderTotalAmountCal() {
+		return orderTotalAmountCal;
+	}
+
+
+
+	public void setOrderTotalAmountCal(String orderTotalAmountCal) {
+		this.orderTotalAmountCal = orderTotalAmountCal;
+	}
+
+
+
 	public String getShippingDateCal() {
 		return shippingDateCal;
 	}

@@ -43,8 +43,8 @@
               <ul class="treeview-menu">
                 <li class="active"><a href="addshop.htm">쇼핑몰추가+</a></li>
                 <li><a href="adddata.htm?mall=스토어팜">스토어팜</a></li>
-                <li><a href="adddata.htm">인터파크</a></li>
-                <li><a href="adddata.htm">11st</a></li>
+                <li><a href="adddata.htm?mall=인터파크">인터파크</a></li>
+                <li><a href="adddata.htm?mall=11st">11st</a></li>
               </ul>
             </li>
             

@@ -17,7 +17,7 @@
 	<mvc:annotation-driven />
 
 	<!-- 멀티파트 형식의 데이터를 처리하고 싶다면, 다음 객체를 선언해야 한다. -->
-	<bean id="multipartResolver"
+	<bean id="filterMultipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="10000000" />
 	</bean>

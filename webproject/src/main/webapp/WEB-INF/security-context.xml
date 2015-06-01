@@ -5,13 +5,15 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
-	<http>
-		<form-login login-page="/joinus/login.htm" 
-			authentication-failure-url="/joinus/login.htm?error"
-			default-target-url="/customer/notice.htm"/>
-		<logout logout-success-url="/customer/notice.htm"/>
-		<intercept-url pattern="/custoomer/**" access="ROLE_USER"/>
+	<http auto-config="true" use-expressions="true">
+		<form-login login-page="/login.htm" 
+			authentication-failure-url="/login.htm?error"
+			default-target-url="/index.htm"/>
+		<logout logout-success-url="/login.htm"/>
+		<intercept-url pattern="/login.htm" access="isAnonymous()"/>
 		<intercept-url pattern="/admin/**" access="ROLE_ADMIN"/>
+		<intercept-url pattern="/index.htm" access="ROLE_USER"/>
+		<intercept-url pattern="/**" access="ROLE_USER"/>
 	</http>
 	
 	<authentication-manager>
@@ -21,7 +23,7 @@
 				authorities-by-username-query="SELECT &quot;UID&quot; USERID, 'ROLE_USER' ROLE_NAME FROM MEMBER WHERE &quot;UID&quot;=?"
 			/> -->
 			<user-service>
-				<user name="newlec" password="111" authorities="ROLE_USER"/>
+				<user name="newlec@aa" password="111" authorities="ROLE_USER"/>
 				<user name="dragon" password="111" authorities="ROLE_USER"/>
 				<user name="admin" password="111" authorities="ROLE_ADMIN,ROLE_USER"/>
 			</user-service>

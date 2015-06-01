@@ -141,7 +141,6 @@ table {
 			$.ajax({
 				type : 'post',
 				url : '/webproject/adddata.json',
-		//		data : JSON.stringify(tableJson),
 				data : JSON.stringify(tableJson),
 				dataType : 'json',
 				contentType: "application/json; charset=utf-8",

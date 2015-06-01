@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -13,7 +15,7 @@
 
   <body class="skin-blue fixed">
     <div class="wrapper">
-	  <jsp:include page="inc/header.jsp"></jsp:include>
+	  <%-- <jsp:include page="inc/header.jsp"></jsp:include>
 	  <jsp:include page="inc/aside.jsp"></jsp:include>
 
 
@@ -31,7 +33,7 @@
             <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
             <li class="active">Here</li>
           </ol>
-        </section>
+        </section> --%>
 
        
         <section class="content">
@@ -45,17 +47,19 @@
             <body class="login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="../../index2.html"><b>Cat</b>Cel</a>
+        <a href="#"><b>Cat</b>Cel</a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">로그인 후 시작하세요.</p>
-        <form action="../../index2.html" method="post">
+        
+        <c:url value="/j_spring_security_check" var="loginURL"/>
+        <form action="${loginURL }" method="post">
           <div class="form-group has-feedback">
-            <input type="email" class="form-control" placeholder="Email">
+            <input type="email" name="j_username" class="form-control" placeholder="Email">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="password" name="j_password" class="form-control" placeholder="Password">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
@@ -66,6 +70,13 @@
                 </label>
               </div>                        
             </div><!-- /.col -->
+            
+            <c:if test = "${param.error != null }">
+            <div>
+                              로그인 실패
+            </div>
+            </c:if>
+            
             <div class="col-xs-4">
               <button type="submit" class="btn btn-primary btn-block btn-flat">로그인</button>
             </div><!-- /.col -->
@@ -73,7 +84,7 @@
         </form>
 
         <a href="#">비밀번호 찾기</a><br>
-        <a href="register.html" class="text-center">아직 회원이 아니신가요?</a>
+        <a href="join.htm" class="text-center">아직 회원이 아니신가요?</a>
 
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->

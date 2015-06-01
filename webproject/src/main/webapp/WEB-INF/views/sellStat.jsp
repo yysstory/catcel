@@ -117,9 +117,9 @@
                 </div>
                 <div class="box-body">
                 <div class="btn-group">
-                  <button id="day-btn" type="button" class="btn btn-info">일</button>
-                  <button id="month-btn" type="button" class="btn btn-info">월</button>
-                  <button id="year-btn" type="button" class="btn btn-info">년</button>
+                  <button id="day-btn" value="day" type="button" class="btn btn-info">일</button>
+                  <button id="month-btn" value="month" type="button" class="btn btn-info">월</button>
+                  <button id="year-btn" value="year" type="button" class="btn btn-info">년</button>
                 </div>
                   <div class="chart">
                     <!-- <canvas id="lineChart" height="255" width="756" style="width: 756px; height: 255px;"></canvas> -->
@@ -155,38 +155,61 @@
       <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
       <script type="text/javascript">
       
-      
-     
-      
-      $("#year-btn").on('click',function(){
-    	  var year = "year";
-    	  chartMaker(myfirstchart,yearData,year);
-      })
-      
-     
-      $("#month-btn").on('click',function(){
-        var month = "month";
-        chartMaker(myfirstchart,monthData,month);
-
-      })
-      
-      var yearData = [
-                      { year: '2008', value1: 20000, value2: 85000 },
-                      { year: '2009', value1: 105000, value2: 120000 },
-                      { year: '2010', value1: 5000, value2: 39000 },
-                      { year: '2011', value1: 5 },
-                      { year: '2012', value1: 20 }
-                    ];
+      var dayData =[
+                    { day: '2015-05-20', value1: 20000, value2: 85000 },
+                    { day: '2015-05-21', value1: 105000, value2: 120000 },
+                    { day: '2015-05-22', value1: 5000, value2: 39000 },
+                    { day: '2015-05-23', value1: 5 },
+                    { day: '2015-05-24', value1: 20 }
+                  ];
       
       var monthData =[
-                      { month: '2015-02', value1: 20000, value2: 85000 },
-                      { month: '2015-04', value1: 105000, value2: 120000 },
-                      { month: '2015-08', value1: 5000, value2: 39000 },
-                      { month: '2015-10', value1: 5 },
-                      { month: '2015-12', value1: 20 }
-                    ];
+                    { month: '2015-02', value1: 20000, value2: 85000 },
+                    { month: '2015-04', value1: 105000, value2: 120000 },
+                    { month: '2015-08', value1: 5000, value2: 39000 },
+                    { month: '2015-10', value1: 5 },
+                    { month: '2015-12', value1: 20 }
+                  ];
+    
+      var yearData = [
+                    { year: '2008', value1: 20000, value2: 85000 },
+                    { year: '2009', value1: 105000, value2: 120000 },
+                    { year: '2010', value1: 5000, value2: 39000 },
+                    { year: '2011', value1: 5 },
+                    { year: '2012', value1: 20 }
+                  ];
+	     
+     
+      $.ajax({
+    	  method: "POST",
+    	  url: "some.htm",
+    	  data: { name: "John", location: "Boston" }
+    	})
+    	  .sucess(function( msg ) {
+
+    	    alert( "Data Saved: " + msg );
+
+    	  });
+
+
       
       
+	      $("#day-btn").on('click',function(){
+	          var day = "day";
+	          chartMaker(myfirstchart,dayData,day);
+	      });
+	      
+	      $("#month-btn").on('click',function(){
+	          var month = "month";
+	          chartMaker(myfirstchart,monthData,month);
+	      });
+	        
+	      $("#year-btn").on('click',function(){
+	    	  var year = "year";
+	    	  chartMaker(myfirstchart,yearData,year);
+	      });
+      
+     
       
       function chartMaker(chartName,data,xkey){
 	      new Morris.Line({

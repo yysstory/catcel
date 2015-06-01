@@ -59,6 +59,13 @@ public class JoinControl {
 	}
 	*/
 	
+	/*@RequestMapping(value="/some",method=RequestMethod.GET)
+	public String join(String name,String location){
+		System.out.println(name);
+		return "join";
+	}*/
+	
+	
 	@RequestMapping(value="/join",method=RequestMethod.GET)
 	public String join(){
 		return "join";

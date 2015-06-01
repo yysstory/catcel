@@ -13,7 +13,7 @@
 
   <body class="skin-blue fixed">
     <div class="wrapper">
-	  <jsp:include page="inc/header.jsp"></jsp:include>
+	  <%-- <jsp:include page="inc/header.jsp"></jsp:include>
 	  <jsp:include page="inc/aside.jsp"></jsp:include>
 
 
@@ -31,7 +31,7 @@
             <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
             <li class="active">Here</li>
           </ol>
-        </section>
+        </section> --%>
 
        
         <section class="content">
@@ -61,18 +61,6 @@
           </div>
           <div class="form-group has-feedback">
             <input type="password" class="form-control" placeholder="Retype password">
-            <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="핸드폰 번호">
-            <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="주소">
-            <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="사업자번호">
             <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
           </div>
           

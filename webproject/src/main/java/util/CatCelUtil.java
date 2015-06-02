@@ -17,4 +17,16 @@ public class CatCelUtil {
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 	return sdf.format(new Date());
 	}
+	public static String nowDay2(){
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	return sdf.format(new Date());
+	}
+	public static String nowMonth(){
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM");
+	return sdf.format(new Date());
+	}
+	public static String nowYear(){
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+	return sdf.format(new Date());
+	}
 }

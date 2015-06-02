@@ -46,8 +46,8 @@
               <!-- small box -->
               <div class="small-box bg-aqua">
                 <div class="inner">
-                  <h3>150</h3>
-                  <p>New Orders</p>
+                  <h3>${todayOrder}</h3>
+                  <p>오늘의 주문건수</p>
                 </div>
                 <div class="icon">
                   <i class="fa fa-shopping-cart"></i>
@@ -61,8 +61,8 @@
               <!-- small box -->
               <div class="small-box bg-green">
                 <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
-                  <p>Bounce Rate</p>
+                  <h3>${weekOrder}<sup style="font-size: 20px">%</sup></h3>
+                  <p>이번주 주문건수</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>
@@ -76,8 +76,8 @@
               <!-- small box -->
               <div class="small-box bg-yellow">
                 <div class="inner">
-                  <h3>44</h3>
-                  <p>User Registrations</p>
+                  <h3>${monthOrder}</h3>
+                  <p>이번달 주문건수</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-person-add"></i>
@@ -91,8 +91,8 @@
               <!-- small box -->
               <div class="small-box bg-red">
                 <div class="inner">
-                  <h3>65</h3>
-                  <p>Unique Visitors</p>
+                  <h3>${yearOrder}</h3>
+                  <p>올해 주문건수</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-pie-graph"></i>

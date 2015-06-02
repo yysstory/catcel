@@ -67,12 +67,31 @@ public class statsControl {
 	public String orderStat(Model model){
 		System.out.println("orderStat 진입");
 		
-		Integer todayTotal = orderRawDao.todayOrder(CatCelUtil.nowDay());
-		if(todayTotal==null){
-			todayTotal=0;
+		Integer todayOrder = orderRawDao.todayOrder(CatCelUtil.nowDay());
+		if(todayOrder==null){
+			todayOrder=0;
 		}
-		model.addAttribute("todayTotal", todayTotal);	
-		model.addAttribute("name", "123123123");
+		model.addAttribute("todayOrder", todayOrder);
+		
+		Integer weekOrder = orderRawDao.weekOrder(CatCelUtil.nowDay2());
+		if(weekOrder==null){
+			weekOrder=0;
+		}
+		model.addAttribute("weekOrder", weekOrder);
+		System.out.println(weekOrder);
+		System.out.println(CatCelUtil.nowDay2());
+		
+		Integer monthOrder = orderRawDao.todayOrder(CatCelUtil.nowMonth());
+		if(monthOrder==null){
+			monthOrder=0;
+		}
+		model.addAttribute("monthOrder", monthOrder);
+		
+		Integer yearOrder = orderRawDao.todayOrder(CatCelUtil.nowYear());
+		if(yearOrder==null){
+			yearOrder=0;
+		}
+		model.addAttribute("yearOrder", yearOrder);
 		
 		return "orderStat";
 	}
@@ -83,8 +102,25 @@ public class statsControl {
 		if(todayTotal==null){
 			todayTotal=0;
 		}
-		mo.addAttribute("todayTotal", todayTotal);	
-		mo.addAttribute("name", "123123123");
+		mo.addAttribute("todayTotal", todayTotal);
+		
+		Integer weekTotal = orderRawDao.weekStats(CatCelUtil.nowDay2());
+		if(weekTotal==null){
+			weekTotal=0;
+		}
+		mo.addAttribute("weekTotal", weekTotal);
+		
+		Integer monthTotal = orderRawDao.todayStats(CatCelUtil.nowMonth());
+		if(monthTotal==null){
+			monthTotal=0;
+		}
+		mo.addAttribute("monthTotal", monthTotal);
+		
+		Integer yearTotal = orderRawDao.todayStats(CatCelUtil.nowYear());
+		if(yearTotal==null){
+			yearTotal=0;
+		}
+		mo.addAttribute("yearTotal", yearTotal);
 		
 		return "sellStat";
 	}

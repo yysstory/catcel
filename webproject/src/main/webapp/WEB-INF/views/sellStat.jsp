@@ -62,8 +62,8 @@
               <!-- small box -->
               <div class="small-box bg-green">
                 <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
-                  <p>Bounce Rate</p>
+                  <h3>${weekTotal}<sup style="font-size: 20px">원</sup></h3>
+                  <p>이번주 매출액</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>
@@ -77,8 +77,8 @@
               <!-- small box -->
               <div class="small-box bg-yellow">
                 <div class="inner">
-                  <h3>44</h3>
-                  <p>User Registrations</p>
+                  <h3>${monthTotal}</h3>
+                  <p>이번달 매출액</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-person-add"></i>
@@ -92,8 +92,8 @@
               <!-- small box -->
               <div class="small-box bg-red">
                 <div class="inner">
-                  <h3>65</h3>
-                  <p>Unique Visitors</p>
+                  <h3>${yearTotal}</h3>
+                  <p>올해 매출액</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-pie-graph"></i>

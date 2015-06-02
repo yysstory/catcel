@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.OrderRawDao">
-	<insert id="insertOrderRaws" >
+	<insert id="insertOrderRaws">
 		INSERT INTO ORDER_RAW (
 		MALL_NAME,
 		MALL_REGIST_DATE,
@@ -35,7 +35,8 @@
 		USER_NO
 		)
 		value
-		<foreach item="orders" index="index" collection="param4" open="("	separator="),(" close=")">
+		<foreach item="orders" index="index" collection="param4" open="("
+			separator="),(" close=")">
 			#{param1},
 			#{param2},
 			#{orders.orderNumber},
@@ -65,7 +66,14 @@
 			#{orders.productQty},
 			#{param3}
 		</foreach>
-	</insert> 
+	</insert>
+
+	<select id="todayStats" resultType="int">
+		SELECT SUM(ORDER_TOTAL_AMOUNT)
+		FROM ORDER_RAW
+		WHERE PAYMENT_DATE LIKE '${value}%'
+	</select>
+
 
 
 </mapper>

@@ -47,8 +47,8 @@
               <!-- small box -->
               <div class="small-box bg-aqua">
                 <div class="inner">
-                  <h3>150</h3>
-                  <p>New Orders</p>
+                  <h3>${todayTotal}</h3>
+                  <p>오늘의 매출액</p>
                 </div>
                 <div class="icon">
                   <i class="fa fa-shopping-cart"></i>

@@ -2,10 +2,12 @@ package controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import dao.MallDao;
+import dao.OrderRawDao;
 
 
 @Controller
@@ -13,6 +15,8 @@ public class statsControl {
 
 	@Autowired
 	MallDao mallDao;
+	@Autowired
+	OrderRawDao orderRawDao;
 	/*
 	@RequestMapping("/index")
 	public String goMain(){
@@ -60,11 +64,18 @@ public class statsControl {
 	
 	@RequestMapping(value="/orderStat",method=RequestMethod.GET)
 	public String orderStat(){
+		System.out.println("sellStat Post 진입");
+
 		return "orderStat";
 	}
 	
 	@RequestMapping(value="/sellStat",method=RequestMethod.GET)
-	public String sellStat(){
+	public String sellStat(Model mo){
+		System.out.println("sellStat Get 진입");
+		int todayTotal = orderRawDao.todayStats("2015/05/21");
+		mo.addAttribute("todayTotal", todayTotal);	
+		mo.addAttribute("name", "123123123");
+		
 		return "sellStat";
 	}
 	

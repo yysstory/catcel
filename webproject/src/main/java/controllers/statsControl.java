@@ -125,4 +125,8 @@ public class statsControl {
 		return "sellStat";
 	}
 	
+	@RequestMapping(value="/sellStat",method=RequestMethod.POST)
+	public void sellStat(){
+		System.out.println("sellStat post 요청 호출");
+	}
 }

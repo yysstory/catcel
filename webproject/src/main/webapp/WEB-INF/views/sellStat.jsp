@@ -37,7 +37,7 @@
             
             <div class="btn-group">
               <button type="button" class="btn btn-info">매출액</button>
-              <button type="button" class="btn btn-info">평균</button>
+              <button id="btn_avg" type="button" class="btn btn-info">평균</button>
               <button type="button" class="btn btn-info">순익</button>
             </div>
             
@@ -154,6 +154,27 @@
       <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
       <script type="text/javascript">
+     
+    	$('#btn_avg').click(function(){
+    		var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+       var headerObject = new Object();
+           headerObject[header] = token;
+        
+        
+    		console.log("버튼 누름");
+    	  
+    		$.ajax({
+    			type : 'post',
+    			headers :headerObject,
+    			url : '/webproject/sellStat.json',
+     			success : function(data) {
+    				            console.log(data);
+                    }
+    		})
+    	 	  
+    	});
+      
       
       var dayData =[
                     { day: '2015-05-20', value1: 20000, value2: 85000 },

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.OrderRawDao">
+	<insert id="insertOrderRaws" >
+		INSERT INTO ORDER_RAW (
+		MALL_NAME,
+		MALL_REGIST_DATE,
+		ORDER_NUMBER,
+		PAYMENT_DATE,
+		PAYMENT_METHOD,
+		DELIVERY_METHOD,
+		SHOPPING_CHARGE,
+		DELIVERY_MESSAGE,
+		BUY_DATE,
+		SHIPPING_DATE,
+		UPLOAD_DATE,
+		ORDER_TOTAL_AMOUNT,
+		ORCU_NAME,
+		ORCU_ID,
+		ORCU_PHONENUMBER,
+		ORCU_MEMO,
+		RECU_NAME,
+		RECU_PHONENUMBER,
+		RECU_HOMENUMBER,
+		RECU_ZIPCODE,
+		RECU_ADDRESS,
+		PRODUCT_NUMBER,
+		PRODUCT_NAME,
+		PRODUCT_OPTION,
+		PRODUCT_ADD,
+		PRODUCT_PRICE,
+		PRODUCT_QTY,
+		USER_NO
+		)
+		value
+		<foreach item="orders" index="index" collection="param4" open="("	separator="),(" close=")">
+			#{param1},
+			#{param2},
+			#{orders.orderNumber},
+			#{orders.paymentDate},
+			#{orders.paymentMethod},
+			#{orders.deliveryMethod},
+			#{orders.shoppingCharge},
+			#{orders.deliveryMessage},
+			#{orders.buyDate},
+			#{orders.shippingDate},
+			#{orders.uploadDate},
+			#{orders.orderTotalAmount},
+			#{orders.orcuName},
+			#{orders.orcuId},
+			#{orders.orcuPhoneNumber},
+			#{orders.orcuMemo},
+			#{orders.recuName},
+			#{orders.recuPhoneNumber},
+			#{orders.recuHomeNumber},
+			#{orders.recuZipCode},
+			#{orders.recuAddress},
+			#{orders.productNumber},
+			#{orders.productName},
+			#{orders.productOption},
+			#{orders.productAdd},
+			#{orders.productPrice},
+			#{orders.productQty},
+			#{param3}
+		</foreach>
+	</insert> 
+
+
+</mapper>

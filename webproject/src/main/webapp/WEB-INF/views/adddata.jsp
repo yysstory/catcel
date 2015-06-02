@@ -34,8 +34,8 @@ table {
 		<div class="content-wrapper">
 			<!-- 페이지 제목 (큰글씨) -->
 			<section class="content-header">
-				<h1>
-					스토어팜 <small>고객 데이터 등록</small>
+				<h1 data-mallName="${mallMap.mallName}" >
+					${mallMap.mallName} <small>고객 데이터 등록</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -137,28 +137,30 @@ table {
 	<script type="text/javascript">
 		$('#submit-btn').on('click', function() {
 			var tableJson = $('#dataTable').tableToJSON();
-		
+
+			/* 	   $.ajax({
+				        type : 'post',
+				        url : '/webproject/adddata.json',
+				        data : {'name':'용식'},
+				        dataType : 'json',
+				        success : function(data) {
+				          console.log(data.success);
+				           console.log(data.age);
+				           $("h1").html(data.age);
+				        }
+				        
+				      }); */
+			var tableData = JSON.stringify(tableJson);
 			
-		/* 	   $.ajax({
-			        type : 'post',
-			        url : '/webproject/adddata.json',
-			        data : {'name':'용식'},
-			        dataType : 'json',
-			        success : function(data) {
-			          console.log(data.success);
-			           console.log(data.age);
-			           $("h1").html(data.age);
-			        }
-			        
-			      }); */
-			
+//		    console.log(JSON.stringify(tableJson));
+				      
+			var data = {'name' : $("h1").attr("data-mallName") , 'orderRaws' : tableData  };
 			
 			$.ajax({
 				type : 'post',
 				url : '/webproject/adddata.json',
-				data : JSON.stringify(tableJson),
+				data : data,
 				dataType : 'json',
-				contentType: "application/json; charset=utf-8",
 				success : function(data) {
 					console.log(data);
 				}

@@ -1,5 +1,8 @@
 package controllers;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,20 +10,29 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import util.CatCelUtil;
 import vo.Mall;
 import vo.OrderRaw;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import dao.MallDao;
+import dao.OrderRawDao;
 
 @Controller
 public class OrderControl {
 
 	@Autowired
 	MallDao mallDao;
+	
+	@Autowired
+	OrderRawDao orderRawDao;
 
 	@RequestMapping("/index")
 	public String goMain() {
@@ -43,7 +55,9 @@ public class OrderControl {
 		HashMap<String, String> mallMap = new HashMap<String, String>();
 
 		if (mall != null) {
-
+			mallMap.put("mallName",mallName);
+			mallMap.put("mallCommitssion",Integer.toString(mall.getMallCommitssionCal()));
+			
 			mallMap.put("몰번호", Integer.toString(mall.getMallNo()));
 			mallMap.put("몰이름", mall.getMallName());
 			mallMap.put("수수료", Integer.toString(mall.getMallCommitssionCal()));
@@ -118,37 +132,45 @@ public class OrderControl {
 			model.addAttribute("mallMap", mallMap);
 			model.addAttribute("arrCal", arrCal);
 		}
-
+		
 		return "adddata";
 	}
 
-/*	@RequestMapping(value = "/adddata", method = RequestMethod.POST)
-	public Object goAddData(String name)  {
-	
-		System.out.println(name);
-		int age = 23;
-		Mall mall = mallDao.selectMall("스토어팜");
-		
-		String strAge = Integer.toString(age);
-		HashMap<String, String> resultMap = new HashMap<>();
-		resultMap.put("success", "ok");
-		resultMap.put("age", strAge);
-		
-		return resultMap;
-	}
-	*/
-	
+	/*
+	 * @RequestMapping(value = "/adddata", method = RequestMethod.POST) public
+	 * Object goAddData(String name) {
+	 * 
+	 * System.out.println(name); int age = 23; Mall mall =
+	 * mallDao.selectMall("스토어팜");
+	 * 
+	 * String strAge = Integer.toString(age); HashMap<String, String> resultMap
+	 * = new HashMap<>(); resultMap.put("success", "ok"); resultMap.put("age",
+	 * strAge);
+	 * 
+	 * return resultMap; }
+	 */
+
 	@RequestMapping(value = "/adddata", method = RequestMethod.POST)
-	public Object goAddData(@RequestBody OrderRaw[] orderRaws)  {
-	for (OrderRaw orderRaw : orderRaws){
-			System.out.println(orderRaw.toString());
-		}
+	public Object goAddData(String name, String orderRaws)
+			throws JsonParseException, JsonMappingException, IOException {
+
+		System.out.println(name);
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+
+		OrderRaw[] orders = mapper.readValue(
+				orderRaws.replaceAll("\"", "\\\""), OrderRaw[].class);
+		
+		
+		int userNo=1;
+		String date = "20150501";
+		orderRawDao.insertOrderRaws(name,date,userNo,orders);
+
 		HashMap<String, String> resultMap = new HashMap<>();
 		resultMap.put("success", "ok");
 		return resultMap;
 	}
 
-	
 	@RequestMapping(value = "/addshop", method = RequestMethod.GET)
 	public String goAddShop() {
 		return "addshop";

@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -35,7 +36,8 @@ public class OrderControl {
 	OrderRawDao orderRawDao;
 
 	@RequestMapping("/index")
-	public String goMain() {
+	public String goMain(Principal p,Model m) {
+		m.addAttribute("name", p.getName());
 		return "index";
 	}
 

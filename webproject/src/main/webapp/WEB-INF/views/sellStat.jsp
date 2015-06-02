@@ -179,19 +179,7 @@
                     { year: '2012', value1: 20 }
                   ];
 	     
-     
-		      $.ajax({
-		    	  method: "POST",
-		    	  url: "some.htm",
-		    	  data: { name: "John", location: "Boston" }
-		    	})
-	    	  .sucess(function( msg ) {
-	
-	    	    alert( "Data Saved: " + msg );
-	
-	    	  });
-
-
+    
       
       
 	      $("#day-btn").on('click',function(){

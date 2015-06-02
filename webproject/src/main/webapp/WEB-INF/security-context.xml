@@ -31,7 +31,7 @@
 				ROLE_NAME FROM MEMBER WHERE &quot;UID&quot;=?" /> -->
 			<user-service>
 				<user name="newlec@aa" password="111" authorities="ROLE_USER" />
-				<user name="dragon" password="111" authorities="ROLE_USER" />
+				<user name="111" password="111" authorities="ROLE_USER" />
 				<user name="admin" password="111" authorities="ROLE_ADMIN,ROLE_USER" />
 			</user-service>
 		</authentication-provider>

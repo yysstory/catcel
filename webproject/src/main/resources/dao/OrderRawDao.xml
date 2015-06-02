@@ -68,7 +68,7 @@
 		</foreach>
 	</insert>
 
-	<select id="todayStats" resultType="int">
+	<select id="todayStats" resultType="Integer">
 		SELECT SUM(ORDER_TOTAL_AMOUNT)
 		FROM ORDER_RAW
 		WHERE PAYMENT_DATE LIKE '${value}%'

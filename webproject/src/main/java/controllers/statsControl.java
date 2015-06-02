@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import util.CatCelUtil;
 import dao.MallDao;
 import dao.OrderRawDao;
 
@@ -63,16 +64,25 @@ public class statsControl {
 	*/
 	
 	@RequestMapping(value="/orderStat",method=RequestMethod.GET)
-	public String orderStat(){
-		System.out.println("sellStat Post 진입");
-
+	public String orderStat(Model model){
+		System.out.println("orderStat 진입");
+		
+		Integer todayTotal = orderRawDao.todayOrder(CatCelUtil.nowDay());
+		if(todayTotal==null){
+			todayTotal=0;
+		}
+		model.addAttribute("todayTotal", todayTotal);	
+		model.addAttribute("name", "123123123");
+		
 		return "orderStat";
 	}
 	
 	@RequestMapping(value="/sellStat",method=RequestMethod.GET)
 	public String sellStat(Model mo){
-		System.out.println("sellStat Get 진입");
-		int todayTotal = orderRawDao.todayStats("2015/05/21");
+		Integer todayTotal = orderRawDao.todayStats(CatCelUtil.nowDay());
+		if(todayTotal==null){
+			todayTotal=0;
+		}
 		mo.addAttribute("todayTotal", todayTotal);	
 		mo.addAttribute("name", "123123123");
 		

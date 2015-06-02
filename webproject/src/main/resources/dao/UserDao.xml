@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.UserDao">
+
+
+
+	<!-- <select id="selectMall" resultMap="mallMap"> SELECT * FROM MALL WHERE 
+		MALL_NAME = #{value} </select> -->
+
+	<insert id="insertUser" parameterType="User">
+		INSERT INTO MALL(
+		USER_EMAIL,
+		USER_NAME,
+		USER_PASSWORD,
+		USER_PHONENUMBER,
+		USER_HOMENUMBER,
+		USER_ADDRESS,
+		USER_PROFILE_PHOTO,
+		USER_REGISTATION,
+		USER_RATING,
+		USER_POINT,
+		USER_REGISTCHAR
+		)
+		VALUES (
+		#{userEmail},
+		#{userName},
+		#{userPwd},
+		#{userPno},
+		#{userHno},
+		#{userAdd},
+		#{userProfilePhoto},
+		#{userReg},
+		#{userRating},
+		#{userPoint},
+		#{userRegChar}
+		)
+	</insert>
+
+</mapper>

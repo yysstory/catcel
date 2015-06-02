@@ -17,79 +17,22 @@ public class User implements Serializable{
 	private 	String userPoint;
 	private 	String userRegChar;
 	
-	
-	public int getUserNo() {
-		return userNo;
-	}
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
-	}
-	public String getUserEmail() {
-		return userEmail;
-	}
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
-	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	public String getUserPwd() {
-		return userPwd;
-	}
-	public void setUserPwd(String userPwd) {
-		this.userPwd = userPwd;
-	}
-	public String getUserPno() {
-		return userPno;
-	}
-	public void setUserPno(String userPno) {
-		this.userPno = userPno;
-	}
-	public String getUserHno() {
-		return userHno;
-	}
-	public void setUserHno(String userHno) {
-		this.userHno = userHno;
-	}
-	public String getUserAdd() {
-		return userAdd;
-	}
-	public void setUserAdd(String userAdd) {
-		this.userAdd = userAdd;
-	}
-	public String getUserProfilePhoto() {
-		return userProfilePhoto;
-	}
-	public void setUserProfilePhoto(String userProfilePhoto) {
-		this.userProfilePhoto = userProfilePhoto;
-	}
-	public String getUserReg() {
-		return userReg;
-	}
-	public void setUserReg(String userReg) {
-		this.userReg = userReg;
-	}
-	public String getUserRating() {
-		return userRating;
-	}
-	public void setUserRating(String userRating) {
-		this.userRating = userRating;
-	}
-	public String getUserPoint() {
-		return userPoint;
-	}
-	public void setUserPoint(String userPoint) {
-		this.userPoint = userPoint;
-	}
-	public String getUserRegChar() {
-		return userRegChar;
-	}
-	public void setUserRegChar(String userRegChar) {
-		this.userRegChar = userRegChar;
-	}
-	
+/*	
+ * 
+ * userPassword
+ * 
+	"USER_NO(PK)	N"
+	"USER_EMAIL	N"
+	"USER_NAME	N"
+	"USER_PASSWORD	N"
+	"USER_PHONENUMBER	N"
+	"USER_HOMENUMBER	N"
+	"USER_ADDRESS	N"
+	"USER_PROFILE_PHOTO	N"
+	"USER_REGISTATION	N"
+	"USER_RATING	N"
+	"USER_POINT	N"
+	"USER_REGISTCHAR	N"
+*/
 	
 }

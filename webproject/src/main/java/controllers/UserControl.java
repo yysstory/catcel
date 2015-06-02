@@ -10,7 +10,7 @@ import dao.UserDao;
 
 
 @Controller
-public class JoinControl {
+public class UserControl {
 
 	@Autowired
 	UserDao userDao;
@@ -68,18 +68,22 @@ public class JoinControl {
 	
 	@RequestMapping(value="/join",method=RequestMethod.GET)
 	public String join(){
+		System.out.println("join get 접속");
 		return "join";
 	}
 	
 	@RequestMapping(value="/join",method=RequestMethod.POST)
 	public String join(User user){
+		System.out.println(user);
 		userDao.insertUser(user);
-		
-		return "redirect:index";
+		System.out.println("join post 접속");
+		return "redirect:join.htm";
 	}
 	
 	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public String login(){
+		System.out.println("login get 접속");
+
 		return "login";
 	}
 }

@@ -52,14 +52,15 @@
       <div class="login-box-body">
         <p class="login-box-msg">로그인 후 시작하세요.</p>
         
-        <c:url value="/j_spring_security_check" var="loginURL"/>
-        <form action="${loginURL }" method="post">
+        <form action="loginProcess" method="post">
           <div class="form-group has-feedback">
-            <input type="email" name="j_username" class="form-control" placeholder="Email">
+            <input type="email"  class="form-control" placeholder="Email" name="email">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" name="j_password" class="form-control" placeholder="Password">
+            <input type="password"  class="form-control" placeholder="Password" name="password">
+            <input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
@@ -83,7 +84,7 @@
           </div>
         </form>
 
-        <a href="#">비밀번호 찾기</a><br>
+        <a href="#">비밀번호 찾기</a><br>  
         <a href="join.htm" class="text-center">아직 회원이 아니신가요?</a>
 
       </div><!-- /.login-box-body -->

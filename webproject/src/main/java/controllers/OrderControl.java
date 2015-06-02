@@ -163,7 +163,7 @@ public class OrderControl {
 		
 		
 		int userNo=1;
-		String date = "20150501";
+		String date = CatCelUtil.nowDay();
 		orderRawDao.insertOrderRaws(name,date,userNo,orders);
 
 		HashMap<String, String> resultMap = new HashMap<>();

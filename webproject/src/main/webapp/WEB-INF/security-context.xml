@@ -10,17 +10,17 @@
 			<intercept-url pattern="/index.htm" access="hasRole('ROLE_USER')" />
 	
 <!-- 		<intercept-url pattern="/admin/**" access="ROLE_ADMIN" /> -->
-	<!-- 	<intercept-url pattern="/**" access="ROLE_USER" /> -->
+		    <intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
 		
 		<form-login 
 			login-page="/login.htm" 
 			username-parameter="email" 
 			password-parameter="password"
-			login-processing-url ="/loginProcess" 
+			login-processing-url ="/loginProcess.htm" 
 			default-target-url="/index.htm"
 			authentication-failure-url="/login.htm?error" 
 		/>
-		<logout invalidate-session="true" logout-success-url="/login.htm" />
+		<logout logout-url="/logout" invalidate-session="true" logout-success-url="/login.htm" />
 	</http>
 
 	<authentication-manager>
@@ -31,7 +31,7 @@
 				ROLE_NAME FROM MEMBER WHERE &quot;UID&quot;=?" /> -->
 			<user-service>
 				<user name="newlec@aa" password="111" authorities="ROLE_USER" />
-				<user name="111" password="111" authorities="ROLE_USER" />
+				<user name="111@111" password="111" authorities="ROLE_USER" />
 				<user name="admin" password="111" authorities="ROLE_ADMIN,ROLE_USER" />
 			</user-service>
 		</authentication-provider>

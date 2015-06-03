@@ -1,5 +1,8 @@
 package dao;
 
+import java.util.List;
+
+import vo.BestProduct;
 import vo.OrderRaw;
 
 public interface OrderRawDao {
@@ -9,11 +12,16 @@ public interface OrderRawDao {
 	Integer todayOrder(String payment_date);
 	Integer weekOrder(String payment_date);
 	
+	Integer dayOrderAvg(String payment_date);
+	List<BestProduct> orderBest(String payment_date);
+	
 	
 	
 	Integer todayStats(String payment_date);
 	Integer weekStats(String payment_date);
-	Integer monthStats(String payment_date);
-	Integer yearStats(String payment_date);
+	
+	Integer daySellAvg(String payment_date);
+	Integer weekSellAvg(String payment_date);
+	Integer monthSellAvg(String payment_date);
 
 }

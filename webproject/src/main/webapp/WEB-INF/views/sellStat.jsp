@@ -50,7 +50,7 @@
               <div class="small-box bg-aqua">
                 <div class="inner">
                   <h3 id="dayH3">${todayTotal}</h3>
-                  <p>오늘의 매출액</p>
+                  <p id="dayP">오늘의 매출액</p>
                 </div>
                 <div class="icon">
                   <i class="fa fa-shopping-cart"></i>
@@ -64,8 +64,8 @@
               <!-- small box -->
               <div class="small-box bg-green">
                 <div class="inner">
-                  <h3>${weekTotal}<sup style="font-size: 20px">원</sup></h3>
-                  <p>이번주 매출액</p>
+                  <h3 id="weekH3">${weekTotal}<sub style="font-size: 20px"> 원</sub></h3>
+                  <p id="weekP">이번주 매출액</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>
@@ -167,6 +167,9 @@
     	    console.log("header = "+header);
     	});
       
+      $(document).ready(function(){
+    	  
+      });
       
     	$('#btn_avg').click(function(){
     		var token = $("meta[name='_csrf']").attr("content");
@@ -175,15 +178,17 @@
            headerObject[header] = token;
         
         
-    		console.log("버튼 누름");
-    	  
     		$.ajax({
     			type : 'post',
     			url : '/webproject/sellStat.json',
      			success : function(data) {
-    				  console.log(data.dayAvg);
-    				  $("#dayH3").html(data.dayAvg);
-    				  
+    				  console.log(data.daySellAvg);
+    				  $("#dayP").html("일매출 평균");
+    				  if(data.daySellAvg!=null){
+    					  $("#dayH3").html(data.daySellAvg);
+    				  }else{
+    					  $("#dayH3").html("0");
+    				  }
            }
     		})
     	 	  

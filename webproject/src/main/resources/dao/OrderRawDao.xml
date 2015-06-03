@@ -87,8 +87,24 @@
     SELECT COUNT(ORDER_TOTAL_AMOUNT)
     FROM ORDER_RAW
     WHERE PAYMENT_DATE
-      BETWEEN adddate( '${value}' , -weekday( '${value}%' ))  
+      BETWEEN adddate( '${value}' , -weekday( '${value}' ))  
       AND  adddate( '${value}' , 6-weekday( '${value}' ))
+  </select>
+  
+  <resultMap type="BestProduct" id="bestProductMap">
+      <result column="PRODUCT_NAME" property="productName" />
+      <result column="RNUM" property="rnum" />
+  </resultMap>
+  
+  
+  <select id="orderBest" resultMap="bestProductMap" >
+    SELECT t.*, @RNUM:=@RNUM+1 AS RNUM FROM(
+	    SELECT PRODUCT_NAME, count(*) as RANK
+	      FROM ORDER_RAW 
+	      WHERE PAYMENT_DATE LIKE('${value}%')
+	     GROUP BY PRODUCT_NAME HAVING 
+	       COUNT(*)>1 ORDER BY RANK DESC) t, 
+	       (SELECT @RNUM:=0) r limit 5
   </select>
 	
 	
@@ -98,25 +114,29 @@
 		FROM ORDER_RAW
 		WHERE PAYMENT_DATE LIKE	'${value}%'
 	</select>
-	
 	<select id="weekStats" resultType="Integer">
     SELECT SUM(ORDER_TOTAL_AMOUNT)
     FROM ORDER_RAW
     WHERE PAYMENT_DATE
-      BETWEEN adddate( '${value}' , -weekday( '${value}%' ))  
+      BETWEEN adddate( '${value}' , -weekday( '${value}' ))  
       AND  adddate( '${value}' , 6-weekday( '${value}' ))
   </select>
-	
-	<select id="monthStats" resultType="Integer">
-    SELECT SUM(ORDER_TOTAL_AMOUNT)
-    FROM ORDER_RAW
-    WHERE PAYMENT_DATE LIKE '${value}%'
-  </select>
   
-  <select id="yearStats" resultType="Integer">
-    SELECT SUM(ORDER_TOTAL_AMOUNT)
+  <select id="daySellAvg" resultType="Integer">
+    SELECT AVG(ORDER_TOTAL_AMOUNT)
     FROM ORDER_RAW
     WHERE PAYMENT_DATE LIKE '${value}%'
   </select>
+  <select id="weekSellAvg" resultType="Integer">
+    SELECT AVG(ORDER_TOTAL_AMOUNT)
+    FROM ORDER_RAW
+    WHERE PAYMENT_DATE LIKE '${value}%'
+  </select>
+  <select id="monthSellAvg" resultType="Integer">
+    SELECT AVG(ORDER_TOTAL_AMOUNT)
+    FROM ORDER_RAW
+    WHERE PAYMENT_DATE LIKE '${value}%'
+  </select>
+	
 
 </mapper>

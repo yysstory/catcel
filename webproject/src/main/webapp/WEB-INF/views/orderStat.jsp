@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -36,10 +37,9 @@
  		<!-- 페이지 내용 작성-->
             
             <div class="btn-group">
-                          <button type="button" class="btn btn-info">주문건수</button>
-                          <button type="button" class="btn btn-info">평균</button>
+              <button type="button" class="btn btn-info">주문건수</button>
+              <button type="button" class="btn btn-info">평균</button>
             </div>
-            
             
             <div class="row">
             <div class="col-lg-3 col-xs-6">
@@ -103,6 +103,17 @@
               </div>
             </div><!-- ./col -->
           </div>
+            
+          
+            
+            <div>
+            <h3>인기상품 BEST5</h3>
+            
+               <c:forEach var="bp" items="${orderBestList}">
+               <p> ${bp.productName} : ${bp.rnum} </p>
+               </c:forEach>
+            
+            </div>
             
             
             

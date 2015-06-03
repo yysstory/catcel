@@ -1,6 +1,9 @@
 package controllers;
 
 import java.util.HashMap;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import util.CatCelUtil;
+import vo.BestProduct;
 import dao.MallDao;
 import dao.OrderRawDao;
 
@@ -24,7 +28,6 @@ public class statsControl {
 	
 	@RequestMapping(value="/orderStat",method=RequestMethod.GET)
 	public String orderStat(Model model){
-		System.out.println("orderStat 진입");
 		
 		Integer todayOrder = orderRawDao.todayOrder(CatCelUtil.nowDay());
 		if(todayOrder==null){
@@ -49,6 +52,14 @@ public class statsControl {
 			yearOrder=0;
 		}
 		model.addAttribute("yearOrder", yearOrder);
+		
+		List<BestProduct> bestProductList = orderRawDao.orderBest(CatCelUtil.nowMonth());
+		System.out.println(bestProductList.size());
+		for(BestProduct bp : bestProductList){
+			System.out.println(bp.toString());
+		}
+		model.addAttribute("orderBestList", bestProductList);
+		
 		
 		return "orderStat";
 	}
@@ -87,8 +98,14 @@ public class statsControl {
 		System.out.println("sellStat post 요청 호출");
 		
 		HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
-		Integer dayAvg = orderRawDao.todayStats(CatCelUtil.nowYear());;
-		resultMap.put("dayAvg", dayAvg);
+		Integer dayAvg = orderRawDao.daySellAvg(CatCelUtil.nowYear());;
+		resultMap.put("daySellAvg", dayAvg);
+		
+		Integer weekAvg = orderRawDao.weekSellAvg(CatCelUtil.nowYear());;
+		resultMap.put("weekSellAvg", weekAvg);
+		
+		Integer monthAvg = orderRawDao.monthSellAvg(CatCelUtil.nowYear());;
+		resultMap.put("monthSellAvg", monthAvg);
 		
 		return resultMap;
 		

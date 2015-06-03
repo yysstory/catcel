@@ -10,32 +10,43 @@
 		MALL_NAME = #{value} </select> -->
 
 	<insert id="insertUser" parameterType="User">
-		INSERT INTO MALL(
-		USER_EMAIL,
-		USER_NAME,
-		USER_PASSWORD,
-		USER_PHONENUMBER,
-		USER_HOMENUMBER,
-		USER_ADDRESS,
-		USER_PROFILE_PHOTO,
-		USER_REGISTATION,
-		USER_RATING,
-		USER_POINT,
-		USER_REGISTCHAR
+		INSERT INTO USER(
+			USER_EMAIL,
+			USER_NAME,
+			USER_PASSWORD,
+			USER_PHONENUMBER,
+			USER_HOMENUMBER,
+			USER_ADDRESS,
+			USER_PROFILE_PHOTO,
+			USER_REGISTATION,
+			USER_RATING,
+			USER_POINT,
+			USER_ENABLED,
+			USER_REGISTCHAR
+			)
+			VALUES (
+			#{userEmail},
+			#{userName},
+			#{userPassword},
+			#{userPhonenumber},
+			#{userHomenumber},
+			#{userAddress},
+			#{userProfilePhoto},
+			#{userRegistation},
+			#{userRating},
+			#{userPoint},
+			#{userEnabled},
+			#{userRegistchar}
 		)
-		VALUES (
-		#{userEmail},
-		#{userName},
-		#{userPwd},
-		#{userPno},
-		#{userHno},
-		#{userAdd},
-		#{userProfilePhoto},
-		#{userReg},
-		#{userRating},
-		#{userPoint},
-		#{userRegChar}
+	</insert>
+
+	<insert id="insertRole" >
+		INSERT INTO USER_AUTH (USER_NO,USER_ROLE) VALUES (
+
+			(SELECT u.USER_NO from USER u LEFT JOIN USER_AUTH a ON u.USER_NO = a.USER_NO WHERE u.USER_EMAIL='${param1}'),
+			'${param2}'
 		)
+	
 	</insert>
 
 </mapper>

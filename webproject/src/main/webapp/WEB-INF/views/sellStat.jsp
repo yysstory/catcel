@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
   	<jsp:include page="inc/commoncss.jsp"></jsp:include>
     <!--개별 css 추가  -->
     
@@ -47,7 +49,7 @@
               <!-- small box -->
               <div class="small-box bg-aqua">
                 <div class="inner">
-                  <h3>${todayTotal}</h3>
+                  <h3 id="dayH3">${todayTotal}</h3>
                   <p>오늘의 매출액</p>
                 </div>
                 <div class="icon">
@@ -155,6 +157,17 @@
       <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
       <script type="text/javascript">
      
+      $(function () {
+    	    var token = $("meta[name='_csrf']").attr("content");
+    	    var header = $("meta[name='_csrf_header']").attr("content");
+    	    $(document).ajaxSend(function(e, xhr, options) {
+    	        xhr.setRequestHeader(header, token);
+    	    });
+    	    console.log("token = "+token);
+    	    console.log("header = "+header);
+    	});
+      
+      
     	$('#btn_avg').click(function(){
     		var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content");
@@ -166,11 +179,12 @@
     	  
     		$.ajax({
     			type : 'post',
-    			headers :headerObject,
     			url : '/webproject/sellStat.json',
      			success : function(data) {
-    				            console.log(data);
-                    }
+    				  console.log(data.dayAvg);
+    				  $("#dayH3").html(data.dayAvg);
+    				  
+           }
     		})
     	 	  
     	});

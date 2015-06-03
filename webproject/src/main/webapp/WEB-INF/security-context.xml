@@ -6,7 +6,10 @@
 
 	<http auto-config="true" use-expressions="true">
 			<intercept-url pattern="/login.htm" access="permitAll" />
-	
+			<intercept-url pattern="/plugins/**" access="permitAll" />
+			<intercept-url pattern="/bootstrap/**" access="permitAll" />
+			<intercept-url pattern="/dist/**" access="permitAll" />
+			
 			<intercept-url pattern="/index.htm" access="hasRole('ROLE_USER')" />
 	
 <!-- 		<intercept-url pattern="/admin/**" access="ROLE_ADMIN" /> -->

@@ -12,6 +12,10 @@
 
 	<context:component-scan base-package="controllers" />
 
+	<!-- 스프링의 DispatcherServet에게 정적인 자원을 알려준다.
+	<mvc:resources location="/images/" mapping="/images/**" />
+	<mvc:resources location="/css/" mapping="/css/**" />  -->
+
 	<!-- @RequestMapping과 @ExceptionHandler 등의 애노테이션을 처리할 객체를 등록한다. 이 선언이 있어야만 
 		@RequestMapping 기능을 완전히 사용할 수 있다. =>주의! 엄격히 페이지 컨트롤러에 대해서는 @Controller를 사용하라! -->
 	<mvc:annotation-driven />

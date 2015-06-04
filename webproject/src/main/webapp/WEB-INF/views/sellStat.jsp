@@ -38,7 +38,7 @@
  		<!-- 페이지 내용 작성-->
             
             <div class="btn-group">
-              <button type="button" class="btn btn-info">매출액</button>
+              <button id="btn_sell" type="button" class="btn btn-info">매출액</button>
               <button id="btn_avg" type="button" class="btn btn-info">평균</button>
               <button type="button" class="btn btn-info">순익</button>
             </div>
@@ -163,21 +163,30 @@
     	    $(document).ajaxSend(function(e, xhr, options) {
     	        xhr.setRequestHeader(header, token);
     	    });
-    	    console.log("token = "+token);
-    	    console.log("header = "+header);
     	});
+      
       
       $(document).ready(function(){
     	  
       });
       
+      $('#btn_sell').click(function(){
+          $.ajax({
+            type : 'post',
+            url : '/webproject/sellStat.json',
+            success : function(data) {
+                console.log(data.todayTotal);
+                $("#dayP").html("오늘의 매출액");
+                if(data.todayTotal!=null){
+                  $("#dayH3").html(data.todayTotal);
+                }else{
+                  $("#dayH3").html("0");
+                }
+             }
+          })
+        });
+      
     	$('#btn_avg').click(function(){
-    		var token = $("meta[name='_csrf']").attr("content");
-        var header = $("meta[name='_csrf_header']").attr("content");
-       var headerObject = new Object();
-           headerObject[header] = token;
-        
-        
     		$.ajax({
     			type : 'post',
     			url : '/webproject/sellStat.json',
@@ -191,7 +200,6 @@
     				  }
            }
     		})
-    	 	  
     	});
       
       

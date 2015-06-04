@@ -54,7 +54,6 @@ public class statsControl {
 		model.addAttribute("yearOrder", yearOrder);
 		
 		List<BestProduct> bestProductList = orderRawDao.orderBest(CatCelUtil.nowMonth());
-		System.out.println(bestProductList.size());
 		for(BestProduct bp : bestProductList){
 			System.out.println(bp.toString());
 		}
@@ -98,16 +97,18 @@ public class statsControl {
 		System.out.println("sellStat post 요청 호출");
 		
 		HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
-		Integer dayAvg = orderRawDao.daySellAvg(CatCelUtil.nowYear());;
+		Integer todayTotal = orderRawDao.todayStats(CatCelUtil.nowDay());
+		resultMap.put("todayTotal", todayTotal);
+		
+		Integer dayAvg = orderRawDao.daySellAvg(CatCelUtil.nowMonth());;
 		resultMap.put("daySellAvg", dayAvg);
 		
-		Integer weekAvg = orderRawDao.weekSellAvg(CatCelUtil.nowYear());;
+		Integer weekAvg = orderRawDao.weekSellAvg(CatCelUtil.nowMonth());;
 		resultMap.put("weekSellAvg", weekAvg);
 		
 		Integer monthAvg = orderRawDao.monthSellAvg(CatCelUtil.nowYear());;
 		resultMap.put("monthSellAvg", monthAvg);
 		
 		return resultMap;
-		
 	}
 }

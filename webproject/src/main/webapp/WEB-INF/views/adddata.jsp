@@ -56,7 +56,6 @@ table {
 								<div class="box-tools">
 									<div class="input-group">
 										<input type="file" id="xlf" name="xlfile"><br />
-
 									</div>
 								</div>
 							</div>
@@ -129,6 +128,8 @@ table {
 	<!-- 추가적인 자바스크립트 플러그인 추가 및 자바스크립트 코드 작성 -->
 
 	<script type="text/javascript">
+	 
+	  
 		$('#submit-btn').on('click', function() {
 			var tableJson = $('#dataTable').tableToJSON();
 

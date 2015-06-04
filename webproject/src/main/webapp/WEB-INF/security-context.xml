@@ -23,7 +23,10 @@
 			authentication-failure-url="/login.htm?error" 
 		/>
 		<logout logout-url="/logout" invalidate-session="true" logout-success-url="/login.htm" />
+	
+		<custom-filter ref=""/>
 	</http>
+	
 
 	<authentication-manager>
 		<authentication-provider>

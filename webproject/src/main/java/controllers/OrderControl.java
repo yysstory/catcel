@@ -2,8 +2,6 @@ package controllers;
 
 import java.io.IOException;
 import java.security.Principal;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +23,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import dao.MallDao;
 import dao.OrderRawDao;
+import dao.UserDao;
 
 @Controller
 public class OrderControl {
@@ -34,6 +33,9 @@ public class OrderControl {
 	
 	@Autowired
 	OrderRawDao orderRawDao;
+	
+	@Autowired
+	UserDao userDao;
 
 	@RequestMapping("/index")
 	public String goMain(Principal principal,Model model) {
@@ -183,7 +185,9 @@ public class OrderControl {
 	@RequestMapping(value = "/addshop", method = RequestMethod.POST)
 	public String addShop(Mall mall, Principal principal) {
 		mall.setMallRegistDate("20150101");
+		
 		System.out.println(mall.toString());
+		mall.setUserNo(userDao.getUserNo(principal.getName()));
 		mallDao.insertMall(mall);
 		System.out.println(principal.toString());
 

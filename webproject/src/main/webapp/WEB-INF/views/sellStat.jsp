@@ -3,8 +3,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="_csrf" content="${_csrf.token}"/>
-    <meta name="_csrf_header" content="${_csrf.headerName}"/>
+
   	<jsp:include page="inc/commoncss.jsp"></jsp:include>
     <!--개별 css 추가  -->
     

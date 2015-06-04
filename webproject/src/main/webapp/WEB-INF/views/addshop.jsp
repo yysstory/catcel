@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,7 +72,8 @@
 
 					<div class="col-lg-12">
 						<div id="btn-group">
-							<input type="hidden" name="${_csrf.parameterName}"	value="${_csrf.token}" />
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
 							<button type="button" id="submit-btn" class="btn btn-primary">저장</button>
 							<button type="reset" class="btn btn-warning">취소</button>
 						</div>

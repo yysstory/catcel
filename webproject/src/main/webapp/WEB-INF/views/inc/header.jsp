@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <header class="main-header">
 
         <!-- Logo -->
@@ -99,7 +99,11 @@
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
-                      <a href="/j_spring_security_logout" class="btn btn-default btn-flat">Sign out</a>
+               		     <c:url var="logoutUrl" value="/logout" />
+							<form action="${logoutUrl}" method="post">
+								<button class="btn btn-default btn-flat" type="submit" >로그아웃</button> 
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+							</form>
                     </div>
                   </li>
                 </ul>

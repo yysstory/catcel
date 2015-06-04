@@ -10,7 +10,7 @@
 			<intercept-url pattern="/plugins/**" access="permitAll" />
 			<intercept-url pattern="/bootstrap/**" access="permitAll" />
 			<intercept-url pattern="/dist/**" access="permitAll" />
-			<intercept-url pattern="/index.htm" access="hasRole('ROLE_USER')" />
+<!-- 			<intercept-url pattern="/index.htm" access="hasRole('ROLE_USER')" /> -->
 <!-- 		<intercept-url pattern="/admin/**" access="ROLE_ADMIN" /> -->
 		    <intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
 		
@@ -19,7 +19,7 @@
 			username-parameter="email" 
 			password-parameter="password"
 			login-processing-url ="/loginProcess.htm" 
-			default-target-url="/index.htm"
+			default-target-url="/bridge.htm"
 			authentication-failure-url="/login.htm?error" 
 		/>
 		<logout logout-url="/logout" invalidate-session="true" logout-success-url="/login.htm" />
@@ -33,11 +33,7 @@
 				authorities-by-username-query="SELECT u.USER_NO,a.USER_ROLE from USER u LEFT JOIN USER_AUTH a ON u.USER_NO = a.USER_NO WHERE u.USER_EMAIL=?" />
      		 <password-encoder hash="bcrypt"/>
 				 
-			<!-- <user-service>
-				<user name="newlec@aa" password="111" authorities="ROLE_USER" />
-				<user name="111@111" password="111" authorities="ROLE_USER" />
-				<user name="admin" password="111" authorities="ROLE_ADMIN,ROLE_USER" />
-			</user-service> -->
+			
 		</authentication-provider>
 	</authentication-manager>
 

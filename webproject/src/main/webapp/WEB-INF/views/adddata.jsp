@@ -113,15 +113,9 @@ table {
 					<button type="reset" class="btn btn-warning">취소</button>
 				</div>
 
-
-
 				<!--/여기까지 -->
 			</section>
-
-
-
 		</div>
-
 
 		<!-- /.content-wrapper -->
 		<jsp:include page="inc/footer.jsp"></jsp:include>
@@ -151,9 +145,7 @@ table {
 				        
 				      }); */
 			var tableData = JSON.stringify(tableJson);
-			
-//		    console.log(JSON.stringify(tableJson));
-				      
+		      
 			var data = {'name' : $("h1").attr("data-mallName") , 'orderRaws' : tableData  };
 			
 			$.ajax({
@@ -230,7 +222,6 @@ table {
 					var sheetInfo = worksheet["!ref"].split(":")[1];
 					addTd(2, sheetInfo, worksheet);
 					console.timeEnd("소요시간");
-
 				};
 				reader.readAsBinaryString(f);
 			}

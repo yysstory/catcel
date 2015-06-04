@@ -46,6 +46,10 @@
 	</select>
 
 
+    <select id="selectMallNameList" resultType="String">
+    	SELECT MALL_NAME FROM MALL WHERE USER_NO = ${value}
+    </select>
+
 
 	<insert id="insertMall" parameterType="Mall">
 		INSERT INTO MALL(

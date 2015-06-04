@@ -12,12 +12,10 @@
 	padding-top: 20px;
 }
 
-#btn-group{
+#btn-group {
 	padding-top: 35px;
 	padding-left: 15px;
-	
 }
-
 </style>
 
 
@@ -50,14 +48,15 @@
 
 						<div class="form-group col-lg-2" id="">
 							<label for="MALL_COMMITSSION_CAL">수수료</label> <input
-								id="MALL_COMMITSSION_CAL" class="form-control" name="mallCommitssionCal" />
+								id="MALL_COMMITSSION_CAL" class="form-control"
+								name="mallCommitssionCal" />
 						</div>
 
 
 
 						<div class="form-group col-lg-2" id="">
 							<label for="DATA_START_CAL">데이터 시작 행</label> <input
-								id="DATA_START_CAL" class="form-control" name="dataStartCal"/>
+								id="DATA_START_CAL" class="form-control" name="dataStartCal" />
 						</div>
 					</div>
 
@@ -72,6 +71,7 @@
 
 					<div class="col-lg-12">
 						<div id="btn-group">
+							<input type="hidden" name="${_csrf.parameterName}"	value="${_csrf.token}" />
 							<button type="button" id="submit-btn" class="btn btn-primary">저장</button>
 							<button type="reset" class="btn btn-warning">취소</button>
 						</div>
@@ -149,7 +149,7 @@
 		}, {
 			"name" : "productQtyCal",
 			"html" : "수량"
-		},{
+		}, {
 			"name" : "orderTotalAmountCal",
 			"html" : "총액"
 		}, {
@@ -176,18 +176,18 @@
 			$(".form-control").on("change", function() {
 				showHideOption();
 			})
-			
-			$("#submit-btn").on("click",function(){
-				
+
+			$("#submit-btn").on("click", function() {
+
 				$("select").each(function() {
 					$(this).children("option").each(function() {
-						$(this).removeAttr("disabled");	
+						$(this).removeAttr("disabled");
 					});
 				});
-				
+
 				$("#submit-form").submit();
 			})
-			
+
 		})
 
 		function showHideOption() {
@@ -215,14 +215,22 @@
 
 		function addSelectDiv(arr) {
 			for (var i = 0; i < arr.length; i++) {
-				$("<div>").appendTo("#select-set").addClass("select-cell")
-						.append($("<div>").html(arr[i].html)).append(
-								$("<div>").append(
-										$("<select>").addClass("form-control")
-												.attr("name", arr[i].name)
-												.append(
-														$("<option>")
-																.html(""))));
+				$("<div>")
+						.appendTo("#select-set")
+						.addClass("select-cell")
+						.append($("<div>").html(arr[i].html))
+						.append(
+								$("<div>")
+										.append(
+												$("<select>")
+														.addClass(
+																"form-control")
+														.attr("name",
+																arr[i].name)
+														.append(
+																$("<option>")
+																		.html(
+																				""))));
 
 			}
 		}

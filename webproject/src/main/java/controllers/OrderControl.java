@@ -36,8 +36,9 @@ public class OrderControl {
 	OrderRawDao orderRawDao;
 
 	@RequestMapping("/index")
-	public String goMain(Principal p,Model m) {
-		m.addAttribute("name", p.getName());
+	public String goMain(Principal principal,Model model) {
+		model.addAttribute("name", principal.getName());
+		
 		return "index";
 	}
 
@@ -153,7 +154,7 @@ public class OrderControl {
 	 */
 
 	@RequestMapping(value = "/adddata", method = RequestMethod.POST)
-	public Object goAddData(String name, String orderRaws)
+	public Object goAddData(String name, String orderRaws, Principal principal)
 			throws JsonParseException, JsonMappingException, IOException {
 
 		System.out.println(name);
@@ -165,6 +166,7 @@ public class OrderControl {
 		
 		
 		int userNo=1;
+		
 		String date = CatCelUtil.nowDay();
 		orderRawDao.insertOrderRaws(name,date,userNo,orders);
 
@@ -179,10 +181,11 @@ public class OrderControl {
 	}
 
 	@RequestMapping(value = "/addshop", method = RequestMethod.POST)
-	public String addShop(Mall mall) {
+	public String addShop(Mall mall, Principal principal) {
 		mall.setMallRegistDate("20150101");
 		System.out.println(mall.toString());
 		mallDao.insertMall(mall);
+		System.out.println(principal.toString());
 
 		return "index";
 	}

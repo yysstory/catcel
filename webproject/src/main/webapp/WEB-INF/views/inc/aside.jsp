@@ -37,8 +37,46 @@
 
 
 
+<<<<<<< HEAD
 		<!-- Sidebar Menu -->
 		<ul class="sidebar-menu">
+=======
+          <!-- Sidebar Menu -->
+          <ul class="sidebar-menu">
+          
+            <li class="header">쇼핑몰</li>
+            <li><a href="#"><i class='fa fa-link'></i> <span>Today</span></a></li>
+            <!-- Optionally, you can add icons to the links -->
+            <li class="active treeview">
+              <a href="#"><i class='fa fa-link'></i> <span>주문등록</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li class="active"><a href="addshop.htm">쇼핑몰추가+</a></li>
+                <li><a href="adddata.htm?mall=스토어팜">스토어팜</a></li>
+                <li><a href="adddata.htm?mall=인터파크">인터파크</a></li>
+                <li><a href="adddata.htm?mall=11st">11st</a></li>
+              </ul>
+            </li>
+            
+            <li class="treeview active">
+              <a href="#"><i class="fa fa-laptop"></i>
+                <span>통계</span><i class="fa fa-angle-left pull-right"></i></a>
+		              <ul class="treeview-menu menu-open" style="display: block;">
+		                <li class=""><a href="orderStat.htm"><i class="fa fa-circle-o"></i>주문통계</a></li>
+		                <li><a href="sellStat.htm"><i class="fa fa-circle-o"></i>매출통계</a></li>
+		              </ul>
+            </li>
+            
+            <li class="treeview active">
+              <a href="#"><i class="fa fa-laptop"></i>
+                <span>고객관리</span><i class="fa fa-angle-left pull-right"></i></a>
+                  <ul class="treeview-menu menu-open" style="display: block;">
+                    <li class=""><a href="customerSearch.htm"><i class="fa fa-circle-o"></i>고객검색</a></li>
+                  </ul>
+            </li>
+            
+            <li ><a href="#"><i class='fa fa-link'></i> <span></span></a></li>
+            <li><a href="#"><i class='fa fa-link'></i> <span>Another Link</span></a></li>
+>>>>>>> refs/remotes/origin/master
 
 			<li class="header">쇼핑몰</li>
 			<li><a href="#"><i class='fa fa-link'></i> <span>Today</span></a></li>

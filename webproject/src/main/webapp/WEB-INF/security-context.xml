@@ -24,7 +24,6 @@
 		/>
 		<logout logout-url="/logout" invalidate-session="true" logout-success-url="/login.htm" />
 	
-		<custom-filter ref=""/>
 	</http>
 	
 

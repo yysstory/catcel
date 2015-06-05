@@ -174,7 +174,6 @@
             type : 'post',
             url : '/webproject/sellStat.json',
             success : function(data) {
-                console.log(data.todayTotal);
                 $("#dayP").html("오늘의 매출액");
                 if(data.todayTotal!=null){
                   $("#dayH3").html(data.todayTotal);
@@ -190,7 +189,7 @@
     			type : 'post',
     			url : '/webproject/sellStat.json',
      			success : function(data) {
-    				  console.log(data.daySellAvg);
+    				  console.log(data);
     				  $("#dayP").html("일매출 평균");
     				  if(data.daySellAvg!=null){
     					  $("#dayH3").html(data.daySellAvg);

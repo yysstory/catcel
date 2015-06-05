@@ -143,8 +143,9 @@ table {
 				           console.log(data.age);
 				           $("h1").html(data.age);
 				        }
-				        
 				      }); */
+				      
+				      
 			var tableData = JSON.stringify(tableJson);
 		      
 			var data = {'name' : $("h1").attr("data-mallName") , 'orderRaws' : tableData  };

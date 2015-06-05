@@ -48,9 +48,13 @@
 					class="fa fa-angle-left pull-right"></i></a>
 				<ul class="treeview-menu">
 					<li class="active"><a href="addshop.htm">쇼핑몰추가+</a></li>
+					
 					<c:forEach var="mallName" items="${mallNameList}">
-						<li><a href="adddata.htm?mall=${mallName}">${mallName}</a></li>
+						<li><a href="adddata.htm?mall=${mallName}">${mallName}</a>
+						<div data-removeMallName="${mallName}"  style="cursor:pointer; float: right; z-index: 10; top:-22px; left:-15px; color:#8aa4af;" id="shopRemove" class="glyphicon glyphicon-remove shop-remove-div"></div></li>
 					</c:forEach>
+				
+				
 				</ul></li>
 
 			<li class="treeview active"><a href="#"><i

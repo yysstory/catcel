@@ -24,9 +24,26 @@
 			xhr.setRequestHeader(header, token);
 		});
 	});
+	
+	$(".shop-remove-div").on('click',function(event){
+		event.stopPropagation();
+		if(confirm("정말 삭제하시겠습니까??") == true){
+			$.ajax({
+				type : 'post',
+				url : 'removeMall.json',
+				data : {'removeMallName' : $(this).attr("data-removeMallName")},
+				dataType : 'json',
+				success : function(data) {
+					alert("삭제했습니다.");
+					location.href='addshop.htm';
+				},
+				error : function(data){
+					alert("실패했습니다. 다시 시도해 주세요.");
+				}
+				});
+		}else{
+			return;
+		}
+		
+	});
 </script>
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-          Both of these plugins are recommended to enhance the
-          user experience. Slimscroll is required when using the
-    fixed layout. -->
-

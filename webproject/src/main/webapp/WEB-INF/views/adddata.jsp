@@ -155,8 +155,14 @@ table {
 				data : data,
 				dataType : 'json',
 				success : function(data) {
-					console.log(data);
+					alert("등록에 성공했습니다.");
+					location.href='adddata.htm?mall='+$("h1").attr("data-mallName");
+				},
+				error : function(data){
+					alert("실패했습니다. 다시 시도해 주세요.");
+					location.href='adddata.htm?mall='+$("h1").attr("data-mallName");
 				}
+				
 			});
 
 		});

@@ -5,6 +5,7 @@ import java.security.Principal;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -167,18 +168,18 @@ public class OrderControl {
 				orderRaws.replaceAll("\"", "\\\""), OrderRaw[].class);
 		
 		
-		int userNo=1;
 		
 		String date = CatCelUtil.nowDay();
-		orderRawDao.insertOrderRaws(name,date,userNo,orders);
-
+		orderRawDao.insertOrderRaws(name,date,userDao.getUserNo(principal.getName()),orders);
 		HashMap<String, String> resultMap = new HashMap<>();
 		resultMap.put("success", "ok");
 		return resultMap;
 	}
 
 	@RequestMapping(value = "/addshop", method = RequestMethod.GET)
-	public String goAddShop() {
+	public String goAddShop(HttpSession sesstion, Principal principal) {
+		sesstion.setAttribute("mallNameList", mallDao
+				.selectMallNameList(userDao.getUserNo(principal.getName())));
 		return "addshop";
 	}
 
@@ -189,9 +190,18 @@ public class OrderControl {
 		System.out.println(mall.toString());
 		mall.setUserNo(userDao.getUserNo(principal.getName()));
 		mallDao.insertMall(mall);
-		System.out.println(principal.toString());
-
-		return "index";
+		return "redirect:addshop.htm";
 	}
+	
+	
+	
+	@RequestMapping(value = "/removeMall", method = RequestMethod.POST)
+	public String removeMall(String removeMallName, Principal principal) {
+		System.out.println("removeMall post 진입");
+		mallDao.removeMall(removeMallName, userDao.getUserNo(principal.getName()));
+		
+		return "success";
+	}
+	
 
 }

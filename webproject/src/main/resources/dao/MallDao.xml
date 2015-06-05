@@ -37,6 +37,12 @@
 		<result column="ORDER_TOTAL_AMOUNT_CAL" property="orderTotalAmountCal" />	
 	</resultMap>
 
+	<delete id="removeMall">
+	
+	DELETE FROM MALL WHERE MALL_NAME='${param1}' AND USER_NO=${param2}
+	
+	</delete>
+
 
 	<select id="selectMall" resultMap="mallMap">
 		SELECT *

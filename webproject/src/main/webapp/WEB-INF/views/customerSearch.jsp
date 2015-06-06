@@ -63,9 +63,9 @@
 				</div>
 				
 				<div class="input-group col-lg-2">
-            <input name="orcu_name" type="text" class="form-control"
+            <input id="orcu_name2" name="orcu_name2" type="text" class="form-control"
               placeholder="Search.."> <span class="input-group-btn">
-              <button class="btn btn-info btn-flat" type="button">
+              <button id="searchBtn" class="btn btn-info btn-flat" type="button">
                 <i class="fa fa-search"></i>
               </button>
             </span>
@@ -85,7 +85,7 @@
                   </div>
                 </div><!-- /.box-header -->
                 <div class="box-body table-responsive no-padding">
-                  <table class="table table-hover">
+                  <table id="searchTable" class="table table-hover">
                     <tbody><tr>
                       <th>ID</th>
                       <th>User</th>
@@ -93,13 +93,14 @@
                       <th>Status</th>
                       <th>Reason</th>
                     </tr>
-                    <tr>
+                    
+                    <!-- <tr>
                       <td>183</td>
-                      <td>John Doe</td>
+                      <td></td>
                       <td>11-7-2014</td>
                       <td><span class="label label-success">Approved</span></td>
                       <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
+                    </tr> -->
                     
                   </tbody></table>
                 </div><!-- /.box-body -->
@@ -118,17 +119,22 @@
 	<script type="text/javascript">
 		
 	
-	$.ajax({
-        type : 'post',
-        url : '/customerSearch2.json',
-        data : {'name':$("#").attr()},
-        dataType : 'json',
-        success : function(data) {
-          console.log(data.success);
-           console.log(data.age);
-           $("h1").html(data.age);
-        }
-      });
+	$("#searchBtn").on('click',function(){
+		  $(".appendTr").remove();
+		  $.ajax({
+		        type : 'post',
+		        url : 'customerSearch2.json',
+		        data : {'orcu_name':$("#orcu_name2").val()},
+		        dataType : 'json',
+		        success : function(data) {
+		        	for(var orderRaw in data.customerSearch2){
+		        		$('#searchTable').append($("<tr>").addClass("appendTr").append($("<td>")).append($("<td>").html(data.customerSearch2[orderRaw].orcuName)))
+		        		console.log(data.customerSearch2[orderRaw].orcuName);
+		        		
+		        	}
+		        }
+		      });
+	});
 	
 	
 	

@@ -116,7 +116,7 @@ public class statsControl {
 		
 		return "customerSearch";
 	}
-	@RequestMapping(value="/customerSearch",method=RequestMethod.POST)
+	/*@RequestMapping(value="/customerSearch",method=RequestMethod.POST)
 	public Object customerSearch(Model model, String orcu_name){
 		System.out.println(orcu_name);
 		List<OrderRaw> customerSearchList = orderRawDao.customerSearch(orcu_name);
@@ -125,13 +125,14 @@ public class statsControl {
 			System.out.println(cs.toString());
 		}
 		return "customerSearch";
-	}
+	}*/
 	@RequestMapping(value="/customerSearch2",method=RequestMethod.POST)
 	public Object customerSearch2(String orcu_name){
 		System.out.println(orcu_name);
-		HashMap<String, String> resultMap = new HashMap<String, String>();
-		String customerSearchMap = orderRawDao.customerSearchMap(orcu_name);
+		HashMap<String, List<OrderRaw>> resultMap = new HashMap<String, List<OrderRaw>>();
+		List<OrderRaw> customerSearchMap = orderRawDao.customerSearchMap(orcu_name);
 		resultMap.put("customerSearch2", customerSearchMap);
+		System.out.println(customerSearchMap);
 		return resultMap;
 	}
 }

@@ -25,5 +25,5 @@ public interface OrderRawDao {
 	Integer monthSellAvg(String payment_date);
 
 	List<OrderRaw> customerSearch(String orcu_name);
-	String customerSearchMap(String orcu_name);
+	List<OrderRaw> customerSearchMap(String orcu_name);
 }

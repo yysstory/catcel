@@ -146,17 +146,17 @@
     FROM ORDER_RAW
     WHERE PAYMENT_DATE LIKE('2015/06/01%')
   </select>
+-->
 
-
-  <resultMap type="customerSearch" id="customerSearchMap">
-      <result column="ORCU_NAME" property="customerName" />
+  <resultMap type="OrderRaw" id="customerSearchMap">
+      <result column="ORCU_NAME" property="orcuName" />
   </resultMap>
-  <select id="customerSearch" resultType="customerSearchMap">
-    SELECT ORCU_NAME FROM ORDER_RAW WHERE ORCU_NAME='${value}'
+  <select id="customerSearchMap" resultMap="customerSearchMap">
+    SELECT ORCU_NAME FROM ORDER_RAW WHERE ORCU_NAME LIKE '%${value}%'
   </select>
   
   
--->
+
 
 
 </mapper>

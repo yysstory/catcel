@@ -34,52 +34,35 @@
 
 			<section class="content">
 				<!-- 페이지 내용 작성-->
-				<form action="customerSearch.htm" method="post" id="submit-form">
-					<div class="input-group col-lg-2">
-						<input name="orcu_name" type="text" class="form-control"
-							placeholder="Search.."> <span class="input-group-btn">
-							<button class="btn btn-info btn-flat" type="submit">
-								<i class="fa fa-search"></i>
-							</button>
-						</span>
-					</div>
-				</form>
-
-				<div class="box box-default color-palette-box">
-					<div class="box-header with-border">
-						<h3 class="box-title">
-							<i class="fa fa-tag"></i>검색결과
-						</h3>
-					</div>
-					<div class="box-body">
-
-				<%-- 		<c:if test="${객체 ne null}">
-							<c:forEach var="cs" items="${customerSearch}">
-								<p>${cs.customerName} dd</p>
-							</c:forEach>
-						</c:if> --%>
-					</div>
-					<!-- /.box-body -->
-				</div>
-				
-				<div class="input-group col-lg-2">
-            <input id="orcu_name2" name="orcu_name2" type="text" class="form-control"
-              placeholder="Search.."> <span class="input-group-btn">
-              <button id="searchBtn" class="btn btn-info btn-flat" type="button">
-                <i class="fa fa-search"></i>
-              </button>
-            </span>
-          </div>
         <div class="row">
-            <div class="col-xs-6 col-lg-6">
+            <div class="col-xs-12 col-lg-12">
               <div class="box">
                 <div class="box-header">
                   <h3 class="box-title">검색결과</h3>
+                  
                   <div class="box-tools">
-                    <div class="input-group" style="width: 150px;">
-                      <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
+                    
+                    <div class="input-group" style="width: 250px;">
+                    <div class="input-group-btn">
+							        <button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">구매자ID <span class="caret"></span></button>
+							        <ul class="dropdown-menu" role="menu">
+							          <li><a href="#">구매자ID</a></li>
+							          <li><a href="#">구매자이름</a></li>
+							          <li><a href="#">수령인이름</a></li>
+							          <li><a href="#">주문번호</a></li>
+							        </ul>
+							      </div><!-- /btn-group -->
+                    <div class="input-group-btn">
+                      <select class="btn btn-sm btn-default">
+                        <option value="">구매자ID</option>
+                        <option value="orcuName" selected>구매자이름</option>
+                        <option value="">수령인이름</option>
+                        <option value="">주문번호</option>
+                      </select>
+                    </div>
+                      <input id="orcu_name" name="orcu_name" type="text" class="form-control input-sm pull-right" placeholder="Search">
                       <div class="input-group-btn">
-                        <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                        <button id="searchBtn" type="button" class="btn btn-sm btn-info"><i class="fa fa-search"></i></button>
                       </div>
                     </div>
                   </div>
@@ -88,20 +71,11 @@
                   <table id="searchTable" class="table table-hover">
                     <tbody><tr>
                       <th>ID</th>
-                      <th>User</th>
+                      <th>구매자</th>
                       <th>Date</th>
                       <th>Status</th>
                       <th>Reason</th>
                     </tr>
-                    
-                    <!-- <tr>
-                      <td>183</td>
-                      <td></td>
-                      <td>11-7-2014</td>
-                      <td><span class="label label-success">Approved</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr> -->
-                    
                   </tbody></table>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
@@ -124,7 +98,7 @@
 		  $.ajax({
 		        type : 'post',
 		        url : 'customerSearch2.json',
-		        data : {'orcu_name':$("#orcu_name2").val()},
+		        data : {'orcu_name':$("#orcu_name").val()},
 		        dataType : 'json',
 		        success : function(data) {
 		        	for(var orderRaw in data.customerSearch2){

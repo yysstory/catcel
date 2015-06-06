@@ -17,7 +17,7 @@ import dao.OrderRawDao;
 
 
 @Controller
-public class statsControl {
+public class StatsControl {
 
 	@Autowired
 	MallDao mallDao;

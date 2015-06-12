@@ -5,8 +5,8 @@ import java.util.Date;
 
 public class CatCelUtil {
 
-	public static int wonToInt(String won){
-		return Integer.parseInt(won.trim().replaceAll(",","").replaceAll("₩",""));
+	public static String wonToInt(String won){
+		return won.trim().replace(",","").replace("₩","").replace(".","").replace("원","");
 	}
 	
 	public static String nowDate(){

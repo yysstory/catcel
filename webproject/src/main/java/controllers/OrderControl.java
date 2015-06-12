@@ -167,9 +167,16 @@ public class OrderControl {
 		OrderRaw[] orders = mapper.readValue(
 				orderRaws.replaceAll("\"", "\\\""), OrderRaw[].class);
 		
+		for(OrderRaw orderRaw : orders){
+			orderRaw.setOrderTotalAmount(CatCelUtil.wonToInt(orderRaw.getOrderTotalAmount()));
+			orderRaw.setShoppingCharge(CatCelUtil.wonToInt(orderRaw.getShoppingCharge()));
+			orderRaw.setProductPrice(CatCelUtil.wonToInt(orderRaw.getProductPrice()));
+			//System.out.println(orderRaw.toString());
+	
+		}
 		
 		
-		String date = CatCelUtil.nowDay();
+		String date = CatCelUtil.nowDate();
 		orderRawDao.insertOrderRaws(name,date,userDao.getUserNo(principal.getName()),orders);
 		HashMap<String, String> resultMap = new HashMap<>();
 		resultMap.put("success", "ok");
@@ -185,7 +192,7 @@ public class OrderControl {
 
 	@RequestMapping(value = "/addshop", method = RequestMethod.POST)
 	public String addShop(Mall mall, Principal principal) {
-		mall.setMallRegistDate("20150101");
+		mall.setMallRegistDate(CatCelUtil.nowDay());
 		
 		System.out.println(mall.toString());
 		mall.setUserNo(userDao.getUserNo(principal.getName()));
@@ -194,14 +201,11 @@ public class OrderControl {
 	}
 	
 	
-	
 	@RequestMapping(value = "/removeMall", method = RequestMethod.POST)
 	public String removeMall(String removeMallName, Principal principal) {
 		System.out.println("removeMall post 진입");
 		mallDao.removeMall(removeMallName, userDao.getUserNo(principal.getName()));
-		
 		return "success";
 	}
 	
-
 }

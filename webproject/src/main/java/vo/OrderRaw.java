@@ -10,7 +10,7 @@ public class OrderRaw implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String mallName;
-	private String mallRegistDate;
+	private String orderUploadDate;
 
 	private String orcuName;
 	private String orcuId;
@@ -50,11 +50,12 @@ public class OrderRaw implements Serializable {
 	public void setMallName(String mallName) {
 		this.mallName = mallName;
 	}
-	public String getMallRegistDate() {
-		return mallRegistDate;
+
+	public String getOrderUploadDate() {
+		return orderUploadDate;
 	}
-	public void setMallRegistDate(String mallRegistDate) {
-		this.mallRegistDate = mallRegistDate;
+	public void setOrderUploadDate(String orderUploadDate) {
+		this.orderUploadDate = orderUploadDate;
 	}
 	public String getOrcuName() {
 		return orcuName;
@@ -214,8 +215,8 @@ public class OrderRaw implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "OrderRaw [mallName=" + mallName + ", mallRegistDate="
-				+ mallRegistDate + ", orcuName=" + orcuName + ", orcuId="
+		return "OrderRaw [mallName=" + mallName + ", orderUploadDate="
+				+ orderUploadDate + ", orcuName=" + orcuName + ", orcuId="
 				+ orcuId + ", orcuPhoneNumber=" + orcuPhoneNumber
 				+ ", orcuMemo=" + orcuMemo + ", orderNumber=" + orderNumber
 				+ ", paymentDate=" + paymentDate + ", paymentMethod="

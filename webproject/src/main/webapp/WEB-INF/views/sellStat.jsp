@@ -42,9 +42,7 @@
 						<!-- small box -->
 						<div class="small-box bg-aqua">
 							<div class="inner">
-								<h3 id="dayMoneyTotal">
-									0 <sub style="font-size: 20px">원</sub>
-								</h3>
+								<h3 id="dayMoneyTotal">0</h3>
 								<p>오늘의 매출액</p>
 							</div>
 							<div class="icon">
@@ -213,28 +211,39 @@
 		data : {},
 		dataType : 'json',
 		success : function(data) {
-		    console.log(data);
-		    $("#dayMoneyTotal").html(data.dayMoneyTotal);
-		    $("#weekMoneyTotal").html();
-		    $("#monthMoneyTotal").html();
-		    $("#yearMoneyTotal").html();
+		    
+		    $("#dayMoneyTotal").html(data.dayMoneyTotal + "<sub style='font-size: 20px'>원</sub>");
+		    $("#weekMoneyTotal").html(data.weekMoneyTotal + "<sub style='font-size: 20px'>원</sub>");
+		    $("#monthMoneyTotal").html(data.monthMoneyTotal + "<sub style='font-size: 20px'>원</sub>");
+		    $("#yearMoneyTotal").html(data.yearMoneyTotal + "<sub style='font-size: 20px'>원</sub>");
 
-		    $("#dayNumber").html();
-		    $("#weekNumber").html();
-		    $("#monthNumber").html();
-		    $("#yearNumber").html();
+		    var d = new Date();
+		    $("#dayNumber").html(d.getDate() + "<sub style='font-size: 20px'>일</sub>");
+		    $("#weekNumber").html(weekAndDay() + "<sub style='font-size: 20px'>주</sub>");
+		    $("#monthNumber").html((d.getMonth() + 1) + "<sub style='font-size: 20px'>월</sub>");
+		    $("#yearNumber").html(d.getFullYear() + "<sub style='font-size: 20px'>년</sub>");
 
-		  /*   new Chart($("#dayChart").get(0).getContext("2d")).Line(chartDataMaker(), {});
-		    new Chart($("#weekChart").get(0).getContext("2d")).Line(chartDataMaker(), {});
-		    new Chart($("#monthChart").get(0).getContext("2d")).Line(chartDataMaker(), {});
-		    new Chart($("#yearChart").get(0).getContext("2d")).Line(chartDataMaker(), {}); */
+		    /*   new Chart($("#dayChart").get(0).getContext("2d")).Line(chartDataMaker(), {});
+		      new Chart($("#weekChart").get(0).getContext("2d")).Line(chartDataMaker(), {});
+		      new Chart($("#monthChart").get(0).getContext("2d")).Line(chartDataMaker(), {});
+		      new Chart($("#yearChart").get(0).getContext("2d")).Line(chartDataMaker(), {}); */
 		}
 	    });
 	})
 
-	/* function chartDataMaker(label, data) {
+	function weekAndDay() {
+	    var date = new Date, prefixes = [ '1', '2', '3', '4', '5' ];
+	    return prefixes[0 | date.getDate() / 7];
+	}
+
+	var dates = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31'];
+	var days = ['월','화','수','목','금','토','일'];
+	var months = ['1','2','3','4','5','6','7','8','9','10','11','12'];
+	var hours = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24']
+	
+	function chartDataMaker(label, data) {
 	    return {
-		 labels : [ "January", "February", "March", "April", "May", "June", "July" ],
+		//	 labels : [ "January", "February", "March", "April", "May", "June", "July" ],
 		labels : label,
 		datasets : [ {
 		    label : "My First dataset",
@@ -244,11 +253,11 @@
 		    pointStrokeColor : "#fff",
 		    pointHighlightFill : "#fff",
 		    pointHighlightStroke : "rgba(220,220,220,1)",
-		   data : [ 65, 59, 80, 81, 56, 55, 40 ] 
+		    //		   data : [ 65, 59, 80, 81, 56, 55, 40 ] 
 		    data : data
 		} ]
 	    }
-	}; */
+	};
     </script>
 
 	<!--/여기까지 -->

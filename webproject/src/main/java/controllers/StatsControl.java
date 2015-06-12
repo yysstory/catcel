@@ -1,19 +1,19 @@
 package controllers;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import util.CatCelUtil;
-import vo.BestProduct;
 import vo.OrderRaw;
 import dao.MallDao;
 import dao.OrderRawDao;
+import dao.UserDao;
 
 @Controller
 public class StatsControl {
@@ -22,6 +22,8 @@ public class StatsControl {
 	MallDao mallDao;
 	@Autowired
 	OrderRawDao orderRawDao;
+	@Autowired
+	UserDao userDao;
 
 	@RequestMapping(value = "/orderStat", method = RequestMethod.GET)
 	public String orderStatGet() {
@@ -51,12 +53,15 @@ public class StatsControl {
 	
 	
 	@RequestMapping(value = "/sellStat", method = RequestMethod.POST)
-	public Object sellStatPost() {
+	public Object sellStatPost(Principal principal) {
 		System.out.println("sellStat post 요청 호출");
-		HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
-		//resultMap.put("dayMoneyTotal", orderRawDao.dayMoneyTotal(CatCelUtil.nowDay()));
-		resultMap.put("dayMoneyTotal", orderRawDao.dayMoneyTotal("2015/04/17"));
-		System.out.println(orderRawDao.dayMoneyTotal("2015/04/17"));
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		int userNo= userDao.getUserNo(principal.getName());
+		resultMap.put("dayMoneyTotal",CatCelUtil.nullToZero(orderRawDao.dayMoneyTotal(CatCelUtil.nowDay(),userNo)));
+		resultMap.put("weekMoneyTotal",CatCelUtil.nullToZero(orderRawDao.weekMoneyTotal(CatCelUtil.nowDay(),userNo)));
+		resultMap.put("monthMoneyTotal",CatCelUtil.nullToZero(orderRawDao.monthMoneyTotal(CatCelUtil.nowMonth(),userNo)));
+		resultMap.put("yearMoneyTotal",CatCelUtil.nullToZero(orderRawDao.yearMoneyTotal(CatCelUtil.nowYear(),userNo)));
+		
 		
 		
 		return resultMap;

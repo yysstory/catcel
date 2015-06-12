@@ -71,47 +71,89 @@
   <select id="dayMoneyTotal" resultType="Integer">
 		SELECT SUM(ORDER_TOTAL_AMOUNT)
 		FROM ORDER_RAW
-		WHERE PAYMENT_DATE LIKE	'${value}%'
+		WHERE PAYMENT_DATE LIKE	'${param1}%' AND USER_NO = ${param2}
 	</select>
 	  <select id="weekMoneyTotal" resultType="Integer">
 		SELECT SUM(ORDER_TOTAL_AMOUNT)
     FROM ORDER_RAW
     WHERE PAYMENT_DATE
-      BETWEEN adddate( '${value}' , -weekday( '${value}' ))  
-      AND  adddate( '${value}' , 6-weekday( '${value}' ))
+      BETWEEN adddate( '${param1}' , -weekday( '${param1}' ))  
+      AND  adddate( '${param1}' , 6-weekday( '${param1}' ))
+       AND USER_NO = ${param2}
 	</select>
 	  <select id="monthMoneyTotal" resultType="Integer">
 		SELECT SUM(ORDER_TOTAL_AMOUNT)
 		FROM ORDER_RAW
-		WHERE PAYMENT_DATE LIKE	'${value}%'
+		WHERE PAYMENT_DATE LIKE	'${param1}%' AND USER_NO = ${param2}
 	</select>
 	  <select id="yearMoneyTotal" resultType="Integer">
 		SELECT SUM(ORDER_TOTAL_AMOUNT)
 		FROM ORDER_RAW
-		WHERE PAYMENT_DATE LIKE	'${value}%'
+		WHERE PAYMENT_DATE LIKE	'${param1}%' AND USER_NO = ${param2}
 	</select>
+	
 	
   <select id="dayOrderCount" resultType="Integer">
 		SELECT COUNT(ORDER_TOTAL_AMOUNT)
 		FROM ORDER_RAW
-		WHERE PAYMENT_DATE LIKE	'${value}%'
+		WHERE PAYMENT_DATE LIKE	'${param1}%' AND USER_NO = ${param2}
 	</select>
 	<select id="weekOrderCount" resultType="Integer">
 		SELECT COUNT(ORDER_TOTAL_AMOUNT)
 		FROM ORDER_RAW
-		WHERE PAYMENT_DATE LIKE	'${value}%'
+		WHERE PAYMENT_DATE LIKE	'${param1}%' AND USER_NO = ${param2}
 	</select>
 	<select id="monthOrderCount" resultType="Integer">
 		SELECT COUNT(ORDER_TOTAL_AMOUNT)
 		FROM ORDER_RAW
-		WHERE PAYMENT_DATE LIKE	'${value}%'
+		WHERE PAYMENT_DATE LIKE	'${param1}%' AND USER_NO = ${param2}
 	</select>
 	<select id="yearOrderCount" resultType="Integer">
 		SELECT COUNT(ORDER_TOTAL_AMOUNT)
 		FROM ORDER_RAW
-		WHERE PAYMENT_DATE LIKE	'${value}%'
+		WHERE PAYMENT_DATE LIKE	'${param1}%' AND USER_NO = ${param2}
 	</select>
 	
+	<resultMap type="LineGraph" id="LineGraphMap">
+			<result column="TIME_H" property="standardTime" />
+			<result column="CNT" property="orderCnt" />
+			<result column="TOTAL_AMOUNT" property="sumMoney" />
+	</resultMap>
+	
+	
+	<select id="getDayMoneyGraph" resultMap="LineGraphMap">
+		SELECT  DATE_FORMAT(PAYMENT_DATE,'%h') AS TIME_H, COUNT(*) AS CNT,SUM(ORDER_TOTAL_AMOUNT) AS TOTAL_AMOUNT
+		FROM ORDER_RAW
+		WHERE PAYMENT_DATE LIKE '${param1}%'
+		AND USER_NO = ${param2}
+		GROUP BY TIME_H
+		ORDER BY TIME_H
+	</select>
+	
+		<select id="getWeekMoneyGraph" resultMap="LineGraphMap">
+		SELECT  DATE_FORMAT(PAYMENT_DATE,'%h') AS TIME_H, COUNT(*) AS CNT,SUM(ORDER_TOTAL_AMOUNT) AS TOTAL_AMOUNT
+		FROM ORDER_RAW
+		WHERE PAYMENT_DATE LIKE '${param1}%'
+		AND USER_NO = ${param2}
+		GROUP BY TIME_H
+		ORDER BY TIME_H
+	</select>
+		<select id="getMonthMoneyGraph" resultMap="LineGraphMap">
+		SELECT  DATE_FORMAT(PAYMENT_DATE,'%m') AS TIME_H, COUNT(*) AS CNT,SUM(ORDER_TOTAL_AMOUNT) AS TOTAL_AMOUNT
+		FROM ORDER_RAW
+		WHERE PAYMENT_DATE LIKE '${param1}%'
+		AND USER_NO = ${param2}
+		GROUP BY TIME_H
+		ORDER BY TIME_H
+	</select>
+	
+		<select id="getYearMoneyGraph" resultMap="LineGraphMap">
+		SELECT  DATE_FORMAT(PAYMENT_DATE,'%Y') AS TIME_H, COUNT(*) AS CNT,SUM(ORDER_TOTAL_AMOUNT) AS TOTAL_AMOUNT
+		FROM ORDER_RAW
+		WHERE USER_NO = ${param2}
+		GROUP BY TIME_H
+		ORDER BY TIME_H
+	</select>
 	
 
 	<!-- <select id="todayOrder" resultType="Integer">

@@ -211,7 +211,7 @@
 		data : {},
 		dataType : 'json',
 		success : function(data) {
-		    
+		    console.log(data);
 		    $("#dayMoneyTotal").html(data.dayMoneyTotal + "<sub style='font-size: 20px'>원</sub>");
 		    $("#weekMoneyTotal").html(data.weekMoneyTotal + "<sub style='font-size: 20px'>원</sub>");
 		    $("#monthMoneyTotal").html(data.monthMoneyTotal + "<sub style='font-size: 20px'>원</sub>");
@@ -223,10 +223,31 @@
 		    $("#monthNumber").html((d.getMonth() + 1) + "<sub style='font-size: 20px'>월</sub>");
 		    $("#yearNumber").html(d.getFullYear() + "<sub style='font-size: 20px'>년</sub>");
 
-		    /*   new Chart($("#dayChart").get(0).getContext("2d")).Line(chartDataMaker(), {});
+		    var dayMoneyGraphArray = new Array();
+		     for(var i=0; i<24 ;i++){
+			 		 var imsiSu=0;
+					 if(i<10){
+						    i='0'+i;
+						}
+				    for(var j=0 ; j<data.dayMoneyGraphData.length; j++ ){
+							 if(data.dayMoneyGraphData[j].standardTime==i){
+							     imsiSu=data.dayMoneyGraphData[j].sumMoney;
+							     break;
+							 }
+				    }
+				    graphArray.push(imsiSu);
+		   	 } 
+		     
+		     
+		     
+		     
+		     
+		     
+		    
+		      new Chart($("#dayChart").get(0).getContext("2d")).Line(chartDataMaker(hours,dayMoneyGraphArray), {});
 		      new Chart($("#weekChart").get(0).getContext("2d")).Line(chartDataMaker(), {});
 		      new Chart($("#monthChart").get(0).getContext("2d")).Line(chartDataMaker(), {});
-		      new Chart($("#yearChart").get(0).getContext("2d")).Line(chartDataMaker(), {}); */
+		      new Chart($("#yearChart").get(0).getContext("2d")).Line(chartDataMaker(), {}); 
 		}
 	    });
 	})
@@ -239,7 +260,7 @@
 	var dates = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31'];
 	var days = ['월','화','수','목','금','토','일'];
 	var months = ['1','2','3','4','5','6','7','8','9','10','11','12'];
-	var hours = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24']
+	var hours = ['00','01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23']
 	
 	function chartDataMaker(label, data) {
 	    return {

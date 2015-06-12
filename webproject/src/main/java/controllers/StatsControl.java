@@ -62,6 +62,10 @@ public class StatsControl {
 		resultMap.put("monthMoneyTotal",CatCelUtil.nullToZero(orderRawDao.monthMoneyTotal(CatCelUtil.nowMonth(),userNo)));
 		resultMap.put("yearMoneyTotal",CatCelUtil.nullToZero(orderRawDao.yearMoneyTotal(CatCelUtil.nowYear(),userNo)));
 		
+		resultMap.put("dayMoneyGraphData",orderRawDao.getDayMoneyGraph("2015/04/17", userNo));
+		resultMap.put("weekMoneyGraphData",orderRawDao.getWeekMoneyGraph("2015/04/17", userNo));
+		resultMap.put("monthMoneyGraphData",orderRawDao.getMonthMoneyGraph("2015", userNo));
+		resultMap.put("yearMoneyGraphData",orderRawDao.getYearMoneyGraph(userNo));
 		
 		
 		return resultMap;

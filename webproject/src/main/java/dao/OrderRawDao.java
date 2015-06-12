@@ -21,5 +21,5 @@ public interface OrderRawDao {
 
 	List<BestProduct> orderBest(String payment_date);
 	List<OrderRaw> customerSearch(String orcu_name);
-	List<OrderRaw> customerSearchMap(String orcu_name);
+	List<OrderRaw> customerSearchMap(String searchColumn, String columnInput);
 }

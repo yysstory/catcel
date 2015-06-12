@@ -44,23 +44,23 @@
                     
                     <div class="input-group" style="width: 250px;">
                     <div class="input-group-btn">
-							        <button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">구매자ID <span class="caret"></span></button>
-							        <ul class="dropdown-menu" role="menu">
-							          <li><a href="#">구매자ID</a></li>
-							          <li><a href="#">구매자이름</a></li>
-							          <li><a href="#">수령인이름</a></li>
-							          <li><a href="#">주문번호</a></li>
-							        </ul>
+							        <button id="searchColumn" type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">구매자ID <span class="caret"></span></button>
+								        <ul class="dropdown-menu" role="menu">
+								          <li value="ORCU_ID"><a href="#">구매자ID</a></li>
+								          <li value="ORCU_NAME"><a href="#">구매자이름</a></li>
+								          <li value="RECU_NAME"><a href="#">수령인이름</a></li>
+								          <li value="RECU_NAME"><a href="#">주문번호</a></li>
+								        </ul>
 							      </div><!-- /btn-group -->
-                    <div class="input-group-btn">
+                    <!-- <div class="input-group-btn">
                       <select class="btn btn-sm btn-default">
                         <option value="">구매자ID</option>
                         <option value="orcuName" selected>구매자이름</option>
                         <option value="">수령인이름</option>
                         <option value="">주문번호</option>
                       </select>
-                    </div>
-                      <input id="orcu_name" name="orcu_name" type="text" class="form-control input-sm pull-right" placeholder="Search">
+                    </div> -->
+                      <input id="columnInput" name="columnInput" type="text" class="form-control input-sm pull-right" placeholder="Search">
                       <div class="input-group-btn">
                         <button id="searchBtn" type="button" class="btn btn-sm btn-info"><i class="fa fa-search"></i></button>
                       </div>
@@ -92,18 +92,32 @@
 	<!-- 추가적인 자바스크립트 플러그인 추가 및 자바스크립트 코드 작성 -->
 	<script type="text/javascript">
 		
+	var sellectColumnValue;
+	$(".dropdown-menu li").click(function(){
+		var sellectColumn = $(this).text();
+		var sellectValue = $(this).attr('value');
+		$("#searchColumn").html(sellectColumn).attr('value', sellectValue);
+		
+		console.log(sellectColumn);
+		
+		/* sellectColumnValue = $(this).attr("value");
+		console.log(sellectColumnValue); */
+	});
 	
+	$
+
 	$("#searchBtn").on('click',function(){
 		  $(".appendTr").remove();
 		  $.ajax({
 		        type : 'post',
-		        url : 'customerSearch2.json',
-		        data : {'orcu_name':$("#orcu_name").val()},
+		        url : 'customerSearch.json',
+		        data : {'searchColumn':$("#searchColumn").attr('value'),
+		        	      'columnInput':$("#columnInput").val()},
 		        dataType : 'json',
 		        success : function(data) {
-		        	for(var orderRaw in data.customerSearch2){
-		        		$('#searchTable').append($("<tr>").addClass("appendTr").append($("<td>")).append($("<td>").html(data.customerSearch2[orderRaw].orcuName)))
-		        		console.log(data.customerSearch2[orderRaw].orcuName);
+		        	for(var orderRaw in data.customerSearch){
+		        		$('#searchTable').append($("<tr>").addClass("appendTr").append($("<td>")).append($("<td>").html(data.customerSearch[orderRaw].orcuName)))
+		        		console.log(data.customerSearch[orderRaw].orcuName);
 		        		
 		        	}
 		        }

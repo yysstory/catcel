@@ -194,11 +194,15 @@
   </select>
  -->
 
-  <resultMap type="OrderRaw" id="customerSearchMap">
+  <resultMap type="OrderRaw" id="customerSearchMap1">
+      <result column="ORCU_ID" property="orcuId" />
       <result column="ORCU_NAME" property="orcuName" />
+      <result column="RECU_NAME" property="recuName" />
+      <result column="ORDER_NO" property="orderNumber" />
   </resultMap>
-  <select id="customerSearchMap" resultMap="customerSearchMap">
-    SELECT ORCU_NAME FROM ORDER_RAW WHERE ORCU_NAME LIKE '%${value}%'
+  <select id="customerSearchMap" resultMap="customerSearchMap1">
+    SELECT ORCU_ID, ORCU_NAME, RECU_NAME, ORDER_NO 
+      FROM ORDER_RAW WHERE ${param1} LIKE '%${param2}%'
   </select>
   
   

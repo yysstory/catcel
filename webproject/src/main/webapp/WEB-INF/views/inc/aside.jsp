@@ -43,7 +43,7 @@
 			<li class="header">쇼핑몰</li>
 			<li><a href="#"><i class='fa fa-link'></i> <span>Today</span></a></li>
 			<!-- Optionally, you can add icons to the links -->
-			<li class="active treeview"><a href="#"><i
+			<li class="treeview active"><a href="#"><i
 					class='fa fa-link'></i> <span>주문등록</span> <i
 					class="fa fa-angle-left pull-right"></i></a>
 				<ul class="treeview-menu">

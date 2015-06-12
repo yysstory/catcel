@@ -58,36 +58,6 @@ public class StatsControl {
 		resultMap.put("dayMoneyTotal", orderRawDao.dayMoneyTotal("2015/04/17"));
 		System.out.println(orderRawDao.dayMoneyTotal("2015/04/17"));
 		
-		
-		return resultMap;
-	}
-
-	
-	
-	
-	@RequestMapping(value = "/customerSearch", method = RequestMethod.GET)
-	public String customer() {
-
-		return "customerSearch";
-	}
-
-	/*
-	 * @RequestMapping(value="/customerSearch",method=RequestMethod.POST) public
-	 * Object customerSearch(Model model, String orcu_name){
-	 * System.out.println(orcu_name); List<OrderRaw> customerSearchList =
-	 * orderRawDao.customerSearch(orcu_name);
-	 * 
-	 * for(OrderRaw cs : customerSearchList){ System.out.println(cs.toString());
-	 * } return "customerSearch"; }
-	 */
-	@RequestMapping(value = "/customerSearch2", method = RequestMethod.POST)
-	public Object customerSearch2(String orcu_name) {
-		System.out.println(orcu_name);
-		HashMap<String, List<OrderRaw>> resultMap = new HashMap<String, List<OrderRaw>>();
-		List<OrderRaw> customerSearchMap = orderRawDao
-				.customerSearchMap(orcu_name);
-		resultMap.put("customerSearch2", customerSearchMap);
-		System.out.println(customerSearchMap);
 		return resultMap;
 	}
 }

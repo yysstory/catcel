@@ -70,17 +70,38 @@
                 <div class="box-body table-responsive no-padding">
                   <table id="searchTable" class="table table-hover">
                     <tbody><tr>
-                      <th>ID</th>
+                      <th>주문번호</th>
+                      <th>결제일</th>
+                      <th>구매자ID</th>
                       <th>구매자</th>
-                      <th>Date</th>
-                      <th>Status</th>
-                      <th>Reason</th>
+                      <th>수령인</th>
+                      <th>상품명</th>
                     </tr>
                   </tbody></table>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div>
           </div>
+        
+        <!-- Modal HTML -->
+    <div id="customerModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Do you want to save changes you made to document before closing?</p>
+                    <p class="text-warning"><small>If you don't save, your changes will be lost.</small></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 				<!--/여기까지 -->
 			</section>
@@ -116,13 +137,32 @@
 		        dataType : 'json',
 		        success : function(data) {
 		        	for(var orderRaw in data.customerSearch){
-		        		$('#searchTable').append($("<tr>").addClass("appendTr").append($("<td>")).append($("<td>").html(data.customerSearch[orderRaw].orcuName)))
+		        		$('#searchTable').append($("<tr>").addClass("appendTr")
+		        				.append($("<td>").html(data.customerSearch[orderRaw].orderNumber))
+		        				.append($("<td>").html(data.customerSearch[orderRaw].paymentDate))
+		        				.append($("<td>").html(data.customerSearch[orderRaw].orcuId))
+		        				.append($("<td>").html(data.customerSearch[orderRaw].orcuName))
+		        				.append($("<td>").html(data.customerSearch[orderRaw].recuName))
+		        				.append($("<td>").html(data.customerSearch[orderRaw].productName)))
 		        		console.log(data.customerSearch[orderRaw].orcuName);
 		        		
 		        	}
 		        }
 		      });
 	});
+	
+	/* $(function(){
+		$("#searchTable tr").on('click', function(){
+			$('div.modal').modal({
+				remote : 'modalLayer.htm'
+			});
+		})
+	}) */
+	$(function(){
+    $("#searchTable").on('click', function(){
+      $("#customerModal").modal('show');
+    })
+  })
 	
 	
 	

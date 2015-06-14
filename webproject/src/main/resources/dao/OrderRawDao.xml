@@ -238,14 +238,16 @@
  -->
 
   <resultMap type="OrderRaw" id="customerSearchMap1">
+      <result column="ORDER_NO" property="orderNumber" />
+      <result column="PAYMENT_DATE" property="paymentDate" />
       <result column="ORCU_ID" property="orcuId" />
       <result column="ORCU_NAME" property="orcuName" />
       <result column="RECU_NAME" property="recuName" />
-      <result column="ORDER_NO" property="orderNumber" />
+      <result column="PRODUCT_NAME" property="productName" />
   </resultMap>
   <select id="customerSearchMap" resultMap="customerSearchMap1">
-    SELECT ORCU_ID, ORCU_NAME, RECU_NAME, ORDER_NO 
-      FROM ORDER_RAW WHERE ${param1} LIKE '%${param2}%'
+    SELECT ORDER_NO, PAYMENT_DATE, ORCU_ID, ORCU_NAME, RECU_NAME, PRODUCT_NAME  
+      FROM ORDER_RAW WHERE ${param1} LIKE '%${param2}%' ORDER BY PAYMENT_DATE DESC
   </select>
   
   

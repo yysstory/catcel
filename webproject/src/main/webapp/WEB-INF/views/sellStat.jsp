@@ -235,19 +235,32 @@
 							     break;
 							 }
 				    }
-				    graphArray.push(imsiSu);
+				    dayMoneyGraphArray.push(imsiSu);
 		   	 } 
-		     
-		     
-		     
+ 		     
+		     var monthMoneyGraphArray = new Array();
+		     for(var i=1; i<=12 ;i++){
+			 		 var imsiSu=0;
+					 if(i<10){
+						    i='0'+i;
+						}
+				    for(var j=0 ; j<data.monthMoneyGraphData.length; j++ ){
+							 if(data.monthMoneyGraphData[j].standardTime==i){
+							     imsiSu=data.monthMoneyGraphData[j].sumMoney;
+							     break;
+							 }
+				    }
+				    monthMoneyGraphArray.push(imsiSu);
+		   	 } 
+		      
 		     
 		     
 		     
 		    
 		      new Chart($("#dayChart").get(0).getContext("2d")).Line(chartDataMaker(hours,dayMoneyGraphArray), {});
-		      new Chart($("#weekChart").get(0).getContext("2d")).Line(chartDataMaker(), {});
-		      new Chart($("#monthChart").get(0).getContext("2d")).Line(chartDataMaker(), {});
-		      new Chart($("#yearChart").get(0).getContext("2d")).Line(chartDataMaker(), {}); 
+	//	      new Chart($("#weekChart").get(0).getContext("2d")).Line(chartDataMaker(,monthMoneyGraphArray), {});
+		      new Chart($("#monthChart").get(0).getContext("2d")).Line(chartDataMaker(months,monthMoneyGraphArray), {});
+	//	      new Chart($("#yearChart").get(0).getContext("2d")).Line(chartDataMaker(), {}); 
 		}
 	    });
 	})
@@ -257,14 +270,13 @@
 	    return prefixes[0 | date.getDate() / 7];
 	}
 
-	var dates = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31'];
+	var hours = ['0시','1시','2시','3시','4시','5시','6시','7시','8시','9시','10시','11시','12시','13시','14시','15시','16시','17시','18시','19시','20시','21시','22시','23시']
 	var days = ['월','화','수','목','금','토','일'];
-	var months = ['1','2','3','4','5','6','7','8','9','10','11','12'];
-	var hours = ['00','01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23']
+	var dates = ['1일','2일','3일','4일','5일','6일','7일','8일','9일','10일','11일','12일','13일','14일','15일','16일','17일','18일','19일','20일','21일','22일','23일','24일','25일','26일','27일','28일','29일','30일','31일'];
+	var months = ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
 	
 	function chartDataMaker(label, data) {
 	    return {
-		//	 labels : [ "January", "February", "March", "April", "May", "June", "July" ],
 		labels : label,
 		datasets : [ {
 		    label : "My First dataset",
@@ -274,7 +286,6 @@
 		    pointStrokeColor : "#fff",
 		    pointHighlightFill : "#fff",
 		    pointHighlightStroke : "rgba(220,220,220,1)",
-		    //		   data : [ 65, 59, 80, 81, 56, 55, 40 ] 
 		    data : data
 		} ]
 	    }

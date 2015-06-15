@@ -66,13 +66,14 @@ public class StatsControl {
 		resultMap.put("monthMoneyTotal",CatCelUtil.nullToZero(orderRawDao.monthMoneyTotal(CatCelUtil.nowMonth(),userNo)));
 		resultMap.put("yearMoneyTotal",CatCelUtil.nullToZero(orderRawDao.yearMoneyTotal(CatCelUtil.nowYear(),userNo)));
 		
-		resultMap.put("dayMoneyGraphData",orderRawDao.getDayMoneyGraph("2015/04/17", userNo));
-		resultMap.put("monthMoneyGraphData",orderRawDao.getMonthMoneyGraph("2015/04", userNo));
-		resultMap.put("yearMoneyGraphData",orderRawDao.getYearMoneyGraph("2015",userNo));
-		List<LineGraph> lineGraphs = orderRawDao.getWeekMoneyGraph("2015/04/19", userNo);
+		resultMap.put("dayMoneyGraphData",orderRawDao.getDayMoneyGraph(CatCelUtil.nowDay(), userNo));
+		resultMap.put("monthMoneyGraphData",orderRawDao.getMonthMoneyGraph(CatCelUtil.nowMonth(), userNo));
+		resultMap.put("yearMoneyGraphData",orderRawDao.getYearMoneyGraph(CatCelUtil.nowYear(),userNo));
+		List<LineGraph> lineGraphs = orderRawDao.getWeekMoneyGraph(CatCelUtil.nowDay(), userNo);
 		for(LineGraph lineGraph : lineGraphs){
 			Calendar c = Calendar.getInstance();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+			System.out.println(lineGraph.getStandardTime());
 			c.setTime(sdf.parse(lineGraph.getStandardTime()));
 			lineGraph.setStandardTime("0"+c.get(Calendar.DAY_OF_WEEK));
 		}

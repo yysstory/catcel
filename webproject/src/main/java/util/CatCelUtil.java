@@ -1,6 +1,7 @@
 package util;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class CatCelUtil {
@@ -32,6 +33,16 @@ public class CatCelUtil {
 		return sdf.format(new Date());
 	}
 
+	
+	
+	public static String nowWeekStart() {
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.DATE,-cal.get(Calendar.DAY_OF_WEEK)+1);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(cal.getTime());
+	}
+
+	
 	public static String nowMonth() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM");
 		return sdf.format(new Date());

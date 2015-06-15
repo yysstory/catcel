@@ -23,7 +23,7 @@ public interface OrderRawDao {
 	List<LineGraph> getDayMoneyGraph(String payment_date,int userNo);
 	List<LineGraph> getWeekMoneyGraph(String payment_date,int userNo);
 	List<LineGraph> getMonthMoneyGraph(String payment_date,int userNo);
-	List<LineGraph> getYearMoneyGraph(int userNo);
+	List<LineGraph> getYearMoneyGraph(String payment_date,int userNo);
 	
 	
 	

@@ -205,63 +205,29 @@
 	<script type="text/javascript" src="plugins/chartjs/Chart.js"></script>
 	<script type="text/javascript">
 	$(function() {
-	    $.ajax({
-		type : 'post',
-		url : '/webproject/sellStat.json',
-		data : {},
-		dataType : 'json',
-		success : function(data) {
-		    console.log(data);
-		    $("#dayMoneyTotal").html(data.dayMoneyTotal + "<sub style='font-size: 20px'>원</sub>");
-		    $("#weekMoneyTotal").html(data.weekMoneyTotal + "<sub style='font-size: 20px'>원</sub>");
-		    $("#monthMoneyTotal").html(data.monthMoneyTotal + "<sub style='font-size: 20px'>원</sub>");
-		    $("#yearMoneyTotal").html(data.yearMoneyTotal + "<sub style='font-size: 20px'>원</sub>");
-
-		    var d = new Date();
-		    $("#dayNumber").html(d.getDate() + "<sub style='font-size: 20px'>일</sub>");
-		    $("#weekNumber").html(weekAndDay() + "<sub style='font-size: 20px'>주</sub>");
-		    $("#monthNumber").html((d.getMonth() + 1) + "<sub style='font-size: 20px'>월</sub>");
-		    $("#yearNumber").html(d.getFullYear() + "<sub style='font-size: 20px'>년</sub>");
-
-		    var dayMoneyGraphArray = new Array();
-		     for(var i=0; i<24 ;i++){
-			 		 var imsiSu=0;
-					 if(i<10){
-						    i='0'+i;
-						}
-				    for(var j=0 ; j<data.dayMoneyGraphData.length; j++ ){
-							 if(data.dayMoneyGraphData[j].standardTime==i){
-							     imsiSu=data.dayMoneyGraphData[j].sumMoney;
-							     break;
-							 }
-				    }
-				    dayMoneyGraphArray.push(imsiSu);
-		   	 } 
- 		     
-		     var monthMoneyGraphArray = new Array();
-		     for(var i=1; i<=12 ;i++){
-			 		 var imsiSu=0;
-					 if(i<10){
-						    i='0'+i;
-						}
-				    for(var j=0 ; j<data.monthMoneyGraphData.length; j++ ){
-							 if(data.monthMoneyGraphData[j].standardTime==i){
-							     imsiSu=data.monthMoneyGraphData[j].sumMoney;
-							     break;
-							 }
-				    }
-				    monthMoneyGraphArray.push(imsiSu);
-		   	 } 
-		      
-		     
-		     
-		     
-		    
-		      new Chart($("#dayChart").get(0).getContext("2d")).Line(chartDataMaker(hours,dayMoneyGraphArray), {});
-	//	      new Chart($("#weekChart").get(0).getContext("2d")).Line(chartDataMaker(,monthMoneyGraphArray), {});
-		      new Chart($("#monthChart").get(0).getContext("2d")).Line(chartDataMaker(months,monthMoneyGraphArray), {});
-	//	      new Chart($("#yearChart").get(0).getContext("2d")).Line(chartDataMaker(), {}); 
-		}
+		    $.ajax({
+					type : 'post',
+					url : '/webproject/sellStat.json',
+					data : {},
+					dataType : 'json',
+					success : function(data) {
+					    console.log(data);
+					    $("#dayMoneyTotal").html(data.dayMoneyTotal + "<sub style='font-size: 20px'>원</sub>");
+					    $("#weekMoneyTotal").html(data.weekMoneyTotal + "<sub style='font-size: 20px'>원</sub>");
+					    $("#monthMoneyTotal").html(data.monthMoneyTotal + "<sub style='font-size: 20px'>원</sub>");
+					    $("#yearMoneyTotal").html(data.yearMoneyTotal + "<sub style='font-size: 20px'>원</sub>");
+			
+					    var d = new Date();
+					    $("#dayNumber").html(d.getDate() + "<sub style='font-size: 20px'>일</sub>");
+					    $("#weekNumber").html(weekAndDay() + "<sub style='font-size: 20px'>주</sub>");
+					    $("#monthNumber").html((d.getMonth() + 1) + "<sub style='font-size: 20px'>월</sub>");
+					    $("#yearNumber").html(d.getFullYear() + "<sub style='font-size: 20px'>년</sub>");
+					    
+					      new Chart($("#dayChart").get(0).getContext("2d")).Line(chartDataMaker(hours,arrayDataMaker(hours.length,data.dayMoneyGraphData,0)), {});
+					      new Chart($("#weekChart").get(0).getContext("2d")).Line(chartDataMaker(days,arrayDataMaker(days.length,data.weekMoneyGraphData,1)), {});
+					      new Chart($("#monthChart").get(0).getContext("2d")).Line(chartDataMaker(dates,arrayDataMaker(dates.length,data.monthMoneyGraphData,1)), {});
+					      new Chart($("#yearChart").get(0).getContext("2d")).Line(chartDataMaker(months,arrayDataMaker(months.length,data.yearMoneyGraphData,1)), {}); 
+					}
 	    });
 	})
 
@@ -271,7 +237,7 @@
 	}
 
 	var hours = ['0시','1시','2시','3시','4시','5시','6시','7시','8시','9시','10시','11시','12시','13시','14시','15시','16시','17시','18시','19시','20시','21시','22시','23시']
-	var days = ['월','화','수','목','금','토','일'];
+	var days = ['일','월','화','수','목','금','토'];
 	var dates = ['1일','2일','3일','4일','5일','6일','7일','8일','9일','10일','11일','12일','13일','14일','15일','16일','17일','18일','19일','20일','21일','22일','23일','24일','25일','26일','27일','28일','29일','30일','31일'];
 	var months = ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
 	
@@ -290,6 +256,25 @@
 		} ]
 	    }
 	};
+	
+	function arrayDataMaker(arrayLength,graphData,startNumber){
+		 var graphArray = new Array();
+		   for(var i=0+startNumber; i<arrayLength+startNumber ;i++){
+			 var imsiSu=0;
+			 if(i<10){
+				    i='0'+i;
+				}
+				   for(var j=0 ; j<graphData.length; j++ ){
+							 if(graphData[j].standardTime==i){
+							     imsiSu=graphData[j].sumMoney;
+							     break;
+							 }
+				   }
+		   graphArray.push(imsiSu);
+			} 
+		return graphArray;
+	}		    
+			 
     </script>
 
 	<!--/여기까지 -->

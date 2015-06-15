@@ -3,6 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.OrderRawDao">
+	<resultMap type="LineGraph" id="LineGraphMap">
+			<result column="TIME_H" property="standardTime" />
+			<result column="CNT" property="orderCnt" />
+			<result column="TOTAL_AMOUNT" property="sumMoney" />
+	</resultMap>
+	
 	<insert id="insertOrderRaws">
 		INSERT INTO ORDER_RAW (
 		MALL_NAME,
@@ -68,57 +74,36 @@
 		</foreach>
 	</insert>
 
-  <select id="dayMoneyTotal" resultType="Integer">
-		SELECT SUM(ORDER_TOTAL_AMOUNT)
+  <select id="getDayData" resultMap="LineGraphMap">
+		SELECT  DATE_FORMAT(PAYMENT_DATE,'%Y/%m/%d') AS TIME_H, COUNT(*) AS CNT,SUM(ORDER_TOTAL_AMOUNT) AS TOTAL_AMOUNT
 		FROM ORDER_RAW
-		WHERE PAYMENT_DATE LIKE	'${param1}%' AND USER_NO = ${param2}
+		WHERE PAYMENT_DATE LIKE '${param1}%'
+		AND USER_NO = ${param2}
+		GROUP BY TIME_H
 	</select>
-	  <select id="weekMoneyTotal" resultType="Integer">
-		SELECT  SUM(ORDER_TOTAL_AMOUNT) AS TOTAL_AMOUNT
+	  <select id="getWeekData" resultMap="LineGraphMap">
+		SELECT  '${param1}' AS TIME_H, COUNT(*) AS CNT,SUM(ORDER_TOTAL_AMOUNT) AS TOTAL_AMOUNT
 		FROM ORDER_RAW
 		WHERE DATE_FORMAT(PAYMENT_DATE,'%Y/%m/%d') 
 		BETWEEN DATE_FORMAT('${param1}','%Y/%m/%d') 
 		AND DATE_ADD(DATE_FORMAT('${param1}','%Y/%m/%d'),INTERVAL 6 DAY) 
 		AND USER_NO = ${param2}
+		GROUP BY TIME_H
 	</select>
-	  <select id="monthMoneyTotal" resultType="Integer">
-		SELECT SUM(ORDER_TOTAL_AMOUNT)
+	  <select id="getMonthData" resultMap="LineGraphMap">
+		SELECT  '${param1}' AS TIME_H, COUNT(*) AS CNT,SUM(ORDER_TOTAL_AMOUNT) AS TOTAL_AMOUNT
 		FROM ORDER_RAW
-		WHERE PAYMENT_DATE LIKE	'${param1}%' AND USER_NO = ${param2}
+		WHERE PAYMENT_DATE LIKE '${param1}%'
+		AND USER_NO = ${param2}
+		GROUP BY TIME_H
 	</select>
-	  <select id="yearMoneyTotal" resultType="Integer">
-		SELECT SUM(ORDER_TOTAL_AMOUNT)
+	  <select id="getYearData" resultMap="LineGraphMap">
+		SELECT  '${param1}' AS TIME_H, COUNT(*) AS CNT,SUM(ORDER_TOTAL_AMOUNT) AS TOTAL_AMOUNT
 		FROM ORDER_RAW
-		WHERE PAYMENT_DATE LIKE	'${param1}%' AND USER_NO = ${param2}
+		WHERE PAYMENT_DATE LIKE '${param1}%'
+		AND USER_NO = ${param2}
+		GROUP BY TIME_H
 	</select>
-	
-	
-  <select id="dayOrderCount" resultType="Integer">
-		SELECT COUNT(ORDER_TOTAL_AMOUNT)
-		FROM ORDER_RAW
-		WHERE PAYMENT_DATE LIKE	'${param1}%' AND USER_NO = ${param2}
-	</select>
-	<select id="weekOrderCount" resultType="Integer">
-		SELECT COUNT(ORDER_TOTAL_AMOUNT)
-		FROM ORDER_RAW
-		WHERE PAYMENT_DATE LIKE	'${param1}%' AND USER_NO = ${param2}
-	</select>
-	<select id="monthOrderCount" resultType="Integer">
-		SELECT COUNT(ORDER_TOTAL_AMOUNT)
-		FROM ORDER_RAW
-		WHERE PAYMENT_DATE LIKE	'${param1}%' AND USER_NO = ${param2}
-	</select>
-	<select id="yearOrderCount" resultType="Integer">
-		SELECT COUNT(ORDER_TOTAL_AMOUNT)
-		FROM ORDER_RAW
-		WHERE PAYMENT_DATE LIKE	'${param1}%' AND USER_NO = ${param2}
-	</select>
-	
-	<resultMap type="LineGraph" id="LineGraphMap">
-			<result column="TIME_H" property="standardTime" />
-			<result column="CNT" property="orderCnt" />
-			<result column="TOTAL_AMOUNT" property="sumMoney" />
-	</resultMap>
 	
 	
 	<select id="getDayMoneyGraph" resultMap="LineGraphMap">

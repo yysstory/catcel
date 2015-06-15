@@ -209,10 +209,11 @@
 					dataType : 'json',
 					success : function(data) {
 					    console.log(data);
-					    $("#dayMoneyTotal").html(data.dayMoneyTotal + "<sub style='font-size: 20px'>원</sub>");
-					    $("#weekMoneyTotal").html(data.weekMoneyTotal + "<sub style='font-size: 20px'>원</sub>");
-					    $("#monthMoneyTotal").html(data.monthMoneyTotal + "<sub style='font-size: 20px'>원</sub>");
-					    $("#yearMoneyTotal").html(data.yearMoneyTotal + "<sub style='font-size: 20px'>원</sub>");
+					    console.log(data.getDayData.sumMoney);
+					    $("#dayMoneyTotal").html(data.getDayData + "<sub style='font-size: 20px'>원</sub>");
+					    $("#weekMoneyTotal").html(data.getWeekData + "<sub style='font-size: 20px'>원</sub>");
+					    $("#monthMoneyTotal").html(data.getMonthData + "<sub style='font-size: 20px'>원</sub>");
+					    $("#yearMoneyTotal").html(data.getYearData + "<sub style='font-size: 20px'>원</sub>");
 			
 					    var d = new Date();
 					    $("#dayNumber").html(d.getDate() + "<sub style='font-size: 20px'>일</sub>");
@@ -270,8 +271,14 @@
 		   graphArray.push(imsiSu);
 			} 
 		return graphArray;
-	}		    
-			 
+	}		 
+	
+	function nullToZero(su){
+			if (su == null) {
+				su = 0;
+			}
+		   return su;
+	}
     </script>
 
 	<!--/여기까지 -->

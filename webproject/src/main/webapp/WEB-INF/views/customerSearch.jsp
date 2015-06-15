@@ -89,11 +89,77 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Confirmation</h4>
+                    <h4 class="modal-title">구매정보</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Do you want to save changes you made to document before closing?</p>
-                    <p class="text-warning"><small>If you don't save, your changes will be lost.</small></p>
+                    <table class="table table-striped" id="tblGrid">
+					            <thead id="tblHead">
+					              <tr>
+					                <th>주문정보</th>
+					                <th>Points</th>
+					                <th class="text-right">Mean</th>
+					              </tr>
+					            </thead>
+					            <tbody>
+					              <tr><td>Long Island, NY, USA</td>
+					                <td>3</td>
+					                <td class="text-right">45001</td>
+					              </tr>
+					              <tr><td>Chicago, Illinois, USA</td>
+					                <td>5</td>
+					                <td class="text-right">76455</td>
+					              </tr>
+					              <tr><td>New York, New York, USA</td>
+					                <td>10</td>
+					                <td class="text-right">39097</td>
+					              </tr>
+					            </tbody>
+					          </table>
+					          
+					          <p>주문번호</p>
+					          <table class="table table-striped">
+					           <tr><th colspan="4">주문번호</th></tr>
+					           <tr><td>주문번호</td><td></td>
+					           <td>상품번호</td><td></td></tr>
+					           
+					           <tr><td>상품명</td><td colspan="3"></td></tr>
+					           
+					           <tr><td>수량</td><td></td>
+					           <td>구매금액</td><td></td></tr>
+					           
+					           <tr><td>주문옵션</td><td></td>
+                     <td>추가구성</td><td></td></tr>
+                     
+					           <tr><td>배송비</td><td></td>
+                     <td>배송방법</td><td></td></tr>
+					          </table>
+					          
+					          <table class="table table-striped">
+                     <tr><th colspan="4">구매자정보</th></tr>
+                     <tr><td>구매자ID</td><td></td>
+                     <td>구매자이름</td><td></td></tr>
+                     
+                     <tr><td>상품명</td><td colspan="3"></td></tr>
+                     
+                     <tr><td>수량</td><td></td>
+                     <td>구매금액</td><td></td></tr>
+                     
+                     <tr><td>주문옵션</td><td></td>
+                     <td>추가구성</td><td></td></tr>
+                     
+                     <tr><td>배송비</td><td></td>
+                     <td>배송방법</td><td></td></tr>
+                    </table>
+                    
+                    <table class="table table-striped">
+                     <tr><th colspan="4">수령인정보</th></tr>
+                     <tr><td>수령인</td><td></td>
+                     <td>연락처</td><td></td></tr>
+                     
+                     <tr><td>배송지</td><td colspan="3"></td></tr>
+                     
+                     <tr><td>배송 요청사항</td><td colspan="3"></td></tr>
+                    </table>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -125,8 +191,6 @@
 		console.log(sellectColumnValue); */
 	});
 	
-	$
-
 	$("#searchBtn").on('click',function(){
 		  $(".appendTr").remove();
 		  $.ajax({

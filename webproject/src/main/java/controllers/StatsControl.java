@@ -62,14 +62,14 @@ public class StatsControl {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		int userNo= userDao.getUserNo(principal.getName());
 		resultMap.put("dayMoneyTotal",CatCelUtil.nullToZero(orderRawDao.dayMoneyTotal(CatCelUtil.nowDay(),userNo)));
-		resultMap.put("weekMoneyTotal",CatCelUtil.nullToZero(orderRawDao.weekMoneyTotal(CatCelUtil.nowDay(),userNo)));
+		resultMap.put("weekMoneyTotal",CatCelUtil.nullToZero(orderRawDao.weekMoneyTotal(CatCelUtil.nowWeekStart(),userNo)));
 		resultMap.put("monthMoneyTotal",CatCelUtil.nullToZero(orderRawDao.monthMoneyTotal(CatCelUtil.nowMonth(),userNo)));
 		resultMap.put("yearMoneyTotal",CatCelUtil.nullToZero(orderRawDao.yearMoneyTotal(CatCelUtil.nowYear(),userNo)));
 		
 		resultMap.put("dayMoneyGraphData",orderRawDao.getDayMoneyGraph(CatCelUtil.nowDay(), userNo));
 		resultMap.put("monthMoneyGraphData",orderRawDao.getMonthMoneyGraph(CatCelUtil.nowMonth(), userNo));
 		resultMap.put("yearMoneyGraphData",orderRawDao.getYearMoneyGraph(CatCelUtil.nowYear(),userNo));
-		List<LineGraph> lineGraphs = orderRawDao.getWeekMoneyGraph(CatCelUtil.nowDay(), userNo);
+		List<LineGraph> lineGraphs = orderRawDao.getWeekMoneyGraph(CatCelUtil.nowWeekStart(), userNo);
 		for(LineGraph lineGraph : lineGraphs){
 			Calendar c = Calendar.getInstance();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");

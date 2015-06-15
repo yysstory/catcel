@@ -39,10 +39,9 @@
 				<div class="row">
 					<div class="col-md-3 col-sm-6 col-xs-12">
 						<div class="info-box">
-							<span class="info-box-icon bg-aqua"><i
-								class="fa fa-envelope-o"></i></span>
+							<span class="info-box-icon bg-aqua">23</span>
 							<div class="info-box-content">
-								<span class="info-box-text">Messages</span> <span
+								<span class="info-box-text">오늘의 주문량</span> <span
 									class="info-box-number">1,410</span>
 							</div>
 							<!-- /.info-box-content -->
@@ -52,10 +51,9 @@
 					<!-- /.col -->
 					<div class="col-md-3 col-sm-6 col-xs-12">
 						<div class="info-box">
-							<span class="info-box-icon bg-green"><i
-								class="fa fa-flag-o"></i></span>
+							<span class="info-box-icon bg-green">3</span>
 							<div class="info-box-content">
-								<span class="info-box-text">Bookmarks</span> <span
+								<span class="info-box-text">이번주 주문량</span> <span
 									class="info-box-number">410</span>
 							</div>
 							<!-- /.info-box-content -->
@@ -65,10 +63,9 @@
 					<!-- /.col -->
 					<div class="col-md-3 col-sm-6 col-xs-12">
 						<div class="info-box">
-							<span class="info-box-icon bg-yellow"><i
-								class="fa fa-files-o"></i></span>
+							<span class="info-box-icon bg-yellow">12</span>
 							<div class="info-box-content">
-								<span class="info-box-text">Uploads</span> <span
+								<span class="info-box-text">이번달 주문량</span> <span
 									class="info-box-number">13,648</span>
 							</div>
 							<!-- /.info-box-content -->
@@ -78,9 +75,9 @@
 					<!-- /.col -->
 					<div class="col-md-3 col-sm-6 col-xs-12">
 						<div class="info-box">
-							<span class="info-box-icon bg-red"><i class="fa fa-star-o"></i></span>
+							<span class="info-box-icon bg-red">2015</span>
 							<div class="info-box-content">
-								<span class="info-box-text">Likes</span> <span
+								<span class="info-box-text">올해 주문량</span> <span
 									class="info-box-number">93,139</span>
 							</div>
 							<!-- /.info-box-content -->
@@ -88,51 +85,6 @@
 						<!-- /.info-box -->
 					</div>
 					<!-- /.col -->
-				</div>
-
-
-				<div>
-					<h3>인기상품 BEST5</h3>
-
-				</div>
-
-
-
-				<div class="box box-info">
-					<div class="box-header with-border">
-						<h3 class="box-title">주문량 추이</h3>
-						<div class="box-tools pull-right">
-							<button class="btn btn-box-tool" data-widget="collapse">
-								<i class="fa fa-minus"></i>
-							</button>
-							<button class="btn btn-box-tool" data-widget="remove">
-								<i class="fa fa-times"></i>
-							</button>
-						</div>
-					</div>
-					<div class="box-body">
-						<div class="btn-group">
-							<button type="button" class="btn btn-info">일</button>
-							<button type="button" class="btn btn-info">월</button>
-							<button type="button" class="btn btn-info">년</button>
-						</div>
-						<div class="chart">
-							<!-- <canvas id="lineChart" height="255" width="756" style="width: 756px; height: 255px;"></canvas> -->
-							<div id="myfirstchart" style="height: 250px;"></div>
-						</div>
-					</div>
-					<!-- /.box-body -->
-				</div>
-
-				<div class="col-md-4">
-					<ul class="chart-legend clearfix">
-						<li><i class="fa fa-circle-o text-green"></i> Gmarket</li>
-						<li><i class="fa fa-circle-o text-red"></i> 11st</li>
-						<li><i class="fa fa-circle-o text-yellow"></i> FireFox</li>
-						<li><i class="fa fa-circle-o text-aqua"></i> Safari</li>
-						<li><i class="fa fa-circle-o text-light-blue"></i> Opera</li>
-						<li><i class="fa fa-circle-o text-gray"></i> Navigator</li>
-					</ul>
 				</div>
 
 
@@ -148,15 +100,12 @@
 	</div>
 	<jsp:include page="inc/commonjs.jsp"></jsp:include>
 	<!-- 추가적인 자바스크립트 플러그인 추가 및 자바스크립트 코드 작성 -->
-	<script
-		src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-	<script
-		src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
 	<script type="text/javascript">
 	
 	
 	
-    </script>
+  </script>
 
 	<!--/여기까지 -->
 </body>

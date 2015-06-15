@@ -38,7 +38,7 @@ public class CatCelUtil {
 	public static String nowWeekStart() {
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.DATE,-cal.get(Calendar.DAY_OF_WEEK)+1);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		return sdf.format(cal.getTime());
 	}
 

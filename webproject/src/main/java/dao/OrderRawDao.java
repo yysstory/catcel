@@ -10,15 +10,10 @@ public interface OrderRawDao {
 
 	void insertOrderRaws(String name,String date, int userNo, OrderRaw[] orders);
 
-	Integer dayOrderCount(String payment_date,int userNo);
-	Integer weekOrderCount(String payment_date,int userNo);
-	Integer monthOrderCount(String payment_date,int userNo);	
-	Integer yearOrderCount(String payment_date,int userNo);
-
-	Integer dayMoneyTotal(String payment_date,int userNo);
-	Integer weekMoneyTotal(String payment_date,int userNo);
-	Integer monthMoneyTotal(String payment_date,int userNo);
-	Integer yearMoneyTotal(String payment_date,int userNo);
+	LineGraph getDayData(String payment_date,int userNo);
+	LineGraph getWeekData(String payment_date,int userNo);
+	LineGraph getMonthData(String payment_date,int userNo);
+	LineGraph getYearData(String payment_date,int userNo);
 
 	List<LineGraph> getDayMoneyGraph(String payment_date,int userNo);
 	List<LineGraph> getWeekMoneyGraph(String payment_date,int userNo);

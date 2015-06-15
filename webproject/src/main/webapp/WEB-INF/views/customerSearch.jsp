@@ -178,7 +178,16 @@
 	<jsp:include page="inc/commonjs.jsp"></jsp:include>
 	<!-- 추가적인 자바스크립트 플러그인 추가 및 자바스크립트 코드 작성 -->
 	<script type="text/javascript">
-		
+	  $(document).on('click','.appendTr', function(){
+		     console.log("진입");
+		      $("#customerModal").modal('show');
+	 }) 
+	 
+/* 	  $('.appendTr').on('click', function(){
+         console.log("진입");
+          $("#customerModal").modal('show');
+   })
+	 */
 	var sellectColumnValue;
 	$(".dropdown-menu li").click(function(){
 		var sellectColumn = $(this).text();
@@ -208,8 +217,7 @@
 		        				.append($("<td>").html(data.customerSearch[orderRaw].orcuName))
 		        				.append($("<td>").html(data.customerSearch[orderRaw].recuName))
 		        				.append($("<td>").html(data.customerSearch[orderRaw].productName)))
-		        		console.log(data.customerSearch[orderRaw].orcuName);
-		        		
+		        		console.log(data.customerSearch[orderRaw].orcuName);	
 		        	}
 		        }
 		      });
@@ -222,13 +230,10 @@
 			});
 		})
 	}) */
-	$(function(){
-    $("#searchTable").on('click', function(){
-      $("#customerModal").modal('show');
-    })
-  })
 	
 	
+	
+
 	
 	
 	</script>

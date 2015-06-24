@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import vo.LineGraph;
+
 public class CatCelUtil {
 
 	public static String wonToInt(String won) {
@@ -11,11 +13,15 @@ public class CatCelUtil {
 				.replace("원", "");
 	}
 
-	public static Integer nullToZero(Integer su) {
-		if (su == null) {
-			su = 0;
+	public static LineGraph nullToZero(LineGraph lineGraph) {
+		if (lineGraph == null) {
+			LineGraph lineGraph1 = new LineGraph();
+			lineGraph1.setOrderCnt(0);
+			lineGraph1.setStandardTime("0");
+			lineGraph1.setSumMoney(0);
+			lineGraph = lineGraph1;
 		}
-		return su;
+		return lineGraph;
 	}
 
 	public static String nowDate() {

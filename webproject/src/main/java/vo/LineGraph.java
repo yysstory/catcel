@@ -9,9 +9,9 @@ public class LineGraph implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	String standardTime;
-	Integer orderCnt;
-	Integer sumMoney;
+	private String standardTime;
+	private Integer orderCnt = 0;
+	private Integer sumMoney = 0;
 	
 	
 	public String getStandardTime() {

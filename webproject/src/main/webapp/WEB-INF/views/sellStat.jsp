@@ -113,7 +113,7 @@
 						<!-- LINE CHART -->
 						<div class="box box-info">
 							<div class="box-header with-border">
-								<h3 class="box-title">일간 동향</h3>
+								<h3 class="box-title">일간 매출 동향</h3>
 								<div class="box-tools pull-right">
 									<button class="btn btn-box-tool" data-widget="collapse">
 										<i class="fa fa-minus"></i>
@@ -133,7 +133,7 @@
 						<!-- LINE CHART -->
 						<div class="box box-info">
 							<div class="box-header with-border">
-								<h3 class="box-title">주간 동향</h3>
+								<h3 class="box-title">주간 매출 동향</h3>
 								<div class="box-tools pull-right">
 									<button class="btn btn-box-tool" data-widget="collapse">
 										<i class="fa fa-minus"></i>
@@ -153,7 +153,7 @@
 						<!-- LINE CHART -->
 						<div class="box box-info">
 							<div class="box-header with-border">
-								<h3 class="box-title">월간 동향</h3>
+								<h3 class="box-title">월간 매출 동향</h3>
 								<div class="box-tools pull-right">
 									<button class="btn btn-box-tool" data-widget="collapse">
 										<i class="fa fa-minus"></i>
@@ -173,7 +173,7 @@
 						<!-- LINE CHART -->
 						<div class="box box-info">
 							<div class="box-header with-border">
-								<h3 class="box-title">연간 동향</h3>
+								<h3 class="box-title">연간 매출 동향</h3>
 								<div class="box-tools pull-right">
 									<button class="btn btn-box-tool" data-widget="collapse">
 										<i class="fa fa-minus"></i>
@@ -209,11 +209,10 @@
 					dataType : 'json',
 					success : function(data) {
 					    console.log(data);
-					    console.log(data.getDayData.sumMoney);
-					    $("#dayMoneyTotal").html(data.getDayData + "<sub style='font-size: 20px'>원</sub>");
-					    $("#weekMoneyTotal").html(data.getWeekData + "<sub style='font-size: 20px'>원</sub>");
-					    $("#monthMoneyTotal").html(data.getMonthData + "<sub style='font-size: 20px'>원</sub>");
-					    $("#yearMoneyTotal").html(data.getYearData + "<sub style='font-size: 20px'>원</sub>");
+					    $("#dayMoneyTotal").html(data.getDayData.sumMoney + "<sub style='font-size: 20px'>원</sub>");
+					    $("#weekMoneyTotal").html(data.getWeekData.sumMoney + "<sub style='font-size: 20px'>원</sub>");
+					    $("#monthMoneyTotal").html(data.getMonthData.sumMoney + "<sub style='font-size: 20px'>원</sub>");
+					    $("#yearMoneyTotal").html(data.getYearData.sumMoney + "<sub style='font-size: 20px'>원</sub>");
 			
 					    var d = new Date();
 					    $("#dayNumber").html(d.getDate() + "<sub style='font-size: 20px'>일</sub>");
@@ -273,12 +272,7 @@
 		return graphArray;
 	}		 
 	
-	function nullToZero(su){
-			if (su == null) {
-				su = 0;
-			}
-		   return su;
-	}
+
     </script>
 
 	<!--/여기까지 -->

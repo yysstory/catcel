@@ -54,22 +54,22 @@ public class StatsControl {
 	}
 
 	
-	
-	
 	@RequestMapping(value = "/sellStat", method = RequestMethod.POST)
 	public Object sellStatPost(Principal principal) throws ParseException {
 		System.out.println("sellStat post 요청 호출");
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		int userNo= userDao.getUserNo(principal.getName());
-		resultMap.put("getDayData",orderRawDao.getDayData(CatCelUtil.nowDay(),userNo));
-		resultMap.put("getWeekData",orderRawDao.getWeekData(CatCelUtil.nowWeekStart(),userNo));
-		resultMap.put("getMonthData",orderRawDao.getMonthData(CatCelUtil.nowMonth(),userNo));
-		resultMap.put("getYearData",orderRawDao.getYearData(CatCelUtil.nowYear(),userNo));
+		resultMap.put("getDayData",CatCelUtil.nullToZero(orderRawDao.getDayData(CatCelUtil.nowDay(),userNo)));
+		resultMap.put("getWeekData",CatCelUtil.nullToZero(orderRawDao.getWeekData(CatCelUtil.nowWeekStart(),userNo)));
+		resultMap.put("getMonthData",CatCelUtil.nullToZero(orderRawDao.getMonthData(CatCelUtil.nowMonth(),userNo)));
+		resultMap.put("getYearData",CatCelUtil.nullToZero(orderRawDao.getYearData(CatCelUtil.nowYear(),userNo)));
 		
 		resultMap.put("dayMoneyGraphData",orderRawDao.getDayMoneyGraph(CatCelUtil.nowDay(), userNo));
 		resultMap.put("monthMoneyGraphData",orderRawDao.getMonthMoneyGraph(CatCelUtil.nowMonth(), userNo));
 		resultMap.put("yearMoneyGraphData",orderRawDao.getYearMoneyGraph(CatCelUtil.nowYear(),userNo));
 		List<LineGraph> lineGraphs = orderRawDao.getWeekMoneyGraph(CatCelUtil.nowWeekStart(), userNo);
+		
+		
 		for(LineGraph lineGraph : lineGraphs){
 			Calendar c = Calendar.getInstance();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");

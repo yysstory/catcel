@@ -64,7 +64,7 @@ public class UserControl {
 				userDao.getUserInfo(principal.getName()).getUserName());
 		sesstion.setAttribute("mallNameList", mallDao
 				.selectMallNameList(userDao.getUserNo(principal.getName())));
-		return "index";
+		return "redirect:index.htm";
 	}
 
 }

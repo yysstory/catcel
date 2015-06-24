@@ -57,15 +57,40 @@
 				
 				</ul></li>
 
-			<li class="treeview active"><a href="#"><i
-					class="fa fa-laptop"></i> <span>통계</span><i
-					class="fa fa-angle-left pull-right"></i></a>
-				<ul class="treeview-menu menu-open" style="display: block;">
-					<li class=""><a href="orderStat.htm"><i
-							class="fa fa-circle-o"></i> 주문통계</a></li>
-					<li><a href="sellStat.htm"><i class="fa fa-circle-o"></i>
-							매출통계</a></li>
-				</ul></li>
+			<li class="treeview active">
+				<a href="#">
+					<i	class="fa fa-laptop"></i>
+					<span>통계</span>
+					<i	class="fa fa-angle-left pull-right"></i>
+				</a>
+					<ul class="treeview-menu menu-open" style="display: block;">
+						<li>
+							<a href="orderStat.htm">
+								<i class="fa fa-circle-o"></i>주문통계</a>
+						</li>
+						<li>
+							<a href="sellStat.htm">
+								<i class="fa fa-circle-o"></i>매출통계</a>
+						</li>
+						<li>
+							<a href="ProductStat.htm">
+								<i class="fa fa-circle-o"></i>상품분석</a>
+						</li>
+						<li>
+							<a href="customerStat.htm">
+								<i class="fa fa-circle-o"></i>고객분석</a>
+						</li>
+						<li>
+							<a href="totalStat.htm">
+								<i class="fa fa-circle-o"></i>종합분석</a>
+						</li>
+					</ul>
+			</li>
+
+
+			<li><a href="timeLine.htm"><i class='fa fa-link'></i> <span>정보공유</span></a></li>
+
+
 
 
 			<li class="treeview active"><a href="#"><i

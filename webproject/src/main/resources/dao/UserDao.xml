@@ -20,11 +20,22 @@
 		<result column="USER_REGISTCHAR" property="userRegistchar" />
 	</resultMap>
 
-	<select id="getUserInfo" resultMap="UserMap">
-		SELECT USER_NO,
+	<select id="getUserSimpleInfo" resultMap="UserMap">
+		SELECT 
+		USER_NO,
 		USER_EMAIL,
 		USER_NAME,
-		USER_PASSWORD,
+		USER_PROFILE_PHOTO
+		FROM USER
+		WHERE
+		USER_NO = ${value}
+	</select>
+
+	<select id="getUserInfo" resultMap="UserMap">
+		SELECT 
+		USER_NO,
+		USER_EMAIL,
+		USER_NAME,
 		USER_PHONENUMBER,
 		USER_HOMENUMBER,
 		USER_ADDRESS,
@@ -34,7 +45,8 @@
 		USER_POINT,
 		USER_ENABLED,
 		USER_REGISTCHAR
-		FROM USER WHERE
+		FROM USER 
+		WHERE
 		USER_EMAIL = '${value}'
 	</select>
 

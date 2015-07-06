@@ -9,6 +9,7 @@ public class OrderRaw implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	private int orderNo;
 	private String mallName;
 	private String orderUploadDate;
 
@@ -44,6 +45,12 @@ public class OrderRaw implements Serializable {
 	
 	
 	
+	public int getOrderNo() {
+		return orderNo;
+	}
+	public void setOrderNo(int orderNo) {
+		this.orderNo = orderNo;
+	}
 	public String getMallName() {
 		return mallName;
 	}

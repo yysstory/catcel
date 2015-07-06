@@ -46,125 +46,83 @@
 
 
 				<ul class="timeline">
-					<li></li>
-	<!-- 			
-					타임라인 라벨
-					<li data-boardNo="2" data-email="yysstory@gmail.com" class="time-label"><span class="bg-blue"> 회사명 </span></li>
-					<li>
-						timeline icon <i class="fa fa-envelope bg-blue"></i>
-						<div class="timeline-item">
-							<span class="time"><i class="fa fa-clock-o"></i>2015/06/17 12:05</span>
-
-							<h3 class="timeline-header">
-								<a href="#">회사명</a>
-							</h3>
-
-							<div class="timeline-body">내용</div>
-
-							<div class="timeline-footer">
-								<a class="btn btn-warning  btn-xs">수정</a> <a
-									class="btn btn-danger btn-xs">삭제</a>
-							</div>
-						</div>
-					</li>
-
-
-
-
-					<li data-boardNo="2"><i class="fa fa-user bg-aqua"></i>
-						<div class="timeline-item">
-							<span class="time"><i class="fa fa-clock-o"></i>2015/06/17
-								12:06</span>
-
-							<h3 class="timeline-header">
-								<a href="#">회사명</a>
-							</h3>
-
-							<div class="timeline-body">내용</div>
-
-							<div class="timeline-footer">
-								<a class="btn btn-warning  btn-xs">수정</a> <a
-									class="btn btn-danger btn-xs">삭제</a>
-							</div>
-						</div>
-					</li>
-
-
-
-
-					<li data-boardNo="7"><i class="fa fa-user bg-aqua"></i>
-						<div class="timeline-item">
-							<div class="input-group">
-								<div class="input-group-btn replyContent">
-									<button class="btn btn-default ">
-										<i class="fa fa-plus"></i>
-									</button>
-								</div>
-								<input class="form-control" placeholder="댓글을 입력하세요...">
-							</div>
-						</div></li> -->
 					
-					<script id="entry-template" type="text/x-handlebars-template">
+	
+					
+		<script id="mainContent-template" type="text/x-handlebars-template">
 				
 
-
-					<li data-boardNo="{{boardNo}}" data-email="{{user.userEmail}}" class="time-label">
-							<span class="bg-blue"> {{user.userName}} </span>
+					<li data-boardNo="{{boardNo}}" data-parent="{{parent}}" data-email="{{userEmail}}" class="time-label mainContent">
+							<span class="bg-blue"> {{userName}} </span>
 					</li>
 					
-					<li>
+					<li data-boardNo="{{boardNo}}" data-parent="{{parent}}" data-email="{{userEmail}}">
 						<!-- timeline icon --> 
 						<i class="fa fa-envelope bg-blue"></i>
 						<div class="timeline-item">
 							<span class="time"><i class="fa fa-clock-o"></i>{{updateDate}}</span>
 
 							<h3 class="timeline-header">
-								<a href="#">{{user.userName}}</a>
+								<a href="#">{{userName}}</a>
 							</h3>
-
-							<div class="timeline-body">{{content}}</div>
-
-							{{#ifUser user.userEmail}}
+				
+							<div class="timeline-body"><pre>{{content}}</pre></div>
+					{{#ifEquals userEmail}}
 							<div class="timeline-footer">
-								<a class="btn btn-warning  btn-xs">수정</a> <a
-									class="btn btn-danger btn-xs">삭제</a>
+								<a style="display: none" class="btn btn-warning  btn-xs confirmBtn">확인</a> 
+								<a class="btn btn-warning btn-xs updateBtn">수정</a> <a
+									class="btn btn-danger btn-xs deleteBtn">삭제</a>
 							</div>
-							{{/ifUser}}
+					{{/ifEquals}}
 						</div>
 					</li>
+		
+		</script>
+							
+		<script id="reply-template" type="text/x-handlebars-template">
 
-{{#each replyList}}			
-					<li data-replyNo="{{replyNo}}"><i class="fa fa-user bg-aqua"></i>
+					<li data-boardNo="{{boardNo}}" data-parent="{{parent}}" data-email="{{userEmail}}" >
+						<i class="fa fa-fw fa-chevron-right bg-aqua">	</i>
 						<div class="timeline-item">
 							<span class="time"><i class="fa fa-clock-o"></i>
 							{{updateDate}}
 							</span>
 							<h3 class="timeline-header">
-								<a href="#">{{user.userName}}</a>
+								<a href="#">{{userName}}</a>
 							</h3>
-							<div class="timeline-body">{{content}}</div>
-							{{#ifUser user.userEmail}}
+							<div class="timeline-body"><pre>{{content}}</pre></div>
+					{{#ifEquals userEmail}}
 							<div class="timeline-footer">
-								<a class="btn btn-warning  btn-xs">수정</a> <a
-									class="btn btn-danger btn-xs">삭제</a>
+								<a style="display: none" class="btn btn-warning  btn-xs confirmBtn">확인</a> 
+								<a class="btn btn-warning  btn-xs updateBtn">수정</a> 
+								<a class="btn btn-danger btn-xs deleteBtn">삭제</a>
 							</div>
-							{{/ifUser}}
+					{{/ifEquals}}
 						</div>
 					</li>
-{{/each}}		
 
-					<li data-boardNo="{{boardNo}}"><i class="fa fa-user bg-aqua"></i>
+	
+			</script>
+					
+			<script id="input-template" type="text/x-handlebars-template">
+					<li data-boardNo="{{boardNo}}" data-parent="{{parent}}" data-email="{{userEmail}}">
+					<i class="fa fa-user bg-aqua"></i>
 						<div class="timeline-item">
 							<div class="input-group">
-								<div class="input-group-btn replyContent">
-									<button class="btn btn-default ">
+								<div class="input-group-btn replyContent" >
+									<button class="btn btn-default replyBtn">
 										<i class="fa fa-plus"></i>
 									</button>
 								</div>
 								<input class="form-control" placeholder="댓글을 입력하세요...">
 							</div>
 						</div></li>
-					</script>
+			</script>
+
+		<script id="textarea-template" type="text/x-handlebars-template">
+
+		</script>
+
 				</ul>
 
 			<button id="addLoadBtn">더 가져오기</button>
@@ -182,28 +140,74 @@
 	<script type="text/javascript">
 	
 	$(function(){
-	    readTimeLine(5);
+	    readTimeLine(0);
 	})
+	
 	
 	$("#addLoadBtn").on("click",function(){
 	    var boardNo=$(".timeline li").last().attr("data-boardNo");
 	    readTimeLine(boardNo);    
 	})
 	
-	function templateMaker(id,userName,data){
-	    var source   = $("#"+id).html();
-	    Handlebars.registerHelper('ifUser', function(a, options) {
-			  if (a === userName) {
-		    return options.fn(this);
-			  }
-		  	return options.inverse(this);
+	function templateMaker(data,myEmail){
+	    Handlebars.registerHelper('ifEquals', function(a,options) {
+				  if (a === myEmail) {
+				    return options.fn(this);
+				  }
+				  return options.inverse(this);
 			});
-	    var template = Handlebars.compile(source);
-	    return template(data);
+	    var mainContentTemplate = Handlebars.compile($("#mainContent-template").html());
+	    var replyTemplate = Handlebars.compile($("#reply-template").html());
+	    var inputTemplate = Handlebars.compile($("#input-template").html());
+	    
+	    
+	    var returnHtml = "";
+	    
+	  
+	    for(var i=0;i<data.boardList.length;i++){
+				var meno = data.boardList[i].parent;
+				var boolContnent = data.boardList[i].boardNo===data.boardList[i].parent;
+				var	mainContentTemplateHtml = mainContentTemplate(data.boardList[i]);
+				var inputTemplateHtml = inputTemplate(data.boardList[i]);
+				var replyTemplateHtml = replyTemplate(data.boardList[i]);
+				
+				if(i!=(data.boardList.length-1)){
+					var boolReply = data.boardList[i].parent===data.boardList[i+1].parent;
+					if(boolContnent){
+					  		  if(boolReply){
+											returnHtml = returnHtml + mainContentTemplateHtml;
+
+							    }else{
+											returnHtml = returnHtml + mainContentTemplateHtml;
+											returnHtml = returnHtml + inputTemplateHtml;
+							    }
+							    
+					}else{
+					    if(boolReply){
+									returnHtml = returnHtml +replyTemplateHtml;
+					    }else{
+									returnHtml = returnHtml +replyTemplateHtml;
+									returnHtml = returnHtml +inputTemplateHtml;
+					    }
+					}
+				}else{
+					  if(boolContnent){
+										returnHtml = returnHtml + mainContentTemplateHtml;
+										returnHtml = returnHtml +	inputTemplateHtml;
+	
+						}else{
+										returnHtml = returnHtml +	replyTemplateHtml;
+										returnHtml = returnHtml +	inputTemplateHtml;
+						}
+				}
+				
+	    }
+	   	console.timeEnd("timeCheck");
+	    return returnHtml;
 	}
 	
 	function readTimeLine(startPage) {
-	    console.time("timeCheck");
+	  console.time("timeCheck");
 
     $.ajax({
 		type : 'post',
@@ -214,12 +218,10 @@
 		dataType : 'json',
 		success : function(data) {
 		 	  console.log(data);
-		   
-		   	for(board in data.boardList){
- 				    var html =	templateMaker("entry-template",data.user,data.boardList[board]);
-				    $(".timeline li").last().after(html);
-		   	}
-		   	console.timeEnd("timeCheck");
+		
+			  var html =	templateMaker(data,data.myEmail);
+		    $(".timeline").append(html);
+		   	
 		},
 		error : function(data) {
 		    alert("불러오기가 실패 했습니다. 잠시 후 시도해주세요.");
@@ -229,47 +231,144 @@
 
 	}
 
-	$("#textareaBtn").on("click", function() {
+	$("#textareaBtn").on("click", function(event) {
+	    event.stopPropagation();
 	    var content = $("textarea").val();
 	    $.ajax({
-		type : 'post',
-		url : 'timeLineWrite.json',
-		data : {
-		    'content' : content
-		},
-		dataType : 'json',
-		success : function(data) {
-		},
-		error : function(data) {
-		    alert("글쓰기가 실패했습니다. 잠시 후 시도해주세요.");
-		}
+					type : 'post',
+					url : 'timeLineWrite.json',
+					data : {
+					    'content' : content
+					},
+					dataType : 'json',
+					success : function(data) {
+					    location.reload();  
+					},
+					error : function(data) {
+					    alert("글쓰기가 실패했습니다. 잠시 후 시도해주세요.");
+					}
 	    });
 	    /* replace(/<br\s?\/?>/g,"\n")) */
 	})
 	
-	
-	$(".replyContent").on("click", function(event) {
-	    event.stopPropagation();
-	    var content = $(this).next().val();
-	    console.log(content);
-			    $.ajax({
-						type : 'post',
-						url : 'replyWrite.json',
-						data : {
-						    'content' : content,
-						    'boardNo': $(this).closest("li").attr("data-boardNo")
-						},
-						dataType : 'json',
-						success : function(data) {
-						},
-						error : function(data) {
-						    alert("글쓰기가 실패했습니다. 잠시 후 시도해주세요.");
-						}
-			 });
+	$(document).on("click",".replyContent", function(event) {
+		  event.stopPropagation();
+		  console.log("진입");
+	  	var content = $(this).next("input").val();
+	  	var boardNoParent = $(this).closest("li").attr("data-parent");
+			
+	     $.ajax({
+					type : 'post',
+					url : 'replyWrite.json',
+					data : {
+					    'boardNoParent' : boardNoParent,
+					    'content' : content
+					},
+					dataType : 'json',
+					success : function(data) {
+					    console.log(data);
+					    location.reload();  
+
+					},
+					error : function(data) {
+					    alert("댓글 쓰기가 실패했습니다. 잠시 후 시도해주세요.");
+					}
+	    }); 
+	    /* replace(/<br\s?\/?>/g,"\n")) */
 	})
 	
+	$(document).on("click",".updateBtn", function(event) {
+	    event.stopPropagation();
+			$(this).hide();
+			$(this).prev().show();
+			var text = $(this).parent().prev(".timeline-body").children("pre").html();
+			$(this).parent().prev(".timeline-body").html("<textarea class='textarea' 	style='width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;'>"+text+"</textarea>");
+	})
+	
+	$(document).on("click",".confirmBtn", function(event) {
+	    event.stopPropagation();
+			
+			var content = $(this).parent().prev(".timeline-body").children("textarea").html();
+			var boardNo = $(this).closest("li").attr("data-parent");
+			console.log("content-"+content+" boardNo-"+boardNo);
+			
+			$.ajax({
+				type : 'post',
+				url : 'timeLineUpdate.json',
+				data : {
+				    "content" : content,
+				    "boardNo" : boardNo
+				},
+				dataType : 'json',
+				success : function(data) {
+				    console.log(data);
+
+				},
+				error : function(data) {
+				    alert("글 수정이 실패했습니다. 잠시 후 시도해주세요.");
+				}
+			}); 
+			
+			
+		
+	})
+	
+	/* 		<a id="textareaBtn" class="btn btn-default" type="submit">글쓰기</a>
+
+	<li data-boardNo="{{boardNo}}" data-parent="{{parent}}" data-email="{{userEmail}}" >
+	<i class="fa fa-fw fa-chevron-right bg-aqua">	</i>
+	<div class="timeline-item">
+		<span class="time"><i class="fa fa-clock-o"></i>
+		{{updateDate}}
+		</span>
+		<h3 class="timeline-header">
+			<a href="#">{{userName}}</a>
+		</h3>
+		<div class="timeline-body">{{content}}</div>
+{{#ifEquals userEmail}}
+		<div class="timeline-footer">
+		<a style="display: none" class="btn btn-warning  btn-xs confirmBtn">확인</a> 
+			<a class="btn btn-warning  btn-xs updateBtn">수정</a> <a
+				class="btn btn-danger btn-xs deleteBtn">삭제</a>
+		</div>
+{{/ifEquals}}
+	</div>
+</li>
+	     */
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+	
+
+	$(document).on("click",".deleteBtn", function(event) {
+	    event.stopPropagation();
+			  	var boardNoValue = $(this).closest("li").attr("data-boardNo");
+			  	var parentValue = $(this).closest("li").attr("data-parent");
+			 
+			  $.ajax({
+					type : 'post',
+					url : 'timeLineDelete.json',
+					data : {
+					    "boardNoValue" : boardNoValue,
+					    "parentValue" : parentValue
+					},
+					dataType : 'json',
+					success : function(data) {
+					    console.log(data);
+					    location.reload();  
+					},
+					error : function(data) {
+					    alert("글 지우기가 실패했습니다. 잠시 후 시도해주세요.");
+					}
+				}); 
+			  	
+	})
+
     </script>
 
-	<!--/여기까지 -->
 </body>
 </html>

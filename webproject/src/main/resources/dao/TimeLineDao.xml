@@ -11,45 +11,45 @@
 					<result column="REGIST_DATE" property="registDate" />
 					<result column="UPDATE_DATE" property="updateDate" />
 					<result column="YOUTUBE_URL" property="youtubeUrl" />
+					<result column="PARENT" property="parent" />
 					<result column="USER_NO" property="userNo" />
+					<result column="USER_EMAIL" property="userEmail" />
+					<result column="USER_NAME" property="userName" />
+					<result column="USER_PROFILE_PHOTO" property="userProfileFhoto" />
 	</resultMap>  
-	
-	<resultMap type="Reply" id="ReplyMap">
-					<result column="REPLY_NO" property="replyNo" />
-					<result column="CONTENT" property="content" />
-					<result column="REGIST_DATE" property="registDate" />
-					<result column="UPDATE_DATE" property="updateDate" />
-					<result column="BOARD_NO" property="boardNo" />
-					<result column="USER_NO" property="userNo" />
-	</resultMap> 
-	
-	
-	<select id="selectReplyList" resultMap="ReplyMap">
-		SELECT
-			REPLY_NO,
-			CONTENT,
-			REGIST_DATE,
-			UPDATE_DATE,
-			BOARD_NO,
-			USER_NO
-		FROM REPLY
-		WHERE BOARD_NO = ${value}
-	</select>
 
-
+	
 
 	<select id="selectBoardList" resultMap="BoardMap">
-		SELECT
-		BOARD_NO,
-		CONTENT,
-		IMAGE_URL,
-		REGIST_DATE,
-		UPDATE_DATE,
-		YOUTUBE_URL,
-		USER_NO
-		FROM BOARD
-		ORDER BY BOARD_NO DESC
-		LIMIT 5 OFFSET ${value}
+			SELECT B.BOARD_NO,B.CONTENT,B.IMAGE_URL,B.REGIST_DATE,B.UPDATE_DATE,B.YOUTUBE_URL,B.PARENT,B.USER_NO,U.USER_EMAIL,U.USER_NAME,U.USER_PROFILE_PHOTO
+			FROM BOARD B
+			LEFT JOIN USER U
+			ON B.USER_NO = U.USER_NO
+			WHERE PARENT		
+			<if test="value != 0">
+				BETWEEN 
+				(SELECT MIN(BOARD_NO) FROM BOARD 
+				WHERE BOARD_NO = PARENT
+				AND PARENT %lt; ${value}
+				LIMIT 5)
+				AND ${value}-1
+			</if>
+			<if test="value = 0">
+				%lt;=
+				(SELECT MIN(BOARD_NO) FROM BOARD 
+				WHERE BOARD_NO = PARENT
+				LIMIT 5)
+			</if>
+			ORDER BY PARENT DESC, REGIST_DATE ASC
+	</select>
+
+	<select id="selectBoardOne" resultMap="BoardMap">
+SELECT B.BOARD_NO,B.CONTENT,B.IMAGE_URL,B.REGIST_DATE,B.UPDATE_DATE,B.YOUTUBE_URL,B.PARENT,B.USER_NO,U.USER_EMAIL,U.USER_NAME,U.USER_PROFILE_PHOTO
+			FROM BOARD B
+			LEFT JOIN USER U
+			ON B.USER_NO = U.USER_NO
+			WHERE PARENT = (SELECT PARENT FROM  BOARD WHERE BOARD_NO = ${value})
+			ORDER BY PARENT DESC, REGIST_DATE ASC
 	</select>
 
 	<insert id="insertBoard" parameterType="Board">
@@ -59,6 +59,7 @@
 			YOUTUBE_URL,
 			REGIST_DATE,
 			UPDATE_DATE,
+			PARENT,
 			USER_NO
 	  )
  		values (
@@ -67,28 +68,42 @@
 	 		#{youtubeUrl}, 
 	 		#{registDate}, 
 	 		#{updateDate},
+	 		#{parent},
 	 		#{userNo}
- 		)
-	
-	</insert>
-	
-	<insert id="insertReply"  parameterType="Reply">
-	  INSERT INTO REPLY (
-		  CONTENT,
-			REGIST_DATE,
-			UPDATE_DATE,
-			BOARD_NO,
-			USER_NO
-	  )
- 		values (
-	 		#{content}, 
-	 		#{registDate}, 
-	 		#{updateDate},
-	 		#{boardNo},
-	 		#{userNo}
- 		)
+ 		);
+ 		
 
 	
 	</insert>
+	
+	<update id="addParent">
+ 		UPDATE BOARD
+		SET PARENT = BOARD_NO
+		WHERE BOARD_NO = (SELECT * FROM (SELECT MAX(BOARD_NO) FROM BOARD WHERE USER_NO = 
+		(SELECT * FROM (SELECT USER_NO FROM USER WHERE USER_EMAIL = '${value}') AS TEMP)
+		) AS TEMP)
 
+
+	</update>
+	
+	<delete id="deleteBoard">
+	
+  	DELETE FROM BOARD WHERE PARENT = ${value}
+	
+	
+	</delete>
+	<delete id="deleteReply">
+		DELETE FROM BOARD WHERE BOARD_NO = ${value}
+	
+	
+	</delete>
+	
+	<update id="updateBoard">
+	
+		UPDATE BOARD
+		SET CONTENT = '${param1}'
+		WHERE BOARD_NO = ${param2}
+	
+	</update>
+	
 </mapper>

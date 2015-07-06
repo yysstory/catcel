@@ -80,4 +80,61 @@ public class StatsControl {
 		resultMap.put("weekMoneyGraphData",lineGraphs);
 		return resultMap;
 	}
+	
+	
+	@RequestMapping(value = "/productStat", method = RequestMethod.GET)
+	public String productStat() {
+
+		return "productStat";
+	}
+
+	@RequestMapping(value = "/customerStat", method = RequestMethod.GET)
+	public String customerStat() {
+
+		return "customerStat";
+	}
+
+	@RequestMapping(value = "/totalStat", method = RequestMethod.GET)
+	public String totalStat() {
+
+		return "totalStat";
+	}
+
+/*	
+	SELECT *,COUNT(*) AS COUNT FROM ORDER_RAW
+	WHERE DATE_FORMAT(PAYMENT_DATE,'%Y/%m/%d') 
+	BETWEEN DATE_FORMAT('2014/01/01','%Y/%m/%d') 
+	AND DATE_FORMAT('2016/01/01','%Y/%m/%d') 
+	AND USER_NO = 5
+	GROUP BY PRODUCT_NAME
+	ORDER BY COUNT DESC
+	LIMIT 10
+	
+	
+	SELECT *,COUNT(*) AS COUNT FROM ORDER_RAW
+	WHERE DATE_FORMAT(PAYMENT_DATE,'%Y/%m/%d') 
+	BETWEEN DATE_FORMAT('2014/01/01','%Y/%m/%d') 
+	AND DATE_FORMAT('2016/01/01','%Y/%m/%d') 
+	AND USER_NO = 5
+	GROUP BY PRODUCT_OPTION
+	ORDER BY COUNT DESC
+	LIMIT 10
+	
+	SELECT *,SUM(ORDER_TOTAL_AMOUNT),COUNT(*) AS COUNT FROM ORDER_RAW
+	WHERE DATE_FORMAT(PAYMENT_DATE,'%Y/%m/%d') 
+	BETWEEN DATE_FORMAT('2014/01/01','%Y/%m/%d') 
+	AND DATE_FORMAT('2016/01/01','%Y/%m/%d') 
+	AND USER_NO = 5
+	GROUP BY ORCU_NAME,ORCU_ID,ORCU_PHONENUMBER
+	ORDER BY COUNT DESC
+	LIMIT 10
+	
+	SELECT *,SUM(ORDER_TOTAL_AMOUNT) AS ORDER_TOTAL_AMOUNT ,COUNT(*) AS COUNT FROM ORDER_RAW
+	WHERE DATE_FORMAT(PAYMENT_DATE,'%Y/%m/%d') 
+	BETWEEN DATE_FORMAT('2014/01/01','%Y/%m/%d') 
+	AND DATE_FORMAT('2016/01/01','%Y/%m/%d') 
+	AND USER_NO = 5
+	GROUP BY ORCU_NAME,ORCU_ID,ORCU_PHONENUMBER
+	ORDER BY COUNT DESC
+	LIMIT 30*/
 }

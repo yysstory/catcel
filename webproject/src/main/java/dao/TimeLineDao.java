@@ -9,14 +9,14 @@ import vo.Reply;
 public interface TimeLineDao {
 
 	public void insertBoard(Board board);
-	public void insertReply(Reply reply);
+	public void addParent(String userEmail);
 	
+	public void updateBoard(String content,int boardNo);
+
+	public void deleteBoard(int parent);
+	public void deleteReply(int boardNo);
 	
-	public void updateBoard(Mall mall);
-	public void	updateReply(String mallName);
-	public void deleteBoard(Mall mall);
-	public void	deleteReply(String mallName);
-	
+	public List<Board> selectBoardOne(int parentNo);
 	public List<Board> selectBoardList(int startboardNo);
-	public List<Reply> selectReplyList(int boardNo);
+
 }

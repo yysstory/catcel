@@ -3,6 +3,7 @@ package controllers;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -206,6 +207,27 @@ public class OrderControl {
 		System.out.println("removeMall post 진입");
 		mallDao.removeMall(removeMallName, userDao.getUserNo(principal.getName()));
 		return "success";
+	}
+	
+	
+	@RequestMapping(value = "/orderListLoad", method = RequestMethod.POST)
+	public Object orderListLoad(String startDate,String endDate,Principal principal) {
+
+		List<OrderRaw> orderList = orderRawDao.orderListLoad(startDate, endDate, principal.getName());
+		
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("orderList", orderList);
+		
+		return resultMap;
+	}
+	@RequestMapping(value = "/orderListDelete", method = RequestMethod.POST)
+	public Object orderListDelete(String orderUploadDate,Principal principal) {
+		
+		orderRawDao.deleteOrderList(orderUploadDate,principal.getName());
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("result", "success");
+		
+		return resultMap;
 	}
 	
 }

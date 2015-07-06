@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import util.CatCelUtil;
 import vo.Board;
-import vo.Reply;
-import vo.User;
 import dao.TimeLineDao;
 import dao.UserDao;
 
@@ -36,17 +34,8 @@ public class TimeLineControl {
 	public Object timeLinePost(int startPage,Principal principal) {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();		
 		List<Board> boardList = timeLineDao.selectBoardList(startPage);
-		for (Board board : boardList){
-			User user = userDao.getUserSimpleInfo(board.getUserNo());
-			board.setUser(user);
-			List<Reply> replyList = timeLineDao.selectReplyList(board.getBoardNo());
-			for(Reply reply : replyList){
-				reply.setUser(userDao.getUserSimpleInfo(reply.getUserNo()));
-			}
-			board.setReplyList(replyList);
-		} 
 		resultMap.put("boardList", boardList);
-		resultMap.put("user", principal.getName());
+		resultMap.put("myEmail",principal.getName());
 		return resultMap;
 	}
 	
@@ -59,25 +48,56 @@ public class TimeLineControl {
 		board.setRegistDate(nowDate);
 		board.setUpdateDate(nowDate);
 		timeLineDao.insertBoard(board);
-		
+		timeLineDao.addParent(principal.getName());
 		return "success";
 	}
 	
 	@RequestMapping(value = "/timeLineUpdate", method = RequestMethod.POST)
-	public Object timeLineUpdate(String content,Principal principal) {
+	public Object timeLineUpdate(String boardNo,String content,Principal principal) {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();	
+
+		System.out.println(boardNo);
+		System.out.println(content);
 		
+		timeLineDao.updateBoard(content, Integer.parseInt(boardNo));
+		
+		List<Board> boardList = timeLineDao.selectBoardOne(Integer.parseInt(boardNo));
+		resultMap.put("boardList", boardList);
+		resultMap.put("myEmail",principal.getName());
+		
+		return resultMap;
+	}
+	
+	@RequestMapping(value = "/timeLineDelete", method = RequestMethod.POST)
+	public Object timeLineDelete(String parentValue, String boardNoValue, Principal principal) {
+		if(parentValue.equals(boardNoValue)){
+			System.out.println("deleteBoard진입");
+			timeLineDao.deleteBoard(Integer.parseInt(parentValue));
+		}else{
+			timeLineDao.deleteReply(Integer.parseInt(boardNoValue));
+		}
+
 		return "";
 	}
 	
 	
 	@RequestMapping(value = "/replyWrite", method = RequestMethod.POST)
-	public Object replyWritePost(Reply reply,Principal principal) {
+	public Object replyWritePost(Board board,int boardNoParent,Principal principal) {
 		String nowDate = CatCelUtil.nowDate();
-		reply.setUserNo(userDao.getUserNo(principal.getName()));
-		reply.setRegistDate(nowDate);
-		reply.setUpdateDate(nowDate);
-		timeLineDao.insertReply(reply);
-		
+		board.setParent(boardNoParent);
+		board.setUserNo(userDao.getUserNo(principal.getName()));
+		board.setRegistDate(nowDate);
+		board.setUpdateDate(nowDate);
+		timeLineDao.insertBoard(board);
+		List<Board> selectBoard = timeLineDao.selectBoardOne(boardNoParent);
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("boardList", selectBoard);
 		return "success";
+	}
+	
+	@RequestMapping(value = "/replyDelete", method = RequestMethod.POST)
+	public Object replyDelete(String content,Principal principal) {
+		
+		return "";
 	}
 }

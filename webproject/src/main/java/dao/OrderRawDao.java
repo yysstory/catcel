@@ -20,11 +20,14 @@ public interface OrderRawDao {
 	List<LineGraph> getMonthMoneyGraph(String payment_date,int userNo);
 	List<LineGraph> getYearMoneyGraph(String payment_date,int userNo);
 	
-	
-	
-	
-	
 	List<BestProduct> orderBest(String payment_date);
 	List<OrderRaw> customerSearch(String orcu_name);
 	List<OrderRaw> customerSearchMap(String searchColumn, String columnInput);
+	
+	List<OrderRaw> orderListLoad(String startDate, String endDate,String userEmail);
+
+	void deleteOrderList(String orderUploadDate, String name);
+
+	
+	
 }

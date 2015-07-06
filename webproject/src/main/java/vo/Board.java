@@ -1,7 +1,6 @@
 package vo;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class Board implements Serializable{
 	
@@ -13,28 +12,55 @@ public class Board implements Serializable{
 	private String registDate;
 	private String updateDate;
 	private String youtubeUrl;
+	private int parent;
 	private int userNo;
+	private String userEmail;
+	private String userName;
+	private String userProfilePhoto;
+
 	
-	private User user;
-	
-	private List<Reply> replyList;
-	
-	
-	
-	public User getUser() {
-		return user;
+	public int getParent() {
+		return parent;
 	}
-	public void setUser(User user) {
-		this.user = user;
+
+
+	public void setParent(int parent) {
+		this.parent = parent;
 	}
+
+
+
 	
-	public List<Reply> getReplyList() {
-		return replyList;
-	}
-	public void setReplyList(List<Reply> replyList) {
-		this.replyList = replyList;
-	}
 	
+	@Override
+	public String toString() {
+		return "Board [boardNo=" + boardNo + ", content=" + content
+				+ ", imageUrl=" + imageUrl + ", registDate=" + registDate
+				+ ", updateDate=" + updateDate + ", youtubeUrl=" + youtubeUrl
+				+ ", parent=" + parent + ", userNo=" + userNo + ", userEmail="
+				+ userEmail + ", userName=" + userName + ", userProfilePhoto="
+				+ userProfilePhoto + "]";
+	}
+
+
+	public String getUserEmail() {
+		return userEmail;
+	}
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getUserProfilePhoto() {
+		return userProfilePhoto;
+	}
+	public void setUserProfilePhoto(String userProfilePhoto) {
+		this.userProfilePhoto = userProfilePhoto;
+	}
 	public int getBoardNo() {
 		return boardNo;
 	}
@@ -77,14 +103,7 @@ public class Board implements Serializable{
 	public void setUserNo(int userNo) {
 		this.userNo = userNo;
 	}
-	@Override
-	public String toString() {
-		return "Board [boardNo=" + boardNo + ", content=" + content
-				+ ", imageUrl=" + imageUrl + ", registDate=" + registDate
-				+ ", updateDate=" + updateDate + ", youtubeUrl=" + youtubeUrl
-				+ ", userNo=" + userNo + ", replyList=" + replyList + "]";
-	}
-	
+
 	
 	
 

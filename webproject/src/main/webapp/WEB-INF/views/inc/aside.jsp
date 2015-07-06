@@ -73,7 +73,7 @@
 								<i class="fa fa-circle-o"></i>매출통계</a>
 						</li>
 						<li>
-							<a href="ProductStat.htm">
+							<a href="productStat.htm">
 								<i class="fa fa-circle-o"></i>상품분석</a>
 						</li>
 						<li>
